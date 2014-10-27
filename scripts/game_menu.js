@@ -8,6 +8,7 @@ function GameMenu()
     // references to html elements
 var CONTAINER = null;
 var PART_NAME = null;
+var MESSAGE = null;
 var CORRECT = null;
 var INCORRECT = null;
 var TIMER_ELEMENT = null;
@@ -15,12 +16,14 @@ var RESTART = null;
 var QUIT = null;
 
 var TIMER;
+var MESSAGE_TIMEOUT;
 
 GameMenu.init = function()
 {
 CONTAINER = document.querySelector( '#GameMenu' );
 
 PART_NAME = CONTAINER.querySelector( '#PartName' );
+MESSAGE = CONTAINER.querySelector( '#Message' );
 CORRECT = CONTAINER.querySelector( '#CorrectValue' );
 INCORRECT = CONTAINER.querySelector( '#IncorrectValue' );
 TIMER_ELEMENT = CONTAINER.querySelector( '#TimeValue' );
@@ -41,6 +44,7 @@ QUIT.onclick = function()
 
 
 TIMER = new Utilities.Timer( TIMER_ELEMENT );
+MESSAGE_TIMEOUT = new Utilities.Timeout();
 };
 
 
@@ -72,6 +76,19 @@ GameMenu.hide = function()
 {
 CONTAINER.style.visibility = 'hidden';
 };
+
+
+GameMenu.showMessage = function( text )
+{
+MESSAGE.innerHTML = text;
+MESSAGE.style.visibility = 'visible';
+
+MESSAGE_TIMEOUT.start( function()
+    {
+    MESSAGE.style.visibility = 'hidden';
+    }, 1000 );
+};
+
 
 
 window.GameMenu = GameMenu;

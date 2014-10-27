@@ -22,8 +22,8 @@ start.onclick = function()
     // center the menu in the middle of the canvas
 var rect = getOffsetRect( G.BACKGROUND_CANVAS );
 
-var left = rect.left + G.BACKGROUND_CANVAS.width / 2;
-var top = rect.top + G.BACKGROUND_CANVAS.height / 2;
+var left = rect.left + G.BACKGROUND_CANVAS.width / 2 - MENU_ELEMENT.offsetWidth / 2;
+var top = rect.top + G.BACKGROUND_CANVAS.height / 2 - MENU_ELEMENT.offsetHeight / 2;
 
 MENU_ELEMENT.style.left = left + 'px';
 MENU_ELEMENT.style.top = top + 'px';

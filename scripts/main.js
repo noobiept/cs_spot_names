@@ -28,6 +28,11 @@ G.MAIN_STAGE.enableMouseOver();
 G.MAIN_STAGE.scaleX = G.BACKGROUND_STAGE.scaleX = scale;
 G.MAIN_STAGE.scaleY = G.BACKGROUND_STAGE.scaleY = scale;
 
+var canvasContainer = document.querySelector( '#CanvasContainer' );
+
+canvasContainer.style.width = (1024 * scale) + 'px';
+canvasContainer.style.height = (1024 * scale) + 'px';
+
 GameMenu.init();
 MainMenu.init();
 

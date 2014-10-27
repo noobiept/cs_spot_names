@@ -19,15 +19,20 @@
 </head>
 <body>
 
-    <canvas id="BackgroundCanvas"></canvas>
-    <canvas id="MainCanvas"></canvas>
+    <div id="CanvasContainer">
+        <canvas id="BackgroundCanvas"></canvas>
+        <canvas id="MainCanvas"></canvas>
+    </div>
 
     <div id="GameMenu">
+        <span id="PartName"></span>
+
+        <span id="Message">message</span>
+
         <ul id="Info">
-            <li id="PartName"></li>
             <li>Correct: <span id="CorrectValue">0</span></li>
             <li>Incorrect: <span id="IncorrectValue">0</span></li>
-            <li>Time: <span id="TimeValue"></span></li>
+            <li id="TimeValue"></li>
         </ul>
         <ul id="Controls">
             <li id="Restart" class="button">Restart</li>

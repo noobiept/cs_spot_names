@@ -42,7 +42,7 @@ Game.nextSpot = function()
 {
 if ( ALL_PART_NAMES.length === 0 )
     {
-    console.log( 'No more spots.' );
+    GameMenu.showMessage( 'No more spots.' );
     return;
     }
 
@@ -59,7 +59,7 @@ Game.validatePart = function( partName )
 {
 if ( partName === CURRENT_PART_NAME )
     {
-    console.log( 'Correct!' );
+    GameMenu.showMessage( 'Correct!' );
     CORRECT_COUNT++;
     Game.nextSpot();
     }
@@ -67,7 +67,7 @@ if ( partName === CURRENT_PART_NAME )
 else
     {
     INCORRECT_COUNT++;
-    console.log( 'Incorrect :(' );
+    GameMenu.showMessage( 'Incorrect :(' );
     }
 
 GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
