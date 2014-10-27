@@ -11,6 +11,7 @@ MainMenu.init = function()
 {
 MENU_ELEMENT = document.querySelector( '#MainMenu' );
 
+    // start the normal mode
 var start = MENU_ELEMENT.querySelector( '#Start' );
 
 start.onclick = function()
@@ -18,6 +19,21 @@ start.onclick = function()
     MainMenu.close();
     Game.start();
     };
+
+
+    // practice a specific map
+var practiceMaps = MENU_ELEMENT.querySelector( '#PracticeMaps' );
+var length = practiceMaps.childNodes.length;
+
+for (var a = 0 ; a < length ; a++)
+    {
+    practiceMaps.childNodes[ a ].onclick = function()
+        {
+        MainMenu.close();
+        Game.start( this.innerHTML, true );
+        }
+    }
+
 
     // center the menu in the middle of the canvas
 var rect = getOffsetRect( G.BACKGROUND_CANVAS );

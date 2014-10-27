@@ -12,6 +12,7 @@ var MESSAGE = null;
 var CORRECT = null;
 var INCORRECT = null;
 var TIMER_ELEMENT = null;
+var HELP = null;
 var RESTART = null;
 var QUIT = null;
 
@@ -27,9 +28,14 @@ MESSAGE = CONTAINER.querySelector( '#Message' );
 CORRECT = CONTAINER.querySelector( '#CorrectValue' );
 INCORRECT = CONTAINER.querySelector( '#IncorrectValue' );
 TIMER_ELEMENT = CONTAINER.querySelector( '#TimeValue' );
+HELP = CONTAINER.querySelector( '#Help' );
 RESTART = CONTAINER.querySelector( '#Restart' );
 QUIT = CONTAINER.querySelector( '#Quit' );
 
+HELP.onclick = function()
+    {
+        //HERE
+    };
 RESTART.onclick = function()
     {
     Game.restart();
@@ -75,6 +81,7 @@ CONTAINER.style.visibility = 'visible';
 GameMenu.hide = function()
 {
 CONTAINER.style.visibility = 'hidden';
+HELP.style.visibility = 'hidden';
 };
 
 
@@ -87,6 +94,20 @@ MESSAGE_TIMEOUT.start( function()
     {
     MESSAGE.style.visibility = 'hidden';
     }, 1000 );
+};
+
+
+GameMenu.setMode = function( practice )
+{
+if ( practice === true )
+    {
+    HELP.style.visibility = 'visible';
+    }
+
+else
+    {
+    HELP.style.visibility = 'hidden';
+    }
 };
 
 

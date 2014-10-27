@@ -12,16 +12,22 @@ var ALL_PART_NAMES = [];        // array of strings with all the names of the ma
     // count the number of correct/incorrect plays (for the score at the end)
 var CORRECT_COUNT = 0;
 var INCORRECT_COUNT = 0;
+var PRACTICE_MODE = false;
 
 
-
-Game.start = function( mapName )
+Game.start = function( mapName, practice )
 {
 if ( typeof mapName === 'undefined' )
     {
     mapName = 'dust2';
     }
 
+if ( typeof practice === 'undefined' )
+    {
+    practice = false;
+    }
+
+PRACTICE_MODE = practice;
 
 MAP = new Map( mapName );
 
@@ -30,6 +36,7 @@ ALL_PART_NAMES = MAP.getPartNames();
 Game.nextSpot();
 GameMenu.getTimer().start();
 GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
+GameMenu.setMode( practice );
 
 Game.show();
 
@@ -42,8 +49,19 @@ Game.nextSpot = function()
 {
 if ( ALL_PART_NAMES.length === 0 )
     {
-    GameMenu.showMessage( 'No more spots.' );
-    return;
+        // restart the map
+    if ( PRACTICE_MODE )
+        {
+        ALL_PART_NAMES = MAP.getPartNames();
+        }
+
+        // load the next map
+    else
+        {
+            //HERE
+        GameMenu.showMessage( 'No more spots.' );
+        return;
+        }
     }
 
 var position = Utilities.getRandomInt( 0, ALL_PART_NAMES.length - 1 );
