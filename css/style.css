@@ -4,6 +4,12 @@ body
     padding: 0;
     }
 
+    /* start with all the elements hidden, show them with code as needed */
+#BackgroundCanvas, #MainCanvas, #GameMenu, #MainMenu
+    {
+    visibility: hidden;
+    }
+
 #MainCanvas, #BackgroundCanvas
     {
     padding: 0;
@@ -15,4 +21,15 @@ body
     position: absolute;
     top: 0;
     left: 0;
+    }
+
+#MainMenu
+    {
+    position: absolute;
+    text-align: center;
+    }
+
+.button
+    {
+    cursor: pointer;
     }

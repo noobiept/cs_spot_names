@@ -34,6 +34,14 @@ this.shape = spot;
 }
 
 
+Spot.prototype.clear = function()
+{
+G.MAIN_STAGE.removeChild( this.shape );
+
+this.shape = null;
+};
+
+
 window.Spot = Spot;
 
 }(window));

@@ -12,6 +12,7 @@
     <script type="text/javascript" src="scripts/map.js"></script>
     <script type="text/javascript" src="scripts/game.js"></script>
     <script type="text/javascript" src="scripts/game_menu.js"></script>
+    <script type="text/javascript" src="scripts/main_menu.js"></script>
     <script type="text/javascript" src="scripts/main.js"></script>
 
     <link href="css/style.css" rel="stylesheet" />
@@ -21,10 +22,9 @@
     <canvas id="BackgroundCanvas"></canvas>
     <canvas id="MainCanvas"></canvas>
 
-    <div id="PartName"></div>
-
     <div id="GameMenu">
         <ul id="Info">
+            <li id="PartName"></li>
             <li>Correct: <span id="CorrectValue">0</span></li>
             <li>Incorrect: <span id="IncorrectValue">0</span></li>
             <li>Time: <span id="TimeValue"></span></li>
@@ -32,6 +32,15 @@
         <ul id="Controls">
             <li id="Restart" class="button">Restart</li>
             <li id="Quit" class="button">Quit</li>
+        </ul>
+    </div>
+
+    <div id="MainMenu">
+        <div id="Start" class="button">Start</div>
+        <h4>Practice</h4>
+        <ul>
+            <li class="button">dust2</li>
+            <li class="button">inferno</li>
         </ul>
     </div>
 

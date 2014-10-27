@@ -28,8 +28,8 @@ G.MAIN_STAGE.enableMouseOver();
 G.MAIN_STAGE.scaleX = G.BACKGROUND_STAGE.scaleX = scale;
 G.MAIN_STAGE.scaleY = G.BACKGROUND_STAGE.scaleY = scale;
 
-Game.init();
 GameMenu.init();
+MainMenu.init();
 
 var manifest = [
         { id: 'dust2_background', src: 'maps/dust2/background.png' },
@@ -86,7 +86,7 @@ var manifest = [
 G.PRELOAD = new createjs.LoadQueue();
 G.PRELOAD.on( 'complete', function( event )
     {
-    Game.start( 'dust2' );
+    MainMenu.open();
     });
 G.PRELOAD.loadManifest( manifest, true );
 };

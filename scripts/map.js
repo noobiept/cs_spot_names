@@ -21,6 +21,7 @@ for (var a = 0 ; a < length ; a++)
     spots.push( spot );
     }
 
+this.background = background;
 this.map_name = mapName;
 this.spots = spots;
 }
@@ -39,6 +40,22 @@ for (var a = 0 ; a < length ; a++)
     }
 
 return names;
+};
+
+
+Map.prototype.clear = function()
+{
+G.BACKGROUND_STAGE.removeChild( this.background );
+
+var length = this.spots.length;
+
+for (var a = 0 ; a < length ; a++)
+    {
+    this.spots[ a ].clear();
+    }
+
+this.spots.length = 0;
+this.background = null;
 };
 
 
