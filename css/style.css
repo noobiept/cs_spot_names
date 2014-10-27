@@ -1,4 +1,16 @@
+body
+    {
+    margin: 0;
+    padding: 0;
+    }
+
 #MainCanvas, #BackgroundCanvas
+    {
+    padding: 0;
+    margin: 0;
+    }
+
+#MainCanvas
     {
     position: absolute;
     top: 0;

@@ -1,6 +1,6 @@
 (function(window)
 {
-function Spot( imageId, x, y )
+function Spot( imageId, spotName, x, y )
 {
 var _this = this;
 
@@ -21,6 +21,10 @@ spot.on( 'rollout', function( event )
     {
     _this.shape.image = _this.image;
     G.MAIN_STAGE.update();
+    });
+spot.on( 'click', function( event )
+    {
+    Game.validatePart( spotName );
     });
 
 

@@ -22,6 +22,7 @@ G.BACKGROUND_STAGE = new createjs.Stage( G.BACKGROUND_CANVAS );
 G.MAIN_STAGE = new createjs.Stage( G.MAIN_CANVAS );
 G.MAIN_STAGE.enableMouseOver();
 
+Game.init();
 
 var manifest = [
         { id: 'dust2_background', src: 'maps/dust2/background.png' },
@@ -76,24 +77,10 @@ var manifest = [
     ];
 
 G.PRELOAD = new createjs.LoadQueue();
-G.PRELOAD.on( 'complete', start );
+G.PRELOAD.on( 'complete', function( event )
+    {
+    Game.start( 'dust2' );
+    });
 G.PRELOAD.loadManifest( manifest, true );
 };
 
-
-function start()
-{
-G.MAP = new Map( 'dust2' );
-
-G.BACKGROUND_STAGE.update();
-G.MAIN_STAGE.update();
-
-//G.STAGE.update();
-//createjs.Ticker.on( 'tick', tick );
-}
-
-
-function tick()
-{
-G.MAIN_STAGE.update();
-}

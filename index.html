@@ -8,6 +8,9 @@
 
     <script type="text/javascript" src="scripts/spot.js"></script>
     <script type="text/javascript" src="scripts/map.js"></script>
+    <script type="text/javascript" src="scripts/game.js"></script>
+    <script type="text/javascript" src="scripts/game_menu.js"></script>
+    <script type="text/javascript" src="scripts/utilities.js"></script>
     <script type="text/javascript" src="scripts/main.js"></script>
 
     <link href="css/style.css" rel="stylesheet" />
@@ -16,6 +19,18 @@
 
     <canvas id="BackgroundCanvas"></canvas>
     <canvas id="MainCanvas"></canvas>
+
+    <div id="PartName"></div>
+
+    <div id="GameMenu">
+        <ul id="Info">
+            <li>Correct: <span id="CorrectCount"></span></li>
+            <li>Incorrect: <span id="IncorrectCount"></span></li>
+        </ul>
+        <ul id="Controls">
+            <li id="Restart" class="button">Restart</li>
+        </ul>
+    </div>
 
 </body>
 </html>
