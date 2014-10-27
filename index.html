@@ -5,12 +5,13 @@
 
     <script type="text/javascript" src="libraries/preloadjs-0.4.1.min.js"></script>
     <script type="text/javascript" src="libraries/easeljs-0.7.1.min.js"></script>
+    <script type="text/javascript" src="libraries/underscore-min.js"></script>
+    <script type="text/javascript" src="libraries/utilities-1.1.js"></script>
 
     <script type="text/javascript" src="scripts/spot.js"></script>
     <script type="text/javascript" src="scripts/map.js"></script>
     <script type="text/javascript" src="scripts/game.js"></script>
     <script type="text/javascript" src="scripts/game_menu.js"></script>
-    <script type="text/javascript" src="scripts/utilities.js"></script>
     <script type="text/javascript" src="scripts/main.js"></script>
 
     <link href="css/style.css" rel="stylesheet" />
@@ -24,11 +25,13 @@
 
     <div id="GameMenu">
         <ul id="Info">
-            <li>Correct: <span id="CorrectCount"></span></li>
-            <li>Incorrect: <span id="IncorrectCount"></span></li>
+            <li>Correct: <span id="CorrectValue">0</span></li>
+            <li>Incorrect: <span id="IncorrectValue">0</span></li>
+            <li>Time: <span id="TimeValue"></span></li>
         </ul>
         <ul id="Controls">
             <li id="Restart" class="button">Restart</li>
+            <li id="Quit" class="button">Quit</li>
         </ul>
     </div>
 

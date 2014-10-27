@@ -14,15 +14,22 @@ window.onload = function()
 G.BACKGROUND_CANVAS = document.querySelector( '#BackgroundCanvas' );
 G.MAIN_CANVAS = document.querySelector( '#MainCanvas' );
 
-G.MAIN_CANVAS.width = G.BACKGROUND_CANVAS.width = 1024;
-G.MAIN_CANVAS.height = G.BACKGROUND_CANVAS.height = 1024;
+    // scale the canvas/stage to fit the window's dimensions
+var scale = 1;
+
+G.MAIN_CANVAS.width = G.BACKGROUND_CANVAS.width = 1024 * scale;
+G.MAIN_CANVAS.height = G.BACKGROUND_CANVAS.height = 1024 * scale;
 
 G.BACKGROUND_STAGE = new createjs.Stage( G.BACKGROUND_CANVAS );
 
 G.MAIN_STAGE = new createjs.Stage( G.MAIN_CANVAS );
 G.MAIN_STAGE.enableMouseOver();
 
+G.MAIN_STAGE.scaleX = G.BACKGROUND_STAGE.scaleX = scale;
+G.MAIN_STAGE.scaleY = G.BACKGROUND_STAGE.scaleY = scale;
+
 Game.init();
+GameMenu.init();
 
 var manifest = [
         { id: 'dust2_background', src: 'maps/dust2/background.png' },
