@@ -15,10 +15,11 @@ container.x = x;
 container.y = y;
 
 var spot = new createjs.Bitmap( this.image );
+var helpMessage = null;
 
 if ( practiceMode )
     {
-    var helpMessage = new createjs.Text( spotName, '30px Arial', 'white' );
+    helpMessage = new createjs.Text( spotName, '30px Arial', 'white' );
 
     helpMessage.visible = false;
     }
@@ -55,18 +56,29 @@ spot.on( 'click', function( event )
     });
 
 container.addChild( spot );
-container.addChild( helpMessage );
+
+if ( practiceMode )
+    {
+    container.addChild( helpMessage );
+    }
 
 G.MAIN_STAGE.addChild( container );
 
+this.help_message = helpMessage;
 this.shape = spot;
+this.container = container
 }
 
 
 Spot.prototype.clear = function()
 {
+G.MAIN_STAGE.removeChild( this.help_message );
 G.MAIN_STAGE.removeChild( this.shape );
+G.MAIN_STAGE.removeChild( this.container );
 
+this.shape.removeAllEventListeners();
+
+this.container = null;
 this.shape = null;
 };
 

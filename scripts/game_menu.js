@@ -55,7 +55,7 @@ RESTART.onclick = function()
     };
 QUIT.onclick = function()
     {
-    TIMER.reset();
+    GameMenu.clear();
     Game.clear();
     Game.hide();
     MainMenu.open();
@@ -129,6 +129,11 @@ GameMenu.isHelpSet = function()
 return SHOW_HELP;
 };
 
+
+GameMenu.clear = function()
+{
+TIMER.reset();
+};
 
 
 window.GameMenu = GameMenu;

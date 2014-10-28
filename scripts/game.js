@@ -14,34 +14,52 @@ var CORRECT_COUNT = 0;
 var INCORRECT_COUNT = 0;
 var PRACTICE_MODE = false;
 
-Game.start = function( mapName, practice )
-{
-if ( typeof mapName === 'undefined' )
-    {
-    mapName = 'dust2';
-    }
+    // all the map names in the game (don't change this)
+var MAP_NAMES = [ 'dust2' ];
 
+    // has the name of the maps still left to be played
+var MAPS_LEFT = [];
+
+/**
+    @param {Boolean=false} practice - whether to play the map in practice mode or not
+    @param {String=} mapName - only used for practice mode, to select the map. In the normal mode, its a random map
+
+    Practice mode:
+        - play the same map constantly
+        - there's no score
+        - have access to the help
+
+    Normal mode:
+        - gets a random map
+        - once you go through all the spots, a new map is loaded, etc
+ */
+
+Game.start = function( practice, mapName )
+{
 if ( typeof practice === 'undefined' )
     {
     practice = false;
     }
 
-PRACTICE_MODE = practice;
+
+if ( practice === false )
+    {
+    MAPS_LEFT = Utilities.deepClone( MAP_NAMES );
+
+    var position = Utilities.getRandomInt( 0, MAPS_LEFT.length - 1 );
+
+    mapName = MAPS_LEFT.splice( position, 1 )[ 0 ];
+    }
 
 
-MAP = new Map( mapName );
-
-ALL_PART_NAMES = MAP.getPartNames();
-
-Game.nextSpot();
+Game.loadMap( mapName );
 GameMenu.getTimer().start();
 GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
 GameMenu.setMode( practice );
 
 Game.show();
 
-G.BACKGROUND_STAGE.update();
-G.MAIN_STAGE.update();
+PRACTICE_MODE = practice;
 };
 
 
@@ -58,8 +76,27 @@ if ( ALL_PART_NAMES.length === 0 )
         // load the next map
     else
         {
-            //HERE
-        GameMenu.showMessage( 'No more spots.' );
+        if ( MAPS_LEFT.length === 0 )
+            {
+            var score = HighScore.calculateScore( CORRECT_COUNT, INCORRECT_COUNT, GameMenu.getTimer().getTimeSeconds() );
+
+            GameMenu.showMessage( 'All done, congrats! Score: ' + score );
+
+            GameMenu.clear();
+            Game.clear();
+            Game.hide();
+            MainMenu.open();
+            }
+
+        else
+            {
+            var position = Utilities.getRandomInt( 0, MAPS_LEFT.length - 1 );
+
+            var mapName = MAPS_LEFT.splice( position, 1 )[ 0 ];
+
+            Game.loadMap( mapName );
+            }
+
         return;
         }
     }
@@ -71,6 +108,21 @@ var name = ALL_PART_NAMES.splice( position, 1 )[ 0 ];
 GameMenu.updatePartName( name );
 CURRENT_PART_NAME = name;
 };
+
+
+
+Game.loadMap = function( mapName )
+{
+MAP = new Map( mapName );
+
+ALL_PART_NAMES = MAP.getPartNames();
+
+Game.nextSpot();
+
+G.BACKGROUND_STAGE.update();
+G.MAIN_STAGE.update();
+};
+
 
 
 Game.validatePart = function( partName )
@@ -95,6 +147,7 @@ GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
 Game.clear = function()
 {
 MAP.clear();
+MAP = null;
 
 ALL_PART_NAMES.length = 0;
 
