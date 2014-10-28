@@ -14,7 +14,6 @@ var CORRECT_COUNT = 0;
 var INCORRECT_COUNT = 0;
 var PRACTICE_MODE = false;
 
-
 Game.start = function( mapName, practice )
 {
 if ( typeof mapName === 'undefined' )
@@ -28,6 +27,7 @@ if ( typeof practice === 'undefined' )
     }
 
 PRACTICE_MODE = practice;
+
 
 MAP = new Map( mapName );
 
@@ -123,8 +123,15 @@ GameMenu.hide();
 
 Game.restart = function()
 {
-
+    //HERE
 };
+
+
+Game.inPracticeMode = function()
+{
+return PRACTICE_MODE;
+};
+
 
 
 window.Game = Game;

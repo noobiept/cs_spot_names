@@ -18,6 +18,7 @@ var QUIT = null;
 
 var TIMER;
 var MESSAGE_TIMEOUT;
+var SHOW_HELP = false;  // whether to show or not the help (the map needs to be in practice mode)
 
 GameMenu.init = function()
 {
@@ -32,9 +33,21 @@ HELP = CONTAINER.querySelector( '#Help' );
 RESTART = CONTAINER.querySelector( '#Restart' );
 QUIT = CONTAINER.querySelector( '#Quit' );
 
+var helpValue = HELP.querySelector( 'span' );
+
 HELP.onclick = function()
     {
-        //HERE
+    SHOW_HELP = !SHOW_HELP;
+
+    if ( SHOW_HELP === true )
+        {
+        helpValue.innerHTML = 'On';
+        }
+
+    else
+        {
+        helpValue.innerHTML = 'Off';
+        }
     };
 RESTART.onclick = function()
     {
@@ -108,6 +121,12 @@ else
     {
     HELP.style.visibility = 'hidden';
     }
+};
+
+
+GameMenu.isHelpSet = function()
+{
+return SHOW_HELP;
 };
 
 
