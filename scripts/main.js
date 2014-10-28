@@ -8,6 +8,8 @@ var G = {
 };
 
 
+var BASE_URL = '';
+
 
 window.onload = function()
 {
@@ -36,57 +38,61 @@ canvasContainer.style.height = (1024 * scale) + 'px';
 GameMenu.init();
 MainMenu.init();
 
-var manifest = [
-        { id: 'dust2_background', src: 'maps/dust2/background.png' },
-        { id: 'dust2_a_ramp', src: 'maps/dust2/a_ramp.png' },
-        { id: 'dust2_a_ramp_selected', src: 'maps/dust2/a_ramp_selected.png' },
-        { id: 'dust2_b_doors', src: 'maps/dust2/b_doors.png' },
-        { id: 'dust2_b_doors_selected', src: 'maps/dust2/b_doors_selected.png' },
-        { id: 'dust2_back_of_a', src: 'maps/dust2/back_of_a.png' },
-        { id: 'dust2_back_of_a_selected', src: 'maps/dust2/back_of_a_selected.png' },
-        { id: 'dust2_bombsite_a', src: 'maps/dust2/bombsite_a.png' },
-        { id: 'dust2_bombsite_a_selected', src: 'maps/dust2/bombsite_a_selected.png' },
-        { id: 'dust2_bombsite_b', src: 'maps/dust2/bombsite_b.png' },
-        { id: 'dust2_bombsite_b_selected', src: 'maps/dust2/bombsite_b_selected.png' },
-        { id: 'dust2_catwalk', src: 'maps/dust2/catwalk.png' },
-        { id: 'dust2_catwalk_selected', src: 'maps/dust2/catwalk_selected.png' },
-        { id: 'dust2_ct_start', src: 'maps/dust2/ct_start.png' },
-        { id: 'dust2_ct_start_selected', src: 'maps/dust2/ct_start_selected.png' },
-        { id: 'dust2_extended_a', src: 'maps/dust2/extended_a.png' },
-        { id: 'dust2_extended_a_selected', src: 'maps/dust2/extended_a_selected.png' },
-        { id: 'dust2_hole', src: 'maps/dust2/hole.png' },
-        { id: 'dust2_hole_selected', src: 'maps/dust2/hole_selected.png' },
-        { id: 'dust2_long_a', src: 'maps/dust2/long_a.png' },
-        { id: 'dust2_long_a_selected', src: 'maps/dust2/long_a_selected.png' },
-        { id: 'dust2_long_doors', src: 'maps/dust2/long_doors.png' },
-        { id: 'dust2_long_doors_selected', src: 'maps/dust2/long_doors_selected.png' },
-        { id: 'dust2_lower_tunnel', src: 'maps/dust2/lower_tunnel.png' },
-        { id: 'dust2_lower_tunnel_selected', src: 'maps/dust2/lower_tunnel_selected.png' },
-        { id: 'dust2_mid_doors', src: 'maps/dust2/mid_doors.png' },
-        { id: 'dust2_mid_doors_selected', src: 'maps/dust2/mid_doors_selected.png' },
-        { id: 'dust2_middle', src: 'maps/dust2/middle.png' },
-        { id: 'dust2_middle_selected', src: 'maps/dust2/middle_selected.png' },
-        { id: 'dust2_outside_long', src: 'maps/dust2/outside_long.png' },
-        { id: 'dust2_outside_long_selected', src: 'maps/dust2/outside_long_selected.png' },
-        { id: 'dust2_outside_tunnel', src: 'maps/dust2/outside_tunnel.png' },
-        { id: 'dust2_outside_tunnel_selected', src: 'maps/dust2/outside_tunnel_selected.png' },
-        { id: 'dust2_pit', src: 'maps/dust2/pit.png' },
-        { id: 'dust2_pit_selected', src: 'maps/dust2/pit_selected.png' },
-        { id: 'dust2_short_stairs', src: 'maps/dust2/short_stairs.png' },
-        { id: 'dust2_short_stairs_selected', src: 'maps/dust2/short_stairs_selected.png' },
-        { id: 'dust2_t_ramp', src: 'maps/dust2/t_ramp.png' },
-        { id: 'dust2_t_ramp_selected', src: 'maps/dust2/t_ramp_selected.png' },
-        { id: 'dust2_t_start', src: 'maps/dust2/t_start.png' },
-        { id: 'dust2_t_start_selected', src: 'maps/dust2/t_start_selected.png' },
-        { id: 'dust2_top_of_mid', src: 'maps/dust2/top_of_mid.png' },
-        { id: 'dust2_top_of_mid_selected', src: 'maps/dust2/top_of_mid_selected.png' },
-        { id: 'dust2_tunnel_stairs', src: 'maps/dust2/tunnel_stairs.png' },
-        { id: 'dust2_tunnel_stairs_selected', src: 'maps/dust2/tunnel_stairs_selected.png' },
-        { id: 'dust2_under_a', src: 'maps/dust2/under_a.png' },
-        { id: 'dust2_under_a_selected', src: 'maps/dust2/under_a_selected.png' },
-        { id: 'dust2_upper_tunnel', src: 'maps/dust2/upper_tunnel.png' },
-        { id: 'dust2_upper_tunnel_selected', src: 'maps/dust2/upper_tunnel_selected.png' }
-    ];
+var manifest = {
+    path: BASE_URL + 'maps/dust2/',
+    manifest: [
+        { id: 'dust2_background', src: 'background.png' },
+        { id: 'dust2_a_ramp', src: 'a_ramp.png' },
+        { id: 'dust2_a_ramp_selected', src: 'a_ramp_selected.png' },
+        { id: 'dust2_b_doors', src: 'b_doors.png' },
+        { id: 'dust2_b_doors_selected', src: 'b_doors_selected.png' },
+        { id: 'dust2_back_of_a', src: 'back_of_a.png' },
+        { id: 'dust2_back_of_a_selected', src: 'back_of_a_selected.png' },
+        { id: 'dust2_bombsite_a', src: 'bombsite_a.png' },
+        { id: 'dust2_bombsite_a_selected', src: 'bombsite_a_selected.png' },
+        { id: 'dust2_bombsite_b', src: 'bombsite_b.png' },
+        { id: 'dust2_bombsite_b_selected', src: 'bombsite_b_selected.png' },
+        { id: 'dust2_catwalk', src: 'catwalk.png' },
+        { id: 'dust2_catwalk_selected', src: 'catwalk_selected.png' },
+        { id: 'dust2_ct_start', src: 'ct_start.png' },
+        { id: 'dust2_ct_start_selected', src: 'ct_start_selected.png' },
+        { id: 'dust2_extended_a', src: 'extended_a.png' },
+        { id: 'dust2_extended_a_selected', src: 'extended_a_selected.png' },
+        { id: 'dust2_hole', src: 'hole.png' },
+        { id: 'dust2_hole_selected', src: 'hole_selected.png' },
+        { id: 'dust2_long_a', src: 'long_a.png' },
+        { id: 'dust2_long_a_selected', src: 'long_a_selected.png' },
+        { id: 'dust2_long_doors', src: 'long_doors.png' },
+        { id: 'dust2_long_doors_selected', src: 'long_doors_selected.png' },
+        { id: 'dust2_lower_tunnel', src: 'lower_tunnel.png' },
+        { id: 'dust2_lower_tunnel_selected', src: 'lower_tunnel_selected.png' },
+        { id: 'dust2_mid_doors', src: 'mid_doors.png' },
+        { id: 'dust2_mid_doors_selected', src: 'mid_doors_selected.png' },
+        { id: 'dust2_middle', src: 'middle.png' },
+        { id: 'dust2_middle_selected', src: 'middle_selected.png' },
+        { id: 'dust2_outside_long', src: 'outside_long.png' },
+        { id: 'dust2_outside_long_selected', src: 'outside_long_selected.png' },
+        { id: 'dust2_outside_tunnel', src: 'outside_tunnel.png' },
+        { id: 'dust2_outside_tunnel_selected', src: 'outside_tunnel_selected.png' },
+        { id: 'dust2_pit', src: 'pit.png' },
+        { id: 'dust2_pit_selected', src: 'pit_selected.png' },
+        { id: 'dust2_short_stairs', src: 'short_stairs.png' },
+        { id: 'dust2_short_stairs_selected', src: 'short_stairs_selected.png' },
+        { id: 'dust2_t_ramp', src: 't_ramp.png' },
+        { id: 'dust2_t_ramp_selected', src: 't_ramp_selected.png' },
+        { id: 'dust2_t_start', src: 't_start.png' },
+        { id: 'dust2_t_start_selected', src: 't_start_selected.png' },
+        { id: 'dust2_top_of_mid', src: 'top_of_mid.png' },
+        { id: 'dust2_top_of_mid_selected', src: 'top_of_mid_selected.png' },
+        { id: 'dust2_tunnel_stairs', src: 'tunnel_stairs.png' },
+        { id: 'dust2_tunnel_stairs_selected', src: 'tunnel_stairs_selected.png' },
+        { id: 'dust2_under_a', src: 'under_a.png' },
+        { id: 'dust2_under_a_selected', src: 'under_a_selected.png' },
+        { id: 'dust2_upper_tunnel', src: 'upper_tunnel.png' },
+        { id: 'dust2_upper_tunnel_selected', src: 'upper_tunnel_selected.png' }
+    ]
+};
+
 
 G.PRELOAD = new createjs.LoadQueue();
 G.PRELOAD.on( 'complete', function( event )
