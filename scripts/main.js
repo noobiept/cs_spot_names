@@ -41,6 +41,7 @@ MainMenu.init();
 var manifest = {
     path: BASE_URL + 'maps/dust2/',
     manifest: [
+        { id: 'dust2_images_position', src: 'images_position.json' },
         { id: 'dust2_background', src: 'background.png' },
         { id: 'dust2_a_ramp', src: 'a_ramp.png' },
         { id: 'dust2_a_ramp_selected', src: 'a_ramp_selected.png' },
