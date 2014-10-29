@@ -15,7 +15,7 @@ var INCORRECT_COUNT = 0;
 var PRACTICE_MODE = false;
 
     // all the map names in the game (don't change this)
-var MAP_NAMES = [ 'dust2' ];
+var MAP_NAMES = [ 'dust2', 'inferno' ];
 
     // has the name of the maps still left to be played
 var MAPS_LEFT = [];
@@ -113,6 +113,11 @@ CURRENT_PART_NAME = name;
 
 Game.loadMap = function( mapName )
 {
+if ( MAP !== null )
+    {
+    MAP.clear();
+    }
+
 MAP = new Map( mapName );
 
 ALL_PART_NAMES = MAP.getPartNames();
@@ -146,6 +151,7 @@ GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
 
 Game.clear = function()
 {
+GameMenu.clear();
 MAP.clear();
 MAP = null;
 
