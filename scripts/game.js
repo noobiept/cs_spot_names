@@ -41,6 +41,7 @@ if ( typeof practice === 'undefined' )
     practice = false;
     }
 
+PRACTICE_MODE = practice;
 
 if ( practice === false )
     {
@@ -58,8 +59,6 @@ GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
 GameMenu.setMode( practice );
 
 Game.show();
-
-PRACTICE_MODE = practice;
 };
 
 
@@ -80,12 +79,13 @@ if ( ALL_PART_NAMES.length === 0 )
             {
             var score = HighScore.calculateScore( CORRECT_COUNT, INCORRECT_COUNT, GameMenu.getTimer().getTimeSeconds() );
 
-            GameMenu.showMessage( 'All done, congrats! Score: ' + score );
-
-            GameMenu.clear();
             Game.clear();
             Game.hide();
-            MainMenu.open();
+
+            new Message( 'All done, congrats! Score: ' + score, 4000, function()
+                {
+                MainMenu.open();
+                });
             }
 
         else
@@ -176,7 +176,22 @@ GameMenu.hide();
 
 Game.restart = function()
 {
-    //HERE
+var mapName = MAP.map_name;
+
+Game.clear();
+
+if ( PRACTICE_MODE === false )
+    {
+    MAPS_LEFT = Utilities.deepClone( MAP_NAMES );
+
+    var position = Utilities.getRandomInt( 0, MAPS_LEFT.length - 1 );
+
+    mapName = MAPS_LEFT.splice( position, 1 )[ 0 ];
+    }
+
+Game.loadMap( mapName );
+GameMenu.getTimer().start();
+GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
 };
 
 

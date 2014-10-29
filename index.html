@@ -12,6 +12,7 @@
     <script type="text/javascript" src="scripts/map.js"></script>
     <script type="text/javascript" src="scripts/game.js"></script>
     <script type="text/javascript" src="scripts/high_score.js"></script>
+    <script type="text/javascript" src="scripts/message.js"></script>
     <script type="text/javascript" src="scripts/game_menu.js"></script>
     <script type="text/javascript" src="scripts/main_menu.js"></script>
     <script type="text/javascript" src="scripts/main.js"></script>
@@ -23,12 +24,23 @@
     <div id="CanvasContainer">
         <canvas id="BackgroundCanvas"></canvas>
         <canvas id="MainCanvas"></canvas>
+
+        <div id="MainMenu">
+            <div id="Start" class="button">Start</div>
+            <h4>Practice</h4>
+            <ul id="PracticeMaps">
+                <li class="button">dust2</li>
+                <li class="button">inferno</li>
+            </ul>
+        </div>
+
+        <div id="GameMessages"></div>
     </div>
 
     <div id="GameMenu">
         <span id="PartName"></span>
 
-        <span id="Message">message</span>
+        <span id="MenuMessage">message</span>
 
         <ul id="Info">
             <li>Correct: <span id="CorrectValue">0</span></li>
@@ -39,15 +51,6 @@
             <li id="Help" class="button">Help: <span>Off</span></li>
             <li id="Restart" class="button">Restart</li>
             <li id="Quit" class="button">Quit</li>
-        </ul>
-    </div>
-
-    <div id="MainMenu">
-        <div id="Start" class="button">Start</div>
-        <h4>Practice</h4>
-        <ul id="PracticeMaps">
-            <li class="button">dust2</li>
-            <li class="button">inferno</li>
         </ul>
     </div>
 

@@ -46,6 +46,8 @@ return names;
 
 Map.prototype.clear = function()
 {
+GameMenu.clear();
+
 G.BACKGROUND_STAGE.removeChild( this.background );
 
 var length = this.spots.length;

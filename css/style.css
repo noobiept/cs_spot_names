@@ -16,6 +16,9 @@ body
 #CanvasContainer
     {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     }
 
 #MainCanvas, #BackgroundCanvas
@@ -36,7 +39,6 @@ body
 
 #MainMenu
     {
-    position: absolute;
     text-align: center;
     }
 
@@ -49,7 +51,7 @@ body
     padding: 10px;
     }
 
-#Message
+#MenuMessage
     {
     visibility: hidden;
     }

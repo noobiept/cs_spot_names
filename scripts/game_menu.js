@@ -25,7 +25,7 @@ GameMenu.init = function()
 CONTAINER = document.querySelector( '#GameMenu' );
 
 PART_NAME = CONTAINER.querySelector( '#PartName' );
-MESSAGE = CONTAINER.querySelector( '#Message' );
+MESSAGE = CONTAINER.querySelector( '#MenuMessage' );
 CORRECT = CONTAINER.querySelector( '#CorrectValue' );
 INCORRECT = CONTAINER.querySelector( '#IncorrectValue' );
 TIMER_ELEMENT = CONTAINER.querySelector( '#TimeValue' );
@@ -55,7 +55,6 @@ RESTART.onclick = function()
     };
 QUIT.onclick = function()
     {
-    GameMenu.clear();
     Game.clear();
     Game.hide();
     MainMenu.open();
