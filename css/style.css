@@ -5,6 +5,14 @@ body
     display: flex;
     flex-direction: row;
     justify-content: center;
+    color: #999b9d;
+    background-color: #010713;
+    }
+
+ul
+    {
+    list-style-type: none;
+    padding: 0;
     }
 
     /* start with all the elements hidden, show them with code as needed */
@@ -19,6 +27,7 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(39, 48, 57);
     }
 
 #MainCanvas, #BackgroundCanvas
@@ -40,6 +49,7 @@ body
 #MainMenu
     {
     text-align: center;
+    font-size: 30px;
     }
 
 #GameMenu
@@ -49,6 +59,8 @@ body
     flex-direction: column;
     justify-content: space-around;
     padding: 10px;
+    text-align: center;
+    background-color: rgb(39, 48, 57);
     }
 
 #MenuMessage
@@ -56,7 +68,18 @@ body
     visibility: hidden;
     }
 
+#PartName
+    {
+    color: rgb(206, 132, 4);
+    }
+
 .button
     {
     cursor: pointer;
+    color: rgb(151, 183, 209);
+    }
+
+.button:hover
+    {
+    color: #617f99;
     }
