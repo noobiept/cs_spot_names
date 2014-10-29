@@ -74,6 +74,12 @@ INCORRECT.innerHTML = incorrectCount;
 
 GameMenu.updatePartName = function( name )
 {
+    // capitalize the first letter
+name = name.charAt( 0 ).toUpperCase() + name.slice( 1 );
+
+    // substitute underscores for spaces
+name = name.replace( /_/g, ' ' );
+
 PART_NAME.innerHTML = name;
 };
 
