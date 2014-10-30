@@ -52,6 +52,20 @@ ul
     font-size: 30px;
     }
 
+#PracticeMaps
+    {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    }
+
+#PracticeMaps > *
+    {
+    margin: 5px;
+    }
+
 #GameMenu
     {
     min-width: 300px;
