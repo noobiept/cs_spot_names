@@ -90,7 +90,7 @@ HighScore.save();
 
 HighScore.calculateScore = function( correct, incorrect, time )
 {
-return correct * 100 - incorrect * 50 - time * 5;
+return correct * 50 - incorrect * 100 - time * 5;
 };
 
 

@@ -62,6 +62,10 @@ Game.show();
 };
 
 
+/*
+    Returns true if there's another spot left, or if a new map was loaded, false if its the end of the game (no more spots or maps)
+ */
+
 Game.nextSpot = function()
 {
 if ( ALL_PART_NAMES.length === 0 )
@@ -86,6 +90,8 @@ if ( ALL_PART_NAMES.length === 0 )
                 {
                 MainMenu.open();
                 });
+
+            return false;
             }
 
         else
@@ -97,7 +103,7 @@ if ( ALL_PART_NAMES.length === 0 )
             Game.loadMap( mapName );
             }
 
-        return;
+        return true;
         }
     }
 
@@ -107,6 +113,8 @@ var name = ALL_PART_NAMES.splice( position, 1 )[ 0 ];
 
 GameMenu.updatePartName( name );
 CURRENT_PART_NAME = name;
+
+return true;
 };
 
 
@@ -122,6 +130,7 @@ MAP = new Map( mapName );
 
 ALL_PART_NAMES = MAP.getPartNames();
 
+GameMenu.updateMapName( mapName );
 Game.nextSpot();
 
 G.BACKGROUND_STAGE.update();
@@ -134,9 +143,12 @@ Game.validatePart = function( partName )
 {
 if ( partName === CURRENT_PART_NAME )
     {
-    GameMenu.showMessage( 'Correct!' );
     CORRECT_COUNT++;
-    Game.nextSpot();
+
+    if ( Game.nextSpot() )
+        {
+        GameMenu.showMessage( 'Correct!' );
+        }
     }
 
 else

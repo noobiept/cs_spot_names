@@ -7,6 +7,7 @@ function GameMenu()
 
     // references to html elements
 var CONTAINER = null;
+var MAP_NAME = null;
 var PART_NAME = null;
 var MESSAGE = null;
 var CORRECT = null;
@@ -24,6 +25,7 @@ GameMenu.init = function()
 {
 CONTAINER = document.querySelector( '#GameMenu' );
 
+MAP_NAME = CONTAINER.querySelector( '#MapName' );
 PART_NAME = CONTAINER.querySelector( '#PartName' );
 MESSAGE = CONTAINER.querySelector( '#MenuMessage' );
 CORRECT = CONTAINER.querySelector( '#CorrectValue' );
@@ -81,6 +83,15 @@ name = name.charAt( 0 ).toUpperCase() + name.slice( 1 );
 name = name.replace( /_/g, ' ' );
 
 PART_NAME.innerHTML = name;
+};
+
+
+GameMenu.updateMapName = function( name )
+{
+    // capitalize the first letter
+name = name.charAt( 0 ).toUpperCase() + name.slice( 1 );
+
+MAP_NAME.innerHTML = name;
 };
 
 

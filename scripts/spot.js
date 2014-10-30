@@ -26,7 +26,13 @@ var helpMessage = null;
 
 if ( practiceMode )
     {
-    helpMessage = new createjs.Text( spotName, '30px Arial', 'white' );
+        // capitalize the first letter
+    var name = spotName.charAt( 0 ).toUpperCase() + spotName.slice( 1 );
+
+        // substitute underscores for spaces
+    name = name.replace( /_/g, ' ' );
+
+    helpMessage = new createjs.Text( name, '30px Arial', 'white' );
 
     helpMessage.visible = false;
     }
