@@ -6,15 +6,22 @@ var _this = this;
 
 var practiceMode = Game.inPracticeMode();
 
-this.image = G.PRELOAD.getResult( imageId );
-this.image_selected = G.PRELOAD.getResult( imageId + '_selected' );
+var image = G.PRELOAD.getResult( imageId );
+
+var imageWidth = image.width;
+var imageHeight = image.height;
+
+var imageRect = new createjs.Rectangle( 0, 0, imageWidth / 2, imageHeight );
+var selectedRect = new createjs.Rectangle( imageWidth / 2, 0, imageWidth, imageHeight );
 
 var container = new createjs.Container();
 
 container.x = x;
 container.y = y;
 
-var spot = new createjs.Bitmap( this.image );
+var spot = new createjs.Bitmap( image );
+spot.sourceRect = imageRect;
+
 var helpMessage = null;
 
 if ( practiceMode )
@@ -27,7 +34,8 @@ if ( practiceMode )
 
 spot.on( 'rollover', function( event )
     {
-    _this.shape.image = _this.image_selected;
+    _this.shape.sourceRect = selectedRect;
+
     var helpSet = GameMenu.isHelpSet();
 
     if ( practiceMode && helpSet )
@@ -40,7 +48,8 @@ spot.on( 'rollover', function( event )
     });
 spot.on( 'rollout', function( event )
     {
-    _this.shape.image = _this.image;
+    _this.shape.sourceRect = imageRect;
+
     var helpSet = GameMenu.isHelpSet();
 
     if ( practiceMode && helpSet )
