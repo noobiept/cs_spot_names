@@ -37,6 +37,7 @@ canvasContainer.style.height = (1024 * scale) + 'px';
 
 GameMenu.init();
 MainMenu.init();
+HighScore.init();
 
 var dust2Manifest = {
     path: BASE_URL + 'maps/dust2/',

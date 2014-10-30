@@ -16,10 +16,16 @@ ul
     }
 
     /* start with all the elements hidden, show them with code as needed */
-#BackgroundCanvas, #MainCanvas, #GameMenu, #MainMenu
+#BackgroundCanvas, #MainCanvas, #GameMenu
     {
     visibility: hidden;
     }
+
+#MainMenu, #HighScore
+    {
+    display: none;
+    }
+
 
 #CanvasContainer
     {

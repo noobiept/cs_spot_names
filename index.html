@@ -27,13 +27,14 @@
 
         <div id="MainMenu">
             <div id="Start" class="button">Start</div>
+            <div id="OpenHighScore" class="button">High-Score</div>
             <h4>Practice</h4>
             <ul id="PracticeMaps">
-                <li class="button">
+                <li class="button" data-map_name="dust2">
                     <div>dust2</div>
                     <img src="maps/dust2/de_dust2_200.jpg" />
                 </li>
-                <li class="button">
+                <li class="button" data-map_name="inferno">
                     <div>inferno</div>
                     <img src="maps/inferno/de_inferno_200.jpg" />
                 </li>
@@ -41,6 +42,18 @@
         </div>
 
         <div id="GameMessages"></div>
+
+        <div id="HighScore">
+            <h4>High-score</h4>
+
+            <table>
+                <tr>
+                    <th>Score</th>
+                </tr>
+            </table>
+
+            <div class="button back">Back</div>
+        </div>
     </div>
 
     <div id="GameMenu">

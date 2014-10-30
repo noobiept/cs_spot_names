@@ -77,7 +77,7 @@ if ( ALL_PART_NAMES.length === 0 )
         {
         if ( MAPS_LEFT.length === 0 )
             {
-            var score = HighScore.calculateScore( CORRECT_COUNT, INCORRECT_COUNT, GameMenu.getTimer().getTimeSeconds() );
+            var score = HighScore.add( CORRECT_COUNT, INCORRECT_COUNT, GameMenu.getTimer().getTimeSeconds() );
 
             Game.clear();
             Game.hide();
