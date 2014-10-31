@@ -1,8 +1,22 @@
 (function(window)
 {
-function Spot( imageId, spotName, x, y )
+/**
+
+    @param {String} imageId
+    @param {String} spotName
+    @param {Number} x
+    @param {Number} y
+    @param {Array=} alternateNames
+ */
+
+function Spot( imageId, spotName, x, y, alternateNames )
 {
 var _this = this;
+
+if ( typeof alternateNames === 'undefined' )
+    {
+    alternateNames = [];
+    }
 
 var practiceMode = Game.inPracticeMode();
 
@@ -26,11 +40,7 @@ var helpMessage = null;
 
 if ( practiceMode )
     {
-        // capitalize the first letter
-    var name = spotName.charAt( 0 ).toUpperCase() + spotName.slice( 1 );
-
-        // substitute underscores for spaces
-    name = name.replace( /_/g, ' ' );
+    var name = Spot.getFullName( spotName, false, alternateNames );
 
     helpMessage = new createjs.Text( name, '30px Arial', 'white' );
 
@@ -95,6 +105,63 @@ this.shape.removeAllEventListeners();
 
 this.container = null;
 this.shape = null;
+};
+
+
+/**
+    Constructs a string with the part name, and the alternate names (if available).
+
+    Example:
+        args -> spotName: "mid_doors", alternateNames: [ "CT mid" ]
+        returns -> "Mid doors (CT mid)"
+
+
+    @param {String} spotName
+    @param {Boolean} returnHtml
+    @param {String[]} alternateNames
+    @return {String}
+ */
+
+Spot.getFullName = function( spotName, returnHtml, alternateNames )
+{
+    // capitalize the first letter
+var name = spotName.charAt( 0 ).toUpperCase() + spotName.slice( 1 );
+
+    // substitute underscores for spaces
+name = name.replace( /_/g, ' ' );
+
+    // add alternate names inside parenthesis
+if ( typeof alternateNames !== 'undefined' && alternateNames.length > 0 )
+    {
+    var alternate = '';
+    var length = alternateNames.length;
+
+    for (var a = 0 ; a < length ; a++)
+        {
+        alternate += alternateNames[ a ];
+
+        if ( a + 1 < length )
+            {
+            alternate += ', ';
+            }
+        }
+
+    var newLine;
+
+    if ( returnHtml === true )
+        {
+        newLine = '<br />';
+        }
+
+    else
+        {
+        newLine = '\n';
+        }
+
+    name = name + newLine + '(' + alternate + ')';
+    }
+
+return name;
 };
 
 

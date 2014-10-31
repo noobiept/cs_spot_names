@@ -42,7 +42,7 @@ HighScore.init();
 var dust2Manifest = {
     path: BASE_URL + 'maps/dust2/',
     manifest: [
-        { id: 'dust2_images_position', src: 'images_position.json' },
+        { id: 'dust2_spots_info', src: 'spots_info.json' },
         { id: 'dust2_background', src: 'background.png' },
         { id: 'dust2_a_ramp', src: 'a_ramp.png' },
         { id: 'dust2_b_doors', src: 'b_doors.png' },
@@ -75,7 +75,7 @@ var dust2Manifest = {
 var infernoManifest = {
     path: BASE_URL + 'maps/inferno/',
     manifest: [
-        { id: 'inferno_images_position', src: 'images_position.json' },
+        { id: 'inferno_spots_info', src: 'spots_info.json' },
         { id: 'inferno_background', src: 'background.png' },
         { id: "inferno_apartments", src: 'apartments.png' },
         { id: "inferno_arch", src: 'arch.png' },

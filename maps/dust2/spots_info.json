@@ -11,7 +11,7 @@
     { "name": "long_a", "x": 838, "y": 244 },
     { "name": "long_doors", "x": 673, "y": 491 },
     { "name": "lower_tunnel", "x": 275, "y": 417 },
-    { "name": "mid_doors", "x": 412, "y": 210 },
+    { "name": "mid_doors", "x": 412, "y": 210, "alternate_names": [ "CT mid" ] },
     { "name": "middle", "x": 431, "y": 422 },
     { "name": "outside_long", "x": 583, "y": 659 },
     { "name": "outside_tunnel", "x": 80, "y": 607 },

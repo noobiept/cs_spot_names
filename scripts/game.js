@@ -73,7 +73,7 @@ if ( ALL_PART_NAMES.length === 0 )
         // restart the map
     if ( PRACTICE_MODE )
         {
-        ALL_PART_NAMES = MAP.getPartNames();
+        ALL_PART_NAMES = MAP.getSpotsNames();
         }
 
         // load the next map
@@ -111,7 +111,7 @@ var position = Utilities.getRandomInt( 0, ALL_PART_NAMES.length - 1 );
 
 var name = ALL_PART_NAMES.splice( position, 1 )[ 0 ];
 
-GameMenu.updatePartName( name );
+GameMenu.updatePartName( name.fullName );
 CURRENT_PART_NAME = name;
 
 return true;
@@ -128,7 +128,7 @@ if ( MAP !== null )
 
 MAP = new Map( mapName );
 
-ALL_PART_NAMES = MAP.getPartNames();
+ALL_PART_NAMES = MAP.getSpotsNames();
 
 GameMenu.updateMapName( mapName );
 Game.nextSpot();
@@ -141,7 +141,7 @@ G.MAIN_STAGE.update();
 
 Game.validatePart = function( partName )
 {
-if ( partName === CURRENT_PART_NAME )
+if ( partName === CURRENT_PART_NAME.spotName )
     {
     CORRECT_COUNT++;
 
