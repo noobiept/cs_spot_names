@@ -97,13 +97,13 @@ return TIMER;
 
 GameMenu.show = function()
 {
-CONTAINER.style.visibility = 'visible';
+CONTAINER.style.display = 'flex';
 };
 
 
 GameMenu.hide = function()
 {
-CONTAINER.style.visibility = 'hidden';
+CONTAINER.style.display = 'none';
 HELP.style.visibility = 'hidden';
 };
 

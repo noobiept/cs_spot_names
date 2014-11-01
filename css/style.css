@@ -7,6 +7,7 @@ body
     justify-content: center;
     color: #999b9d;
     background-color: #010713;
+    min-width: 1400px;
     }
 
 ul
@@ -16,12 +17,12 @@ ul
     }
 
     /* start with all the elements hidden, show them with code as needed */
-#BackgroundCanvas, #MainCanvas, #GameMenu
+#BackgroundCanvas, #MainCanvas
     {
     visibility: hidden;
     }
 
-#MainMenu, #HighScore
+#MainMenu, #HighScore, #GameMenu
     {
     display: none;
     }
@@ -75,7 +76,7 @@ ul
 #GameMenu
     {
     min-width: 300px;
-    display: flex;
+    /*display: flex;*/
     flex-direction: column;
     justify-content: space-around;
     padding: 10px;

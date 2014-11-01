@@ -3,20 +3,15 @@
 /**
 
     @param {String} imageId
-    @param {String} spotName
+    @param {String} spotId
     @param {Number} x
     @param {Number} y
-    @param {Array=} alternateNames
+    @param {String} name
  */
 
-function Spot( imageId, spotName, x, y, alternateNames )
+function Spot( imageId, spotId, x, y, name )
 {
 var _this = this;
-
-if ( typeof alternateNames === 'undefined' )
-    {
-    alternateNames = [];
-    }
 
 var practiceMode = Game.inPracticeMode();
 
@@ -40,7 +35,7 @@ var helpMessage = null;
 
 if ( practiceMode )
     {
-    var name = Spot.getFullName( spotName, false, alternateNames );
+    name = Spot.updateName( name, false );
 
     helpMessage = new createjs.Text( name, '30px Arial', 'white' );
 
@@ -77,7 +72,7 @@ spot.on( 'rollout', function( event )
     });
 spot.on( 'click', function( event )
     {
-    Game.validatePart( spotName );
+    Game.validatePart( spotId );
     });
 
 container.addChild( spot );
@@ -107,62 +102,36 @@ this.container = null;
 this.shape = null;
 };
 
-
 /**
-    Constructs a string with the part name, and the alternate names (if available).
+    Adds a new line if there's alternate names.
+        "\n" or <br />, depending on the value on returnHtml
 
     Example:
-        args -> spotName: "mid_doors", alternateNames: [ "CT mid" ]
-        returns -> "Mid doors (CT mid)"
+        args -> name: "Mid Doors (CT Mid)"
+        returns -> "Mid Doors\n(CT Mid)" or "Mid Doors<br />(CT Mid)"
 
-
-    @param {String} spotName
+    @param {String} name
     @param {Boolean} returnHtml
-    @param {String[]} alternateNames
     @return {String}
  */
 
-Spot.getFullName = function( spotName, returnHtml, alternateNames )
+Spot.updateName = function( name, returnHtml )
 {
-    // capitalize the first letter
-var name = spotName.charAt( 0 ).toUpperCase() + spotName.slice( 1 );
+var newLine;
 
-    // substitute underscores for spaces
-name = name.replace( /_/g, ' ' );
-
-    // add alternate names inside parenthesis
-if ( typeof alternateNames !== 'undefined' && alternateNames.length > 0 )
+if ( returnHtml === true )
     {
-    var alternate = '';
-    var length = alternateNames.length;
-
-    for (var a = 0 ; a < length ; a++)
-        {
-        alternate += alternateNames[ a ];
-
-        if ( a + 1 < length )
-            {
-            alternate += ', ';
-            }
-        }
-
-    var newLine;
-
-    if ( returnHtml === true )
-        {
-        newLine = '<br />';
-        }
-
-    else
-        {
-        newLine = '\n';
-        }
-
-    name = name + newLine + '(' + alternate + ')';
+    newLine = '<br />';
     }
 
-return name;
+else
+    {
+    newLine = '\n';
+    }
+
+return name.replace( '(', newLine + '(' );
 };
+
 
 
 window.Spot = Spot;

@@ -109,10 +109,10 @@ if ( ALL_PART_NAMES.length === 0 )
 
 var position = Utilities.getRandomInt( 0, ALL_PART_NAMES.length - 1 );
 
-var name = ALL_PART_NAMES.splice( position, 1 )[ 0 ];
+var partInfo = ALL_PART_NAMES.splice( position, 1 )[ 0 ];
 
-GameMenu.updatePartName( name.fullName );
-CURRENT_PART_NAME = name;
+GameMenu.updatePartName( partInfo.name );
+CURRENT_PART_NAME = partInfo;
 
 return true;
 };
@@ -141,7 +141,7 @@ G.MAIN_STAGE.update();
 
 Game.validatePart = function( partName )
 {
-if ( partName === CURRENT_PART_NAME.spotName )
+if ( partName === CURRENT_PART_NAME.id )
     {
     CORRECT_COUNT++;
 

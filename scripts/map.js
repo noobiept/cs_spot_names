@@ -14,9 +14,9 @@ var spots = [];
 for (var a = 0 ; a < length ; a++)
     {
     var spotInfo = mapSpots[ a ];
-    var identifier = mapName + '_' + spotInfo.name;
+    var identifier = mapName + '_' + spotInfo.id;
 
-    var spot = new Spot( identifier, spotInfo.name, spotInfo.x, spotInfo.y, spotInfo.alternate_names );
+    var spot = new Spot( identifier, spotInfo.id, spotInfo.x, spotInfo.y, spotInfo.name );
 
     spots.push( spot );
     }
@@ -37,12 +37,11 @@ var length = map.length;
 
 for (var a = 0 ; a < length ; a++)
     {
-    var spotName = map[ a ].name;
-    var fullName = Spot.getFullName( spotName, true, map[ a ].alternate_names );
+    var info = map[ a ];
 
     names.push({
-        spotName: spotName,
-        fullName: fullName
+        id: info.id,
+        name: Spot.updateName( info.name, true )
         });
     }
 
