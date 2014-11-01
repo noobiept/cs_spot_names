@@ -109,10 +109,72 @@ var infernoManifest = {
 };
 
 
+var cacheManifest = {
+    path: BASE_URL + 'maps/cache/',
+    manifest: [
+        { id: 'cache_spots_info', src: 'spots_info.json' },
+        { id: 'cache_background', src: 'background.png' },
+        { id: 'cache_back', src: 'back.png' },
+        { id: 'cache_bombsite_a', src: 'bombsite_a.png' },
+        { id: 'cache_bombsite_b', src: 'bombsite_b.png' },
+        { id: 'cache_catwalk', src: 'catwalk.png' },
+        { id: 'cache_connector', src: 'connector.png' },
+        { id: 'cache_ct_start', src: 'ct_start.png' },
+        { id: 'cache_ducts', src: 'ducts.png' },
+        { id: 'cache_dumpster', src: 'dumpster.png' },
+        { id: 'cache_entrance', src: 'entrance.png' },
+        { id: 'cache_garage', src: 'garage.png' },
+        { id: 'cache_long_a', src: 'long_a.png' },
+        { id: 'cache_long_hall', src: 'long_hall.png' },
+        { id: 'cache_middle', src: 'middle.png' },
+        { id: 'cache_rafters', src: 'rafters.png' },
+        { id: 'cache_ramp', src: 'ramp.png' },
+        { id: 'cache_storage_room', src: 'storage_room.png' },
+        { id: 'cache_t_ramp', src: 't_ramp.png' },
+        { id: 'cache_t_start', src: 't_start.png' },
+        { id: 'cache_truck', src: 'truck.png' },
+        { id: 'cache_upstairs', src: 'upstairs.png' },
+        { id: 'cache_warehouse', src: 'warehouse.png' },
+        { id: 'cache_window', src: 'window.png' }
+    ]
+};
+
+
+var mirageManifest = {
+    path: BASE_URL + 'maps/mirage/',
+    manifest: [
+        { id: 'mirage_spots_info', src: 'spots_info.json' },
+        { id: 'mirage_background', src: 'background.png' },
+        { id: 'mirage_apartments', src: 'apartments.png' },
+        { id: 'mirage_back_alley', src: 'back_alley.png' },
+        { id: 'mirage_balcony', src: 'balcony.png' },
+        { id: 'mirage_bombsite_a', src: 'bombsite_a.png' },
+        { id: 'mirage_bombsite_b', src: 'bombsite_b.png' },
+        { id: 'mirage_catwalk', src: 'catwalk.png' },
+        { id: 'mirage_connector', src: 'connector.png' },
+        { id: 'mirage_ct_start', src: 'ct_start.png' },
+        { id: 'mirage_house', src: 'house.png' },
+        { id: 'mirage_ladder', src: 'ladder.png' },
+        { id: 'mirage_middle', src: 'middle.png' },
+        { id: 'mirage_palace_alley', src: 'palace_alley.png' },
+        { id: 'mirage_palace_interior', src: 'palace_interior.png' },
+        { id: 'mirage_scaffolding', src: 'scaffolding.png' },
+        { id: 'mirage_shop', src: 'shop.png' },
+        { id: 'mirage_side_alley', src: 'side_alley.png' },
+        { id: 'mirage_snipers_nest', src: 'snipers_nest.png' },
+        { id: 'mirage_t_start', src: 't_start.png' },
+        { id: 'mirage_truck', src: 'truck.png' },
+        { id: 'mirage_tunnel', src: 'tunnel.png' },
+        { id: 'mirage_tunnel_stairs', src: 'tunnel_stairs.png' }
+    ]
+};
+
 
 G.PRELOAD = new createjs.LoadQueue();
 G.PRELOAD.loadManifest( dust2Manifest, false );
 G.PRELOAD.loadManifest( infernoManifest, false );
+G.PRELOAD.loadManifest( cacheManifest, false );
+G.PRELOAD.loadManifest( mirageManifest, false );
 G.PRELOAD.on( 'complete', function( event )
     {
     MainMenu.open();

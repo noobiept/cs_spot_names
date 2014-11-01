@@ -1,0 +1,23 @@
+[
+    { "name": "ct_start", "x": 225, "y": 492 },
+    { "name": "bombsite_a", "x": 388, "y": 588 },
+    { "name": "shop", "x": 171, "y": 396 },
+    { "name": "bombsite_b", "x": 112, "y": 214 },
+    { "name": "middle", "x": 429, "y": 352 },
+    { "name": "catwalk", "x": 410, "y": 280 },
+    { "name": "tunnel", "x": 434, "y": 326 },
+    { "name": "ladder", "x": 409, "y": 352 },
+    { "name": "snipers_nest", "x": 376, "y": 433 },
+    { "name": "connector", "x": 482, "y": 507 },
+    { "name": "palace_alley", "x": 687, "y": 471 },
+    { "name": "scaffolding", "x": 636, "y": 709 },
+    { "name": "palace_interior", "x": 646, "y": 602 },
+    { "name": "t_start", "x": 852, "y": 238 },
+    { "name": "side_alley", "x": 675, "y": 203 },
+    { "name": "house", "x": 618, "y": 164 },
+    { "name": "tunnel_stairs", "x": 447, "y": 243 },
+    { "name": "back_alley", "x": 448, "y": 162 },
+    { "name": "apartments", "x": 260, "y": 173 },
+    { "name": "balcony", "x": 227, "y": 173 },
+    { "name": "truck", "x": 162, "y": 169 }
+]
