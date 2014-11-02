@@ -213,13 +213,20 @@ var mirageManifest = {
 };
 
 
+var loadingMessage = new Message( '' );
+
 G.PRELOAD = new createjs.LoadQueue();
 G.PRELOAD.loadManifest( dust2Manifest, false );
 G.PRELOAD.loadManifest( infernoManifest, false );
 G.PRELOAD.loadManifest( cacheManifest, false );
 G.PRELOAD.loadManifest( mirageManifest, false );
+G.PRELOAD.on( 'progress', function( event )
+    {
+    loadingMessage.setText( 'Loading.. ' + (event.progress * 100 | 0) + '%' );
+    });
 G.PRELOAD.on( 'complete', function( event )
     {
+    loadingMessage.clear();
     MainMenu.open();
     });
 G.PRELOAD.load();
