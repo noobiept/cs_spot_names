@@ -16,11 +16,51 @@ window.onload = function()
 G.BACKGROUND_CANVAS = document.querySelector( '#BackgroundCanvas' );
 G.MAIN_CANVAS = document.querySelector( '#MainCanvas' );
 
-    // scale the canvas/stage to fit the window's dimensions
-var scale = 1;
+var windowWidth = window.innerWidth;
+var windowHeight = window.innerHeight;
 
-G.MAIN_CANVAS.width = G.BACKGROUND_CANVAS.width = 1024 * scale;
-G.MAIN_CANVAS.height = G.BACKGROUND_CANVAS.height = 1024 * scale;
+    // don't scale for less than 550px (either width or height)
+var minimumDimension = 550;
+
+if ( windowWidth < minimumDimension )
+    {
+    windowWidth = minimumDimension;
+    }
+
+if ( windowHeight < minimumDimension )
+    {
+    windowHeight = minimumDimension;
+    }
+
+
+    // the default/starting dimensions
+var canvasDimension = 1024;  // width/height
+var gameMenuWidth = 320;
+
+var gameWidth = canvasDimension + gameMenuWidth;
+var gameHeight = canvasDimension;
+
+
+    // find the scales for width/height
+var scaleWidth = windowWidth / gameWidth;
+var scaleHeight = windowHeight / gameHeight;
+
+var scale;
+
+if ( scaleWidth < scaleHeight )
+    {
+    scale = scaleWidth;
+    }
+
+else
+    {
+    scale = scaleHeight;
+    }
+
+
+    // scale the canvas/stage to fit the window's dimensions
+G.MAIN_CANVAS.width = G.BACKGROUND_CANVAS.width = canvasDimension * scale;
+G.MAIN_CANVAS.height = G.BACKGROUND_CANVAS.height = canvasDimension * scale;
 
 G.BACKGROUND_STAGE = new createjs.Stage( G.BACKGROUND_CANVAS );
 
@@ -31,9 +71,12 @@ G.MAIN_STAGE.scaleX = G.BACKGROUND_STAGE.scaleX = scale;
 G.MAIN_STAGE.scaleY = G.BACKGROUND_STAGE.scaleY = scale;
 
 var canvasContainer = document.querySelector( '#CanvasContainer' );
+var gameMenu = document.querySelector( '#GameMenu' );
 
-canvasContainer.style.width = (1024 * scale) + 'px';
-canvasContainer.style.height = (1024 * scale) + 'px';
+canvasContainer.style.width = (canvasDimension * scale) + 'px';
+canvasContainer.style.height = (canvasDimension * scale) + 'px';
+
+gameMenu.style.width = (gameMenuWidth * scale) + 'px';
 
 GameMenu.init();
 MainMenu.init();
@@ -181,4 +224,3 @@ G.PRELOAD.on( 'complete', function( event )
     });
 G.PRELOAD.load();
 };
-

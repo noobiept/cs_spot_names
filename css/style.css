@@ -7,7 +7,7 @@ body
     justify-content: center;
     color: #999b9d;
     background-color: #010713;
-    min-width: 1400px;
+    min-width: 550px;
     }
 
 ul
@@ -75,7 +75,6 @@ ul
 
 #GameMenu
     {
-    min-width: 300px;
     /*display: flex;*/
     flex-direction: column;
     justify-content: space-around;
