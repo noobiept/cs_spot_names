@@ -69,13 +69,13 @@ return score;
 
 HighScore.save = function()
 {
-Utilities.saveObject( 'high_score', HIGH_SCORE );
+Utilities.saveObject( 'cs_spot_names_high_score', HIGH_SCORE );
 };
 
 
 HighScore.load = function()
 {
-var scores = Utilities.getObject( 'high_score' );
+var scores = Utilities.getObject( 'cs_spot_names_high_score' );
 
 if ( scores !== null )
     {
