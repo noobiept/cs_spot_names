@@ -41,16 +41,22 @@ back.onclick = function()
 
 
     // practice a specific map
-var practiceMaps = MENU_ELEMENT.querySelector( '#PracticeMaps' );
-var length = practiceMaps.childNodes.length;
+var practiceMaps = MENU_ELEMENT.querySelectorAll( '#PracticeMaps li' );
+var length = practiceMaps.length;
 
 for (var a = 0 ; a < length ; a++)
     {
-    practiceMaps.childNodes[ a ].onclick = function()
+    var map = practiceMaps[ a ];
+
+    map.onclick = function()
         {
         MainMenu.close();
         Game.start( true, this.getAttribute( 'data-map_name' ) );
-        }
+        };
+
+    var mapName = map.getAttribute( 'data-map_name' );
+
+    map.appendChild( G.PRELOAD.getResult( mapName + '_menu' ) );
     }
 };
 

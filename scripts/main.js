@@ -83,8 +83,17 @@ canvasContainer.style.height = (canvasDimension * scale) + 'px';
 gameMenu.style.width = (gameMenuWidth * scale) + 'px';
 
 GameMenu.init();
-MainMenu.init();
 HighScore.init();
+
+var mainMenuManifest = {
+    path: BASE_URL + 'maps/',
+    manifest: [
+        { id: 'cache_menu', src: 'cache/de_cache_200.jpg' },
+        { id: 'dust2_menu', src: 'dust2/de_dust2_200.jpg' },
+        { id: 'inferno_menu', src: 'inferno/de_inferno_200.jpg' },
+        { id: 'mirage_menu', src: 'mirage/de_mirage_200.jpg' }
+    ]
+};
 
 var dust2Manifest = {
     path: BASE_URL + 'maps/dust2/',
@@ -220,6 +229,7 @@ var mirageManifest = {
 var loadingMessage = new Message( '' );
 
 G.PRELOAD = new createjs.LoadQueue();
+G.PRELOAD.loadManifest( mainMenuManifest, false );
 G.PRELOAD.loadManifest( dust2Manifest, false );
 G.PRELOAD.loadManifest( infernoManifest, false );
 G.PRELOAD.loadManifest( cacheManifest, false );
@@ -231,6 +241,7 @@ G.PRELOAD.on( 'progress', function( event )
 G.PRELOAD.on( 'complete', function( event )
     {
     loadingMessage.clear();
+    MainMenu.init();
     MainMenu.open();
     });
 G.PRELOAD.load();
