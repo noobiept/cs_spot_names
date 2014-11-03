@@ -58,6 +58,10 @@ else
     }
 
 
+    //HERE - scaling messes up with the position of the images (also in some cases when showing the selected image)
+scale = 1;
+
+
     // scale the canvas/stage to fit the window's dimensions
 G.MAIN_CANVAS.width = G.BACKGROUND_CANVAS.width = canvasDimension * scale;
 G.MAIN_CANVAS.height = G.BACKGROUND_CANVAS.height = canvasDimension * scale;

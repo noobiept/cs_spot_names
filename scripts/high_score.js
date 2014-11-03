@@ -22,7 +22,11 @@ for (var a = 0 ; a < LIMIT ; a++)
     {
     var tr = document.createElement( 'tr' );
     var td = document.createElement( 'td' );
+    var position = document.createElement( 'td' );
 
+    position.innerHTML = a + 1;
+
+    tr.appendChild( position );
     tr.appendChild( td );
     table.appendChild( tr );
 

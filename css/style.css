@@ -93,6 +93,12 @@ ul
     color: rgb(206, 132, 4);
     }
 
+#HighScore table td
+    {
+    text-align: center;
+    min-width: 50px;
+    }
+
 .button
     {
     cursor: pointer;

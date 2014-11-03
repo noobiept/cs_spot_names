@@ -4,7 +4,7 @@
     { "id": "back_alley", "x": 509, "y": 794, "name": "Back Alley" },
     { "id": "back_hall", "x": 336, "y": 788, "name": "Back Hall" },
     { "id": "balcony", "x": 538, "y": 732, "name": "Balcony" },
-    { "id": "banana", "x": 352, "y": 376, "name": "banana" },
+    { "id": "banana", "x": 352, "y": 376, "name": "Banana" },
     { "id": "bedroom", "x": 538, "y": 800, "name": "Bedroom" },
     { "id": "bombsite_a", "x": 649, "y": 533, "name": "Bombsite A" },
     { "id": "bombsite_b", "x": 365, "y": 168, "name": "Bombsite B" },
