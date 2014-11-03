@@ -1,0 +1,25 @@
+{
+    "basePath": "..",
+    "files":
+        [
+            "css/",
+            "libraries/",
+            "maps/",
+            "manifest.json"
+        ],
+    "extensions":
+        [
+            ".css",
+            ".js",
+            ".png",
+            ".jpg",
+            ".json"
+        ],
+    "exclude":
+        [
+            "maps/cache/other/",
+            "maps/dust2/other/",
+            "maps/inferno/other/",
+            "maps/mirage/other/"
+        ]
+}
