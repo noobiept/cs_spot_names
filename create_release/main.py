@@ -4,6 +4,7 @@ import argparse
 import sys
 import os.path
 import json
+import shutil
 
 sys.path.append( 'C:/Users/drk/Dropbox/projects/' )
 
@@ -40,6 +41,10 @@ def go( htmlFile= default_htmlFile,
     baseDirectory = os.path.realpath( '' )
 
     main.go( htmlFile, copyFilesConfig, concatenateConfig, resultingFolder, baseDirectory )
+
+        # chrome apps require a window.html instead of index.html (and doesn't seem to be able to specify the file, as was before)
+        # just make a copy of the index
+    shutil.copy( os.path.join( resultingFolder, 'index.html' ), os.path.join( resultingFolder, 'window.html' ) )
 
 
 if __name__ == '__main__':    

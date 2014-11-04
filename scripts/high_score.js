@@ -69,17 +69,38 @@ return score;
 
 HighScore.save = function()
 {
-Utilities.saveObject( 'cs_spot_names_high_score', HIGH_SCORE );
+try {
+    Utilities.saveObject( 'cs_spot_names_high_score', HIGH_SCORE );
+    }
+
+catch ( error )
+    {
+    chrome.storage.local.set({ 'cs_spot_names_high_score': HIGH_SCORE });
+    }
+
 };
 
 
 HighScore.load = function()
 {
-var scores = Utilities.getObject( 'cs_spot_names_high_score' );
+try {
+    var scores = Utilities.getObject( 'cs_spot_names_high_score' );
 
-if ( scores !== null )
+    if ( scores !== null )
+        {
+        HIGH_SCORE = scores;
+        }
+    }
+
+catch ( error )
     {
-    HIGH_SCORE = scores;
+    chrome.storage.local.get( 'cs_spot_names_high_score', function( result )
+        {
+        if ( result && result.cs_spot_names_high_score )
+            {
+            HIGH_SCORE = result.cs_spot_names_high_score;
+            }
+        });
     }
 };
 
