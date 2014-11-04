@@ -7,6 +7,8 @@ In the normal mode, you get a random map, and go through all the spots in the ma
 
 In practice mode, you select a specific map and play through all the spots. There's no end to it, since its just to practice. 
  
+[You can try it out here](https://chrome.google.com/webstore/detail/cs-spot-names/bbpbcljfigkeocfjnhdfhibfijoedaon)
+ 
  
 Maps available
 ==============

@@ -5,7 +5,8 @@
             "css/",
             "libraries/",
             "maps/",
-            "manifest.json"
+            "manifest.json",
+            "background.js"
         ],
     "extensions":
         [
