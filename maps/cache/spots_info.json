@@ -11,7 +11,7 @@
     { "id": "dumpster", "x": 563, "y": 659, "name": "Dumpster" },
     { "id": "long_hall", "x": 461, "y": 713, "name": "Long Hall" },
     { "id": "window", "x": 496, "y": 847, "name": "Window" },
-    { "id": "ducts", "x": 489, "y": 662, "name": "Ducts" },
+    { "id": "ducts", "x": 489, "y": 662, "name": "Ducts (Vents)" },
     { "id": "storage_room", "x": 336, "y": 674, "name": "Storage Room" },
     { "id": "bombsite_b", "x": 337, "y": 713, "name": "Bombsite B" },
     { "id": "rafters", "x": 337, "y": 713, "name": "Rafters" },

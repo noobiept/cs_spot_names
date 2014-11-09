@@ -7,7 +7,7 @@
     { "id": "catwalk", "x": 496, "y": 404, "name": "Catwalk" },
     { "id": "ct_start", "x": 499, "y": 182, "name": "CT Start" },
     { "id": "extended_a", "x": 616, "y": 131, "name": "Extended A" },
-    { "id": "hole", "x": 236, "y": 145, "name": "Hole" },
+    { "id": "hole", "x": 236, "y": 145, "name": "Hole (Window)" },
     { "id": "long_a", "x": 838, "y": 244, "name": "Long A" },
     { "id": "long_doors", "x": 673, "y": 491, "name": "Long Doors" },
     { "id": "lower_tunnel", "x": 275, "y": 417, "name": "Lower Tunnel" },
