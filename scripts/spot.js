@@ -21,7 +21,7 @@ var imageWidth = image.width;
 var imageHeight = image.height;
 
 var imageRect = new createjs.Rectangle( 0, 0, imageWidth / 2, imageHeight );
-var selectedRect = new createjs.Rectangle( imageWidth / 2, 0, imageWidth, imageHeight );
+var selectedRect = new createjs.Rectangle( imageWidth / 2, 0, imageWidth / 2, imageHeight );
 
 var container = new createjs.Container();
 
