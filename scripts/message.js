@@ -1,13 +1,10 @@
 /*global Utilities*/
 
-(function(window)
-{
 /**
     @param {String} text
     @param {Number=} timeout - pass a positive number to set a timeout, otherwise the message isn't removed (and callback not called)
     @param {Function=} callback
  */
-
 function Message( text, timeout, callback )
 {
 var container = document.querySelector( '#GameMessages' );
@@ -50,8 +47,3 @@ Message.prototype.setText = function( text )
 {
 this.html_element.innerHTML = text;
 };
-
-
-window.Message = Message;
-
-}(window));

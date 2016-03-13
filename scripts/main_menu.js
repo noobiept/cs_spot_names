@@ -1,14 +1,12 @@
 /*global Game, G, HighScore*/
 
-(function(window)
-{
-function MainMenu()
-{
+var MainMenu;
+(function (MainMenu) {
 
-}
 
 var MENU_ELEMENT = null;
 var HIGH_SCORE_ELEMENT = null;
+
 
 MainMenu.init = function()
 {
@@ -82,12 +80,11 @@ HighScore.updateTable();
 HIGH_SCORE_ELEMENT.style.display = 'block';
 };
 
+
 MainMenu.closeHighScore = function()
 {
 HIGH_SCORE_ELEMENT.style.display = 'none';
 };
 
 
-window.MainMenu = MainMenu;
-
-}(window));
+})(MainMenu || (MainMenu = {}));

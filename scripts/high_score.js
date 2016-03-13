@@ -1,11 +1,8 @@
 /*global AppStorage*/
 
-(function(window)
-{
-function HighScore()
-{
+var HighScore;
+(function (HighScore) {
 
-}
 
 var HIGH_SCORE = [];    // list of top scores (higher first)
 var LIMIT = 5;          // limit of the list above
@@ -115,6 +112,4 @@ for (var a = 0 ; a < LIMIT ; a++)
 };
 
 
-window.HighScore = HighScore;
-
-}(window));
+})(HighScore || (HighScore = {}));

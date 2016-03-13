@@ -1,11 +1,8 @@
 /*global Utilities, GameMenu, HighScore, Message, MainMenu, Map, G*/
 
-(function(window)
-{
-function Game()
-{
+var Game;
+(function (Game) {
 
-}
 
 var CURRENT_PART_NAME;          // will have the current part name string
 var MAP = null;
@@ -22,6 +19,7 @@ var MAP_NAMES = [ 'cache', 'dust2', 'inferno', 'mirage' ];
     // has the name of the maps still left to be played
 var MAPS_LEFT = [];
 
+
 /**
     @param {Boolean=false} practice - whether to play the map in practice mode or not
     @param {String=} mapName - only used for practice mode, to select the map. In the normal mode, its a random map
@@ -35,7 +33,6 @@ var MAPS_LEFT = [];
         - gets a random map
         - once you go through all the spots, a new map is loaded, etc
  */
-
 Game.start = function( practice, mapName )
 {
 if ( typeof practice === 'undefined' )
@@ -54,7 +51,6 @@ if ( practice === false )
     mapName = MAPS_LEFT.splice( position, 1 )[ 0 ];
     }
 
-
 Game.loadMap( mapName );
 GameMenu.getTimer().start();
 GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
@@ -67,7 +63,6 @@ Game.show();
 /*
     Returns true if there's another spot left, or if a new map was loaded, false if its the end of the game (no more spots or maps)
  */
-
 Game.nextSpot = function()
 {
 var position;
@@ -122,7 +117,6 @@ return true;
 };
 
 
-
 Game.loadMap = function( mapName )
 {
 if ( MAP !== null )
@@ -140,7 +134,6 @@ Game.nextSpot();
 G.BACKGROUND_STAGE.update();
 G.MAIN_STAGE.update();
 };
-
 
 
 Game.validatePart = function( partName )
@@ -177,6 +170,7 @@ CORRECT_COUNT = 0;
 INCORRECT_COUNT = 0;
 };
 
+
 Game.show = function()
 {
 G.BACKGROUND_CANVAS.style.visibility = 'visible';
@@ -193,7 +187,6 @@ G.MAIN_CANVAS.style.visibility = 'hidden';
 
 GameMenu.hide();
 };
-
 
 
 Game.restart = function()
@@ -223,7 +216,4 @@ return PRACTICE_MODE;
 };
 
 
-
-window.Game = Game;
-
-}(window));
+})(Game || (Game = {}));

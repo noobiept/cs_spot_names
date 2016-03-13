@@ -1,11 +1,8 @@
 /*global MainMenu, Game, Utilities*/
 
-(function(window)
-{
-function GameMenu()
-{
+var GameMenu;
+(function (GameMenu) {
 
-}
 
     // references to html elements
 var CONTAINER = null;
@@ -22,6 +19,7 @@ var QUIT = null;
 var TIMER;
 var MESSAGE_TIMEOUT;
 var SHOW_HELP = false;  // whether to show or not the help (the map needs to be in practice mode)
+
 
 GameMenu.init = function()
 {
@@ -75,6 +73,7 @@ GameMenu.updateInfo = function( correctCount, incorrectCount )
 CORRECT.innerHTML = correctCount;
 INCORRECT.innerHTML = incorrectCount;
 };
+
 
 GameMenu.updatePartName = function( name )
 {
@@ -148,6 +147,4 @@ TIMER.reset();
 };
 
 
-window.GameMenu = GameMenu;
-
-}(window));
+})(GameMenu || (GameMenu = {}));

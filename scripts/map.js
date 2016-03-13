@@ -1,7 +1,6 @@
 /*global G, createjs, Spot*/
 
-(function(window)
-{
+
 function Map( mapName )
 {
 var background = new createjs.Bitmap( G.PRELOAD.getResult( mapName + '_background' ) );
@@ -51,7 +50,6 @@ return names;
 };
 
 
-
 Map.prototype.clear = function()
 {
 G.BACKGROUND_STAGE.removeChild( this.background );
@@ -66,10 +64,3 @@ for (var a = 0 ; a < length ; a++)
 this.spots.length = 0;
 this.background = null;
 };
-
-
-
-
-window.Map = Map;
-
-}(window));

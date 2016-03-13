@@ -9,7 +9,6 @@ var G = {
     MAP: null
 };
 
-
 var BASE_URL = '';
 
 

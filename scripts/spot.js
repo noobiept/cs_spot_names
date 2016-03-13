@@ -1,7 +1,5 @@
 /*global G, Game, createjs, GameMenu*/
 
-(function(window)
-{
 /**
 
     @param {String} imageId
@@ -10,7 +8,6 @@
     @param {Number} y
     @param {String} name
  */
-
 function Spot( imageId, spotId, x, y, name )
 {
 var _this = this;
@@ -104,6 +101,7 @@ this.container = null;
 this.shape = null;
 };
 
+
 /**
     Adds a new line if there's alternate names.
         "\n" or <br />, depending on the value on returnHtml
@@ -116,7 +114,6 @@ this.shape = null;
     @param {Boolean} returnHtml
     @return {String}
  */
-
 Spot.updateName = function( name, returnHtml )
 {
 var newLine;
@@ -133,9 +130,3 @@ else
 
 return name.replace( '(', newLine + '(' );
 };
-
-
-
-window.Spot = Spot;
-
-}(window));
