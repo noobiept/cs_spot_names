@@ -1,3 +1,5 @@
+/*global createjs, GameMenu, HighScore, Message, MainMenu*/
+
 var G = {
     BACKGROUND_CANVAS: null,
     MAIN_CANVAS: null,

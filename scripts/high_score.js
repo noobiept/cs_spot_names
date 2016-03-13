@@ -1,3 +1,5 @@
+/*global Utilities*/
+
 (function(window)
 {
 function HighScore()
@@ -7,7 +9,6 @@ function HighScore()
 
 var HIGH_SCORE = [];    // list of top scores (higher first)
 var LIMIT = 5;          // limit of the list above
-var TABLE = null;       // html table element
 var TABLE_DATA_ELEMENTS = [];   // list of td html elements
 
 
@@ -32,8 +33,6 @@ for (var a = 0 ; a < LIMIT ; a++)
 
     TABLE_DATA_ELEMENTS.push( td );
     }
-
-TABLE = table;
 };
 
 

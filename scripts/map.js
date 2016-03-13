@@ -1,3 +1,5 @@
+/*global G, createjs, Spot*/
+
 (function(window)
 {
 function Map( mapName )

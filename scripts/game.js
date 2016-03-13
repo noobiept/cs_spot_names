@@ -1,3 +1,5 @@
+/*global Utilities, GameMenu, HighScore, Message, MainMenu, Map, G*/
+
 (function(window)
 {
 function Game()
@@ -68,6 +70,8 @@ Game.show();
 
 Game.nextSpot = function()
 {
+var position;
+
 if ( ALL_PART_NAMES.length === 0 )
     {
         // restart the map
@@ -96,7 +100,7 @@ if ( ALL_PART_NAMES.length === 0 )
 
         else
             {
-            var position = Utilities.getRandomInt( 0, MAPS_LEFT.length - 1 );
+            position = Utilities.getRandomInt( 0, MAPS_LEFT.length - 1 );
 
             var mapName = MAPS_LEFT.splice( position, 1 )[ 0 ];
 
@@ -107,7 +111,7 @@ if ( ALL_PART_NAMES.length === 0 )
         }
     }
 
-var position = Utilities.getRandomInt( 0, ALL_PART_NAMES.length - 1 );
+position = Utilities.getRandomInt( 0, ALL_PART_NAMES.length - 1 );
 
 var partInfo = ALL_PART_NAMES.splice( position, 1 )[ 0 ];
 

@@ -1,3 +1,5 @@
+/*global Game, G, HighScore*/
+
 (function(window)
 {
 function MainMenu()

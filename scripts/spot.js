@@ -1,3 +1,5 @@
+/*global G, Game, createjs, GameMenu*/
+
 (function(window)
 {
 /**
@@ -86,7 +88,7 @@ G.MAIN_STAGE.addChild( container );
 
 this.help_message = helpMessage;
 this.shape = spot;
-this.container = container
+this.container = container;
 }
 
 
