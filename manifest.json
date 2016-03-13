@@ -1,6 +1,7 @@
 {
     "name": "cs spot names",
-    "version": "1.2.1",
+    "version": "1.2.2",
+    "icons": { "128": "images/icon.png" },
     "app": { "background": { "scripts": [ "background.js" ] } },
     "manifest_version": 2,
     "description": "A counter-strike mini-game, where you need to choose the correct spot of the map.",
