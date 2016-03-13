@@ -1,4 +1,4 @@
-/*global Utilities*/
+/*global AppStorage*/
 
 (function(window)
 {
@@ -12,9 +12,9 @@ var LIMIT = 5;          // limit of the list above
 var TABLE_DATA_ELEMENTS = [];   // list of td html elements
 
 
-HighScore.init = function()
+HighScore.init = function( highScore )
 {
-HighScore.load();
+load( highScore );
 
 var table = document.querySelector( '#HighScore table' );
 
@@ -60,55 +60,32 @@ if ( HIGH_SCORE.length > LIMIT )
     HIGH_SCORE.pop();
     }
 
-HighScore.save();
+save();
 
 return score;
 };
 
 
-HighScore.save = function()
+function save()
 {
-try {
-    Utilities.saveObject( 'cs_spot_names_high_score', HIGH_SCORE );
-    }
-
-catch ( error )
-    {
-    chrome.storage.local.set({ 'cs_spot_names_high_score': HIGH_SCORE });
-    }
-
-};
+AppStorage.setData({ 'cs_spot_names_high_score': HIGH_SCORE });
+}
 
 
-HighScore.load = function()
+function load( scores )
 {
-try {
-    var scores = Utilities.getObject( 'cs_spot_names_high_score' );
-
-    if ( scores !== null )
-        {
-        HIGH_SCORE = scores;
-        }
-    }
-
-catch ( error )
+if ( scores )
     {
-    chrome.storage.local.get( 'cs_spot_names_high_score', function( result )
-        {
-        if ( result && result.cs_spot_names_high_score )
-            {
-            HIGH_SCORE = result.cs_spot_names_high_score;
-            }
-        });
+    HIGH_SCORE = scores;
     }
-};
+}
 
 
 HighScore.clear = function()
 {
 HIGH_SCORE.length = 0;
 
-HighScore.save();
+save();
 };
 
 

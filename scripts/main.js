@@ -1,4 +1,4 @@
-/*global createjs, GameMenu, HighScore, Message, MainMenu*/
+/*global createjs, GameMenu, HighScore, Message, MainMenu, AppStorage*/
 
 var G = {
     BACKGROUND_CANVAS: null,
@@ -14,6 +14,12 @@ var BASE_URL = '';
 
 
 window.onload = function()
+{
+AppStorage.getData( [ 'cs_spot_names_high_score' ], initApp );
+};
+
+
+function initApp( data )
 {
 G.BACKGROUND_CANVAS = document.querySelector( '#BackgroundCanvas' );
 G.MAIN_CANVAS = document.querySelector( '#MainCanvas' );
@@ -85,7 +91,7 @@ canvasContainer.style.height = (canvasDimension * scale) + 'px';
 gameMenu.style.width = (gameMenuWidth * scale) + 'px';
 
 GameMenu.init();
-HighScore.init();
+HighScore.init( data[ 'cs_spot_names_high_score' ] );
 
 var mainMenuManifest = {
     path: BASE_URL + 'maps/',
@@ -247,4 +253,4 @@ G.PRELOAD.on( 'complete', function( event )
     MainMenu.open();
     });
 G.PRELOAD.load();
-};
+}
