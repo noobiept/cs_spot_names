@@ -111,3 +111,9 @@ ul
     {
     color: #617f99;
     }
+
+#DonateButton
+    {
+    text-decoration: none;
+    display: block;
+    }
