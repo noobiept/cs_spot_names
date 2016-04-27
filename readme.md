@@ -24,6 +24,14 @@ Maps available
 - mirage
 
 
+Add New Maps
+============
+
+- White color with a text font size of 30 pixels.
+- Check existing map files for help.
+- Save as optimized SVG (to remove comments/editor properties/etc).
+
+
 Images
 ======
 

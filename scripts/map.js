@@ -9,7 +9,9 @@ var all = [];
 
 for (var a = 0 ; a < spots.length ; a++)
     {
-    var spot = new Spot( spots[ a ] );
+    var path = spots[ a ];
+    var text = svg.querySelector( '#' + path.getAttribute( 'id' ) + 'Text' );
+    var spot = new Spot( path, text );
 
     all.push( spot );
     }

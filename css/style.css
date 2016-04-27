@@ -102,3 +102,8 @@ ul
     text-decoration: none;
     display: block;
     }
+
+.Text
+    {
+    pointer-events: none;
+    }

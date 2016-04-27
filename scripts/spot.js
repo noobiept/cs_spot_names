@@ -1,27 +1,37 @@
-/*global G, Game, GameMenu*/
+/*global Game, GameMenu*/
 
-function Spot( pathElement )
+function Spot( pathElement, textElement )
 {
 var _this = this;
 var practiceMode = Game.inPracticeMode();
 
-
 pathElement.onmouseover = function()
     {
     this.style.fillOpacity = 0.3;
+
+    var helpSet = GameMenu.isHelpSet();
+
+    if ( practiceMode && helpSet )
+        {
+        _this.text_element.style.visibility = 'visible';
+        }
     };
 pathElement.onmouseout = function()
     {
-    this.style.fillOpacity = 0;
+    _this.path_element.style.fillOpacity = 0;
+    _this.text_element.style.visibility = 'hidden';
     };
-pathElement.style.fillOpacity = 0;
-
 pathElement.onclick = function()
     {
     Game.validatePart( pathElement.getAttribute( 'id' ) );
     };
 
+    // hide element and text
+pathElement.style.fillOpacity = 0;  // use opacity so it can be clicked
+textElement.style.visibility = 'hidden';
+
 this.path_element = pathElement;
+this.text_element = textElement;
 }
 
 
