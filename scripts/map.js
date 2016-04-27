@@ -19,6 +19,7 @@ for (var a = 0 ; a < spots.length ; a++)
 var canvasContainer = document.getElementById( 'CanvasContainer' );
 canvasContainer.insertBefore( svg, canvasContainer.firstChild );
 
+this.svg = svg;
 this.spots = all;
 this.map_name = mapName;
 }
@@ -55,5 +56,7 @@ for (var a = 0 ; a < length ; a++)
     }
 
 this.spots.length = 0;
-this.background = null;
+
+this.svg.parentElement.removeChild( this.svg );
+this.svg = null;
 };

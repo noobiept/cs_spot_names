@@ -1,9 +1,7 @@
 /*global createjs, GameMenu, HighScore, Message, MainMenu, AppStorage*/
 
 var G = {
-    MAIN_STAGE: null,   //HERE
-    PRELOAD: null,
-    MAP: null
+    PRELOAD: null
 };
 
 

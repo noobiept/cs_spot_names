@@ -37,7 +37,9 @@ this.text_element = textElement;
 
 Spot.prototype.clear = function()
 {
-this.path_element.removeAllEventListeners();
+this.path_element.onmouseover = null;
+this.path_element.onmouseout = null;
+this.path_element.onclick = null;
 this.path_element = null;
 };
 
