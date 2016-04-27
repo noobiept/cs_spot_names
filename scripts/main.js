@@ -1,10 +1,7 @@
 /*global createjs, GameMenu, HighScore, Message, MainMenu, AppStorage*/
 
 var G = {
-    BACKGROUND_CANVAS: null,
-    MAIN_CANVAS: null,
-    BACKGROUND_STAGE: null,
-    MAIN_STAGE: null,
+    MAIN_STAGE: null,   //HERE
     PRELOAD: null,
     MAP: null
 };
@@ -20,14 +17,6 @@ AppStorage.getData( [ 'cs_spot_names_high_score' ], initApp );
 
 function initApp( data )
 {
-G.BACKGROUND_CANVAS = document.querySelector( '#BackgroundCanvas' );
-G.MAIN_CANVAS = document.querySelector( '#MainCanvas' );
-
-G.BACKGROUND_STAGE = new createjs.Stage( G.BACKGROUND_CANVAS );
-
-G.MAIN_STAGE = new createjs.Stage( G.MAIN_CANVAS );
-G.MAIN_STAGE.enableMouseOver();
-
 GameMenu.init();
 HighScore.init( data[ 'cs_spot_names_high_score' ] );
 
@@ -171,6 +160,13 @@ var mirageManifest = {
     ]
 };
 
+var svgManifest = {
+    path: BASE_URL + 'maps/',
+    manifest: [
+        { id: 'dust2', src: 'dust2.svg' }
+    ]
+};
+
 
 var loadingMessage = new Message( '' );
 
@@ -180,6 +176,7 @@ G.PRELOAD.loadManifest( dust2Manifest, false );
 G.PRELOAD.loadManifest( infernoManifest, false );
 G.PRELOAD.loadManifest( cacheManifest, false );
 G.PRELOAD.loadManifest( mirageManifest, false );
+G.PRELOAD.loadManifest( svgManifest, false );
 G.PRELOAD.on( 'progress', function( event )
     {
     loadingMessage.setText( 'Loading.. ' + (event.progress * 100 | 0) + '%' );

@@ -3,29 +3,31 @@
 
 function Map( mapName )
 {
-var background = new createjs.Bitmap( G.PRELOAD.getResult( mapName + '_background' ) );
+var svg = G.PRELOAD.getResult( 'dust2' );
+var spots = svg.querySelectorAll( '.Spot' );
 
-G.BACKGROUND_STAGE.addChild( background );
-
-var mapSpots = G.PRELOAD.getResult( mapName + '_spots_info' );
-var length = mapSpots.length;
-
-var spots = [];
-
-for (var a = 0 ; a < length ; a++)
+for (var a = 0 ; a < spots.length ; a++)
     {
-    var spotInfo = mapSpots[ a ];
-    var identifier = mapName + '_' + spotInfo.id;
+    var spot = spots[ a ];
 
-    var spot = new Spot( identifier, spotInfo.id, spotInfo.x, spotInfo.y, spotInfo.name );
-
-    spots.push( spot );
+    spot.onmouseover = function()
+        {
+        this.style.fillOpacity = 0.3;
+        };
+    spot.onmouseout = function()
+        {
+        this.style.fillOpacity = 0;
+        };
+    spot.style.fillOpacity = 0;
     }
 
+var canvasContainer = document.getElementById( 'CanvasContainer' );
+canvasContainer.insertBefore( svg, canvasContainer.firstChild );
+
+var mapSpots = G.PRELOAD.getResult( mapName + '_spots_info' );
+
 this.map_spots = mapSpots;
-this.background = background;
 this.map_name = mapName;
-this.spots = spots;
 }
 
 
@@ -52,8 +54,6 @@ return names;
 
 Map.prototype.clear = function()
 {
-G.BACKGROUND_STAGE.removeChild( this.background );
-
 var length = this.spots.length;
 
 for (var a = 0 ; a < length ; a++)

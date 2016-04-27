@@ -130,9 +130,6 @@ ALL_PART_NAMES = MAP.getSpotsNames();
 
 GameMenu.updateMapName( mapName );
 Game.nextSpot();
-
-G.BACKGROUND_STAGE.update();
-G.MAIN_STAGE.update();
 };
 
 
@@ -173,18 +170,12 @@ INCORRECT_COUNT = 0;
 
 Game.show = function()
 {
-G.BACKGROUND_CANVAS.style.visibility = 'visible';
-G.MAIN_CANVAS.style.visibility = 'visible';
-
 GameMenu.show();
 };
 
 
 Game.hide = function()
 {
-G.BACKGROUND_CANVAS.style.visibility = 'hidden';
-G.MAIN_CANVAS.style.visibility = 'hidden';
-
 GameMenu.hide();
 };
 

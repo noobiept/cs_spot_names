@@ -18,12 +18,6 @@ ul
     padding: 0;
     }
 
-    /* start with all the elements hidden, show them with code as needed */
-#BackgroundCanvas, #MainCanvas
-    {
-    visibility: hidden;
-    }
-
 #MainMenu, #HighScore, #GameMenu
     {
     display: none;
@@ -39,15 +33,6 @@ ul
     width: 1024px;
     height: 1024px;
     margin: 0 auto;
-    }
-
-#MainCanvas, #BackgroundCanvas
-    {
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
     }
 
 #MainMenu
