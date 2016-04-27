@@ -1,104 +1,34 @@
-/*global G, Game, createjs, GameMenu*/
+/*global G, Game, GameMenu*/
 
-/**
-
-    @param {String} imageId
-    @param {String} spotId
-    @param {Number} x
-    @param {Number} y
-    @param {String} name
- */
-function Spot( imageId, spotId, x, y, name )
+function Spot( pathElement )
 {
 var _this = this;
-
 var practiceMode = Game.inPracticeMode();
 
-var image = G.PRELOAD.getResult( imageId );
 
-var imageWidth = image.width;
-var imageHeight = image.height;
-
-var imageRect = new createjs.Rectangle( 0, 0, imageWidth / 2, imageHeight );
-var selectedRect = new createjs.Rectangle( imageWidth / 2, 0, imageWidth / 2, imageHeight );
-
-var container = new createjs.Container();
-
-container.x = x;
-container.y = y;
-
-var spot = new createjs.Bitmap( image );
-spot.sourceRect = imageRect;
-
-var helpMessage = null;
-
-if ( practiceMode )
+pathElement.onmouseover = function()
     {
-    name = Spot.updateName( name, false );
-
-    helpMessage = new createjs.Text( name, '30px Arial', 'white' );
-
-    helpMessage.visible = false;
-    }
-
-
-spot.on( 'rollover', function( event )
+    this.style.fillOpacity = 0.3;
+    };
+pathElement.onmouseout = function()
     {
-    _this.shape.sourceRect = selectedRect;
+    this.style.fillOpacity = 0;
+    };
+pathElement.style.fillOpacity = 0;
 
-    var helpSet = GameMenu.isHelpSet();
-
-    if ( practiceMode && helpSet )
-        {
-        helpMessage.visible = true;
-        G.MAIN_STAGE.addChild( container ); // move it to the top of all other elements, so that the text doesn't get cut off for being under other elements
-        }
-
-    G.MAIN_STAGE.update();
-    });
-spot.on( 'rollout', function( event )
+pathElement.onclick = function()
     {
-    _this.shape.sourceRect = imageRect;
+    Game.validatePart( pathElement.getAttribute( 'id' ) );
+    };
 
-    var helpSet = GameMenu.isHelpSet();
-
-    if ( practiceMode && helpSet )
-        {
-        helpMessage.visible = false;
-        }
-
-    G.MAIN_STAGE.update();
-    });
-spot.on( 'click', function( event )
-    {
-    Game.validatePart( spotId );
-    });
-
-container.addChild( spot );
-
-if ( practiceMode )
-    {
-    container.addChild( helpMessage );
-    }
-
-G.MAIN_STAGE.addChild( container );
-
-this.help_message = helpMessage;
-this.shape = spot;
-this.container = container;
+this.path_element = pathElement;
 }
 
 
 Spot.prototype.clear = function()
 {
-G.MAIN_STAGE.removeChild( this.help_message );
-G.MAIN_STAGE.removeChild( this.shape );
-G.MAIN_STAGE.removeChild( this.container );
-
-this.shape.removeAllEventListeners();
-
-this.container = null;
-this.shape = null;
+this.path_element.removeAllEventListeners();
+this.path_element = null;
 };
 
 
