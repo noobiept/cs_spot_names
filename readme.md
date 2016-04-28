@@ -27,7 +27,7 @@ Maps available
 Add New Maps
 ============
 
-- White color with a text font size of 30 pixels.
+- Need to add a `.Spot` class and a `displayName` property to each map spot (in the SVG file).
 - Check existing map files for help.
 - Save as optimized SVG (to remove comments/editor properties/etc).
 

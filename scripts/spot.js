@@ -23,7 +23,7 @@ pathElement.onmouseout = function()
     };
 pathElement.onclick = function()
     {
-    Game.validatePart( pathElement.getAttribute( 'id' ) );
+    Game.validatePart( pathElement.getAttribute( 'displayName' ) );
     };
 
 var pathBox = pathElement.getBBox();

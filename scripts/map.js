@@ -41,10 +41,7 @@ for (var a = 0 ; a < length ; a++)
     {
     var element = map[ a ].path_element;
 
-    names.push({
-        id: element.getAttribute( 'id' ),
-        name: Spot.updateName( element.getAttribute( 'displayName' ), true )
-        });
+    names.push( element.getAttribute( 'displayName' ) );
     }
 
 return names;
