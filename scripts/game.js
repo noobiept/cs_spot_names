@@ -1,4 +1,4 @@
-/*global Utilities, GameMenu, HighScore, Message, MainMenu, Map, G*/
+/*global Utilities, GameMenu, HighScore, Message, MainMenu, Map*/
 
 var Game;
 (function (Game) {
@@ -204,6 +204,15 @@ GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
 Game.inPracticeMode = function()
 {
 return PRACTICE_MODE;
+};
+
+
+Game.skipPart = function()
+{
+Game.nextSpot();
+
+INCORRECT_COUNT++;
+GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
 };
 
 

@@ -13,8 +13,6 @@ var CORRECT = null;
 var INCORRECT = null;
 var TIMER_ELEMENT = null;
 var HELP = null;
-var RESTART = null;
-var QUIT = null;
 
 var TIMER;
 var MESSAGE_TIMEOUT;
@@ -32,8 +30,6 @@ CORRECT = CONTAINER.querySelector( '#CorrectValue' );
 INCORRECT = CONTAINER.querySelector( '#IncorrectValue' );
 TIMER_ELEMENT = CONTAINER.querySelector( '#TimeValue' );
 HELP = CONTAINER.querySelector( '#Help' );
-RESTART = CONTAINER.querySelector( '#Restart' );
-QUIT = CONTAINER.querySelector( '#Quit' );
 
 var helpValue = HELP.querySelector( 'span' );
 
@@ -51,11 +47,15 @@ HELP.onclick = function()
         helpValue.innerHTML = 'Off';
         }
     };
-RESTART.onclick = function()
-    {
-    Game.restart();
-    };
-QUIT.onclick = function()
+
+var skip = document.getElementById( 'Skip' );
+skip.onclick = Game.skipPart;
+
+var restart = document.getElementById( 'Restart' );
+restart.onclick = Game.restart;
+
+var quit = document.getElementById( 'Quit' );
+quit.onclick = function()
     {
     Game.clear();
     Game.hide();
