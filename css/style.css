@@ -106,4 +106,6 @@ ul
 .Text
     {
     pointer-events: none;
+    fill: white;
+    font-size: 36px;
     }

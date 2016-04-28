@@ -7,17 +7,22 @@ var svg = G.PRELOAD.getResult( mapName );
 var spots = svg.querySelectorAll( '.Spot' );
 var all = [];
 
+var canvasContainer = document.getElementById( 'CanvasContainer' );
+canvasContainer.insertBefore( svg, canvasContainer.firstChild );
+
 for (var a = 0 ; a < spots.length ; a++)
     {
     var path = spots[ a ];
-    var text = svg.querySelector( '#' + path.getAttribute( 'id' ) + 'Text' );
-    var spot = new Spot( path, text );
 
+        // create the text element
+    var textElement = document.createElementNS( 'http://www.w3.org/2000/svg', 'text' );
+    textElement.setAttribute( 'class', 'Text' );
+
+    svg.firstChild.appendChild( textElement );  // there's 2 svgs
+
+    var spot = new Spot( path, textElement );
     all.push( spot );
     }
-
-var canvasContainer = document.getElementById( 'CanvasContainer' );
-canvasContainer.insertBefore( svg, canvasContainer.firstChild );
 
 this.svg = svg;
 this.spots = all;

@@ -26,6 +26,12 @@ pathElement.onclick = function()
     Game.validatePart( pathElement.getAttribute( 'id' ) );
     };
 
+var pathBox = pathElement.getBBox();
+
+textElement.innerHTML = pathElement.getAttribute( 'displayName' );
+textElement.setAttribute( 'x', pathBox.x );
+textElement.setAttribute( 'y', pathBox.y );
+
     // hide element and text
 pathElement.style.fillOpacity = 0;  // use opacity so it can be clicked
 textElement.style.visibility = 'hidden';
