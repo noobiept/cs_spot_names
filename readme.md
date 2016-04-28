@@ -27,9 +27,9 @@ Maps available
 Add New Maps
 ============
 
+- Create a `SVG` file with the map parts (check existing map files for help).
 - Need to add a `.Spot` class and a `displayName` property to each map spot (in the SVG file).
-- Check existing map files for help.
-- Save as optimized SVG (to remove comments/editor properties/etc).
+- Save as optimized SVG when done (to remove comments/editor properties/etc).
 
 
 Images

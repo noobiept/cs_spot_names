@@ -48,33 +48,3 @@ this.path_element.onmouseout = null;
 this.path_element.onclick = null;
 this.path_element = null;
 };
-
-
-/**
-    Adds a new line if there's alternate names.
-        "\n" or <br />, depending on the value on returnHtml
-
-    Example:
-        args -> name: "Mid Doors (CT Mid)"
-        returns -> "Mid Doors\n(CT Mid)" or "Mid Doors<br />(CT Mid)"
-
-    @param {String} name
-    @param {Boolean} returnHtml
-    @return {String}
- */
-Spot.updateName = function( name, returnHtml )
-{
-var newLine;
-
-if ( returnHtml === true )
-    {
-    newLine = '<br />';
-    }
-
-else
-    {
-    newLine = '\n';
-    }
-
-return name.replace( '(', newLine + '(' );
-};
