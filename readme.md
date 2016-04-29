@@ -28,7 +28,7 @@ Add New Maps
 ============
 
 - Create a `SVG` file with the map parts (check existing map files for help).
-- Need to add a `.Spot` class and a `displayName` property to each map spot (in the SVG file).
+- Need to add a `.Spot` class and a `displayName` property to each map spot (in `inkscape` it can be done through the XML editor - `Edit -> XML Editor`).
 - Save as optimized SVG when done (to remove comments/editor properties/etc).
 
 
