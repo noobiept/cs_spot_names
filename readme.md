@@ -41,6 +41,6 @@ The images are taken from the cs:go game.
 Libraries
 =========
 
-- easeljs : 0.8
-- preloadjs : 0.6
+- createjs
+    - preloadjs : 0.6
 - utilities : 1.8
