@@ -25,7 +25,8 @@ var manifest = {
         { id: 'mirage_menu', src: 'mirage/de_mirage_200.jpg' },
 
         { id: 'dust2', src: 'dust2/dust2.svg' },
-        { id: 'cache', src: 'cache/cache.svg' }
+        { id: 'cache', src: 'cache/cache.svg' },
+        { id: 'inferno', src: 'inferno/inferno.svg' }
     ]
 };
 
