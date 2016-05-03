@@ -26,7 +26,8 @@ var manifest = {
 
         { id: 'dust2', src: 'dust2/dust2.svg' },
         { id: 'cache', src: 'cache/cache.svg' },
-        { id: 'inferno', src: 'inferno/inferno.svg' }
+        { id: 'inferno', src: 'inferno/inferno.svg' },
+        { id: 'mirage', src: 'mirage/mirage.svg' }
     ]
 };
 
