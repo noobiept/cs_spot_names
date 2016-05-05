@@ -6,51 +6,50 @@ var MainMenu;
 
 var MENU_ELEMENT = null;
 var HIGH_SCORE_ELEMENT = null;
+var HELP_ELEMENT = null;
 
 
 MainMenu.init = function()
 {
-MENU_ELEMENT = document.querySelector( '#MainMenu' );
-HIGH_SCORE_ELEMENT = document.querySelector( '#HighScore' );
+MENU_ELEMENT = document.getElementById( 'MainMenu' );
+HIGH_SCORE_ELEMENT = document.getElementById( 'HighScore' );
+HELP_ELEMENT = document.getElementById( 'HelpSection' );
 
     // start the normal mode
-var start = MENU_ELEMENT.querySelector( '#Start' );
-
+var start = document.getElementById( 'Start' );
 start.onclick = function()
     {
-    MainMenu.close();
+    closeMenu();
     Game.start();
     };
 
     // show the high-scores
-var highScore = MENU_ELEMENT.querySelector( '#OpenHighScore' );
+var highScore = document.getElementById( 'OpenHighScore' );
+highScore.onclick = openHighScore;
 
-highScore.onclick = function()
+var backButtons = document.querySelectorAll( '.back' );
+var a;
+
+for (a = 0 ; a < backButtons.length ; a++)
     {
-    MainMenu.close();
-    MainMenu.openHighScore();
-    };
+    backButtons[ a ].onclick = MainMenu.open;
+    }
 
-var back = HIGH_SCORE_ELEMENT.querySelector( '.back' );
-
-back.onclick = function()
-    {
-    MainMenu.closeHighScore();
-    MainMenu.open();
-    };
-
+    // show help section
+var help = document.getElementById( 'OpenHelp' );
+help.onclick = openHelp;
 
     // practice a specific map
 var practiceMaps = MENU_ELEMENT.querySelectorAll( '#PracticeMaps li' );
 var length = practiceMaps.length;
 
-for (var a = 0 ; a < length ; a++)
+for (a = 0 ; a < length ; a++)
     {
     var map = practiceMaps[ a ];
 
     map.onclick = function()
         {
-        MainMenu.close();
+        closeMenu();
         Game.start( true, this.getAttribute( 'data-map_name' ) );
         };
 
@@ -63,28 +62,45 @@ for (var a = 0 ; a < length ; a++)
 
 MainMenu.open = function()
 {
+    // close the sub-menus (that may be opened)
+HIGH_SCORE_ELEMENT.style.display = 'none';
+HELP_ELEMENT.style.display = 'none';
+
+    // show the main menu
 MENU_ELEMENT.style.display = 'block';
 };
 
 
-MainMenu.close = function()
+/**
+ * Hide the main menu.
+ */
+function closeMenu()
 {
 MENU_ELEMENT.style.display = 'none';
-};
+}
 
 
-MainMenu.openHighScore = function()
+/**
+ * Show the high-score section.
+ */
+function openHighScore()
 {
+closeMenu();
+
 HighScore.updateTable();
-
 HIGH_SCORE_ELEMENT.style.display = 'block';
-};
+}
 
 
-MainMenu.closeHighScore = function()
+/**
+ * Show the help section.
+ */
+function openHelp()
 {
-HIGH_SCORE_ELEMENT.style.display = 'none';
-};
+closeMenu();
+
+HELP_ELEMENT.style.display = 'block';
+}
 
 
 })(MainMenu || (MainMenu = {}));

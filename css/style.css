@@ -10,6 +10,7 @@ body
     color: #999b9d;
     background-color: #010713;
     font-size: 24px;
+    text-align: center;
     }
 
 ul
@@ -18,7 +19,7 @@ ul
     padding: 0;
     }
 
-#MainMenu, #HighScore, #GameMenu
+#MainMenu, #HighScore, #GameMenu, #HelpSection
     {
     display: none;
     }
@@ -37,7 +38,6 @@ ul
 
 #MainMenu
     {
-    text-align: center;
     font-size: 30px;
     }
 
@@ -61,7 +61,6 @@ ul
     flex-direction: column;
     justify-content: space-around;
     padding: 10px;
-    text-align: center;
     background-color: rgb(39, 48, 57);
     width: 200px;
     position: absolute;
@@ -82,7 +81,6 @@ ul
 
 #HighScore table td
     {
-    text-align: center;
     min-width: 50px;
     }
 
@@ -118,4 +116,9 @@ ul
 .incorrect
     {
     color: crimson;
+    }
+
+#HelpSection
+    {
+    margin: 10px;
     }
