@@ -44,7 +44,7 @@ HELP.onclick = function()
 helpValue.innerHTML = toOnOff( SHOW_HELP );
 
 var skip = document.getElementById( 'Skip' );
-skip.onclick = Game.skipPart;
+skip.onclick = Game.skipSpot;
 
 var restart = document.getElementById( 'Restart' );
 restart.onclick = Game.restart;

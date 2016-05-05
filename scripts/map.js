@@ -62,3 +62,19 @@ this.spots.length = 0;
 this.svg.parentElement.removeChild( this.svg );
 this.svg = null;
 };
+
+
+Map.prototype.getSpot = function( name )
+{
+for (var a = 0 ; a < this.spots.length ; a++)
+    {
+    var spot = this.spots[ a ];
+
+    if ( name === spot.getName() )
+        {
+        return spot;
+        }
+    }
+
+return null;
+};

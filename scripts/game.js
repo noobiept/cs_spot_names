@@ -13,6 +13,9 @@ var CORRECT_COUNT = 0;
 var INCORRECT_COUNT = 0;
 var PRACTICE_MODE = false;
 
+var SKIP_TIMEOUT_ID = null;
+var SKIP_CALLBACK = null;
+
     // all the map names in the game (don't change this)
 var MAP_NAMES = [ 'cache', 'dust2', 'inferno', 'mirage', 'overpass' ];
 
@@ -121,7 +124,7 @@ Game.loadMap = function( mapName )
 {
 if ( MAP !== null )
     {
-    MAP.clear();
+    clearMap();
     }
 
 MAP = new Map( mapName );
@@ -155,11 +158,30 @@ GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
 };
 
 
-Game.clear = function()
+/**
+ * Clears the map (not necessary the whole game). Called when switching the maps or ending the game.
+ */
+function clearMap()
 {
-GameMenu.clear();
+window.clearTimeout( SKIP_TIMEOUT_ID );
+
+if ( SKIP_CALLBACK )
+    {
+    SKIP_CALLBACK();
+    }
+
+SKIP_TIMEOUT_ID = null;
+SKIP_CALLBACK = null;
+
 MAP.clear();
 MAP = null;
+}
+
+
+Game.clear = function()
+{
+clearMap();
+GameMenu.clear();
 
 ALL_PART_NAMES.length = 0;
 
@@ -207,10 +229,36 @@ return PRACTICE_MODE;
 };
 
 
-Game.skipPart = function()
+/**
+ * Skip a spot and move on to the next one.
+ * Highlight the skipped spot for a certain time.
+ */
+Game.skipSpot = function()
 {
+window.clearTimeout( SKIP_TIMEOUT_ID );
+
+if ( SKIP_CALLBACK )
+    {
+    SKIP_CALLBACK();
+    }
+
+    // highlight the skipped spot
+var spot = MAP.getSpot( CURRENT_PART_NAME );
+spot.highlight();
+
+    // save the function in case we need to clear the timeout early
+SKIP_CALLBACK = function()
+    {
+    spot.removeHighlight();
+    SKIP_TIMEOUT_ID = null;
+    SKIP_CALLBACK = null;
+    };
+SKIP_TIMEOUT_ID = window.setTimeout( SKIP_CALLBACK, 2000 );
+
+    // go to the next one
 Game.nextSpot();
 
+    // a skipped spot counts as an incorrect guess
 INCORRECT_COUNT++;
 GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
 };

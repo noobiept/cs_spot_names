@@ -3,27 +3,19 @@
 function Spot( pathElement, textElement )
 {
 var _this = this;
-var practiceMode = Game.inPracticeMode();
+var displayName = pathElement.getAttribute( 'displayName' );
 
 pathElement.onmouseover = function()
     {
-    this.style.fillOpacity = 0.3;
-
-    var helpSet = GameMenu.isHelpSet();
-
-    if ( practiceMode && helpSet )
-        {
-        _this.text_element.style.visibility = 'visible';
-        }
+    _this.highlight();
     };
 pathElement.onmouseout = function()
     {
-    _this.path_element.style.fillOpacity = 0;
-    _this.text_element.style.visibility = 'hidden';
+    _this.removeHighlight();
     };
 pathElement.onclick = function()
     {
-    Game.validatePart( pathElement.getAttribute( 'displayName' ) );
+    Game.validatePart( displayName );
     };
 
 textElement.innerHTML = pathElement.getAttribute( 'displayName' );
@@ -40,6 +32,7 @@ textElement.style.visibility = 'hidden';
 
 this.path_element = pathElement;
 this.text_element = textElement;
+this.display_name = displayName;
 }
 
 
@@ -49,4 +42,31 @@ this.path_element.onmouseover = null;
 this.path_element.onmouseout = null;
 this.path_element.onclick = null;
 this.path_element = null;
+};
+
+
+Spot.prototype.highlight = function()
+{
+var practiceMode = Game.inPracticeMode();
+var helpSet = GameMenu.isHelpSet();
+
+this.path_element.style.fillOpacity = 0.3;
+
+if ( practiceMode && helpSet )
+    {
+    this.text_element.style.visibility = 'visible';
+    }
+};
+
+
+Spot.prototype.removeHighlight = function()
+{
+this.path_element.style.fillOpacity = 0;
+this.text_element.style.visibility = 'hidden';
+};
+
+
+Spot.prototype.getName = function()
+{
+return this.display_name;
 };
