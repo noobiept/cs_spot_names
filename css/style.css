@@ -118,6 +118,11 @@ ul
     color: crimson;
     }
 
+.skipped
+    {
+    color: #9975b9;
+    }
+
 #HelpSection
     {
     margin: 10px;

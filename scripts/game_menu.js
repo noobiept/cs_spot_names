@@ -11,6 +11,7 @@ var PART_NAME = null;
 var MESSAGE = null;
 var CORRECT = null;
 var INCORRECT = null;
+var SKIPPED = null;
 var TIMER_ELEMENT = null;
 var HELP = null;
 
@@ -35,6 +36,7 @@ PART_NAME = CONTAINER.querySelector( '#PartName' );
 MESSAGE = CONTAINER.querySelector( '#MenuMessage' );
 CORRECT = CONTAINER.querySelector( '#CorrectValue' );
 INCORRECT = CONTAINER.querySelector( '#IncorrectValue' );
+SKIPPED = CONTAINER.querySelector( '#SkippedValue' );
 TIMER_ELEMENT = CONTAINER.querySelector( '#TimeValue' );
 HELP = CONTAINER.querySelector( '#Help' );
 
@@ -71,10 +73,11 @@ MESSAGE_TIMEOUT = new Utilities.Timeout();
 };
 
 
-GameMenu.updateInfo = function( correctCount, incorrectCount )
+GameMenu.updateInfo = function( correctCount, incorrectCount, skippedCount )
 {
 CORRECT.innerHTML = correctCount;
 INCORRECT.innerHTML = incorrectCount;
+SKIPPED.innerHTML = skippedCount;
 };
 
 
@@ -121,6 +124,12 @@ GameMenu.showMessage( 'Correct!', 'correct' );
 GameMenu.showIncorrectMessage = function()
 {
 GameMenu.showMessage( 'Incorrect :(', 'incorrect' );
+};
+
+
+GameMenu.showSkippedMessage = function()
+{
+GameMenu.showMessage( 'Skipped.', 'skipped' );
 };
 
 

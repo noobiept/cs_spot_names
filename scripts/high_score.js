@@ -33,9 +33,9 @@ for (var a = 0 ; a < LIMIT ; a++)
 };
 
 
-HighScore.add = function( correct, incorrect, time )
+HighScore.add = function( correct, incorrect, skipped, time )
 {
-var score = HighScore.calculateScore( correct, incorrect, time );
+var score = HighScore.calculateScore( correct, incorrect, skipped, time );
 
     // don't add repeated scores
 if ( HIGH_SCORE.indexOf( score ) >= 0 )
@@ -86,9 +86,9 @@ save();
 };
 
 
-HighScore.calculateScore = function( correct, incorrect, time )
+HighScore.calculateScore = function( correct, incorrect, skipped, time )
 {
-return correct * 50 - incorrect * 100 - time * 5;
+return correct * 50 - incorrect * 75 - skipped * 200 - time * 5;
 };
 
 

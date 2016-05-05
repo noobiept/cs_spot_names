@@ -8,9 +8,10 @@ var CURRENT_PART_NAME;          // will have the current part name string
 var MAP = null;
 var ALL_PART_NAMES = [];        // array of strings with all the names of the map
 
-    // count the number of correct/incorrect plays (for the score at the end)
+    // count the number of correct/incorrect plays and skipped spots (for the score at the end)
 var CORRECT_COUNT = 0;
 var INCORRECT_COUNT = 0;
+var SKIPPED_COUNT = 0;
 var PRACTICE_MODE = false;
 
 var SKIP_TIMEOUT_ID = null;
@@ -56,7 +57,7 @@ if ( practice === false )
 
 Game.loadMap( mapName );
 GameMenu.getTimer().start();
-GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
+GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT, SKIPPED_COUNT );
 GameMenu.setMode( practice );
 
 Game.show();
@@ -83,7 +84,7 @@ if ( ALL_PART_NAMES.length === 0 )
         {
         if ( MAPS_LEFT.length === 0 )
             {
-            var score = HighScore.add( CORRECT_COUNT, INCORRECT_COUNT, GameMenu.getTimer().getTimeSeconds() );
+            var score = HighScore.add( CORRECT_COUNT, INCORRECT_COUNT, SKIPPED_COUNT, GameMenu.getTimer().getTimeSeconds() );
 
             Game.clear();
             Game.hide();
@@ -154,7 +155,7 @@ else
     GameMenu.showIncorrectMessage();
     }
 
-GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
+GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT, SKIPPED_COUNT );
 };
 
 
@@ -187,6 +188,7 @@ ALL_PART_NAMES.length = 0;
 
 CORRECT_COUNT = 0;
 INCORRECT_COUNT = 0;
+SKIPPED_COUNT = 0;
 };
 
 
@@ -219,7 +221,7 @@ if ( PRACTICE_MODE === false )
 
 Game.loadMap( mapName );
 GameMenu.getTimer().start();
-GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
+GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT, SKIPPED_COUNT );
 };
 
 
@@ -258,9 +260,10 @@ SKIP_TIMEOUT_ID = window.setTimeout( SKIP_CALLBACK, 2000 );
     // go to the next one
 Game.nextSpot();
 
-    // a skipped spot counts as an incorrect guess
-INCORRECT_COUNT++;
-GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );
+    // count the amount skipped spots (useful later to determine the score)
+SKIPPED_COUNT++;
+GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT, SKIPPED_COUNT );
+GameMenu.showSkippedMessage();
 };
 
 
