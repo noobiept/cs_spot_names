@@ -23,11 +23,13 @@ var manifest = {
         { id: 'dust2_menu', src: 'dust2/de_dust2_200.jpg' },
         { id: 'inferno_menu', src: 'inferno/de_inferno_200.jpg' },
         { id: 'mirage_menu', src: 'mirage/de_mirage_200.jpg' },
+        { id: 'overpass_menu', src: 'overpass/de_overpass_200.jpg' },
 
         { id: 'dust2', src: 'dust2/dust2.svg' },
         { id: 'cache', src: 'cache/cache.svg' },
         { id: 'inferno', src: 'inferno/inferno.svg' },
-        { id: 'mirage', src: 'mirage/mirage.svg' }
+        { id: 'mirage', src: 'mirage/mirage.svg' },
+        { id: 'overpass', src: 'overpass/overpass.svg' }
     ]
 };
 

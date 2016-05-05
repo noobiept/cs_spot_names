@@ -27,6 +27,8 @@ Maps available
 Add New Maps
 ============
 
+- The minimap images are located at `/Steam/steamapps/common/Counter-Strike Global Offensive/csgo/resource/overviews` (need to convert the `.dds` file to `.png`).
+- The main menu images are located at `/Steam/steamapps/common/Counter-Strike Global Offensive/csgo/maps` (resize it to 200x113 pixels).
 - Create a `SVG` file with the map parts (check existing map files for help).
 - Need to add a `.Spot` class and a `displayName` property to each map spot (in `inkscape` it can be done through the XML editor - `Edit -> XML Editor`).
 - Save as optimized SVG when done (to remove comments/editor properties/etc).

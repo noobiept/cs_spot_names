@@ -14,7 +14,7 @@ var INCORRECT_COUNT = 0;
 var PRACTICE_MODE = false;
 
     // all the map names in the game (don't change this)
-var MAP_NAMES = [ 'cache', 'dust2', 'inferno', 'mirage' ];
+var MAP_NAMES = [ 'cache', 'dust2', 'inferno', 'mirage', 'overpass' ];
 
     // has the name of the maps still left to be played
 var MAPS_LEFT = [];
