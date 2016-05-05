@@ -7,13 +7,13 @@ var G = {
 
 window.onload = function()
 {
-AppStorage.getData( [ 'cs_spot_names_high_score', 'cs_spot_names_has_run' ], initApp );
+AppStorage.getData( [ 'cs_spot_names_high_score', 'cs_spot_names_has_run', 'cs_spot_names_show_help' ], initApp );
 };
 
 
 function initApp( data )
 {
-GameMenu.init();
+GameMenu.init( data[ 'cs_spot_names_show_help' ] );
 HighScore.init( data[ 'cs_spot_names_high_score' ] );
 
     // determine if this is the first run of the program or not

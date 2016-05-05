@@ -1,4 +1,4 @@
-/*global MainMenu, Game, Utilities*/
+/*global MainMenu, Game, Utilities, AppStorage*/
 
 var GameMenu;
 (function (GameMenu) {
@@ -19,8 +19,15 @@ var MESSAGE_TIMEOUT;
 var SHOW_HELP = true;  // whether to show or not the help (the map needs to be in practice mode)
 
 
-GameMenu.init = function()
+GameMenu.init = function( showHelp )
 {
+if ( !Utilities.isBoolean( showHelp ) )
+    {
+    showHelp = true;
+    }
+
+SHOW_HELP = showHelp;
+
 CONTAINER = document.querySelector( '#GameMenu' );
 
 MAP_NAME = CONTAINER.querySelector( '#MapName' );
@@ -36,6 +43,7 @@ var helpValue = HELP.querySelector( 'span' );
 HELP.onclick = function()
     {
     SHOW_HELP = !SHOW_HELP;
+    AppStorage.setData({ 'cs_spot_names_show_help': SHOW_HELP });
 
     helpValue.innerHTML = toOnOff( SHOW_HELP );
     };
