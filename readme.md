@@ -7,12 +7,13 @@ In the normal mode, you get a random map, and go through all the spots in the ma
 
 In practice mode, you select a specific map and play through all the spots. There's no end to it, since its just to practice.
 
+Start with the practice mode to get used to the spot names before trying your luck in the normal mode!
+
 
 You can try it out here:
 
 - [http://nbpt.eu/games/cs_spot_names/](http://nbpt.eu/games/cs_spot_names/)
 - [https://chrome.google.com/webstore/detail/cs-spot-names/bbpbcljfigkeocfjnhdfhibfijoedaon](https://chrome.google.com/webstore/detail/cs-spot-names/bbpbcljfigkeocfjnhdfhibfijoedaon)
-
 
 
 Maps available
@@ -43,6 +44,6 @@ The images are taken from the cs:go game.
 Libraries
 =========
 
-- createjs
+- [createjs](http://createjs.com/)
     - preloadjs : 0.6
-- utilities : 1.8
+- [utilities](https://bitbucket.org/drk4/javascript_utilities) : 1.8

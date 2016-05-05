@@ -37,7 +37,7 @@ for (a = 0 ; a < backButtons.length ; a++)
 
     // show help section
 var help = document.getElementById( 'OpenHelp' );
-help.onclick = openHelp;
+help.onclick = MainMenu.openHelp;
 
     // practice a specific map
 var practiceMaps = MENU_ELEMENT.querySelectorAll( '#PracticeMaps li' );
@@ -95,12 +95,12 @@ HIGH_SCORE_ELEMENT.style.display = 'block';
 /**
  * Show the help section.
  */
-function openHelp()
+MainMenu.openHelp = function()
 {
 closeMenu();
 
 HELP_ELEMENT.style.display = 'block';
-}
+};
 
 
 })(MainMenu || (MainMenu = {}));

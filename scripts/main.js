@@ -7,7 +7,7 @@ var G = {
 
 window.onload = function()
 {
-AppStorage.getData( [ 'cs_spot_names_high_score' ], initApp );
+AppStorage.getData( [ 'cs_spot_names_high_score', 'cs_spot_names_has_run' ], initApp );
 };
 
 
@@ -15,6 +15,15 @@ function initApp( data )
 {
 GameMenu.init();
 HighScore.init( data[ 'cs_spot_names_high_score' ] );
+
+    // determine if this is the first run of the program or not
+var firstRun = false;
+
+if ( !data[ 'cs_spot_names_has_run' ] )
+    {
+    firstRun = true;
+    AppStorage.setData({ 'cs_spot_names_has_run': true });
+    }
 
 var manifest = {
     path: 'maps/',
@@ -45,7 +54,16 @@ G.PRELOAD.on( 'complete', function( event )
     {
     loadingMessage.clear();
     MainMenu.init();
-    MainMenu.open();
+
+    if ( firstRun )
+        {
+        MainMenu.openHelp();
+        }
+
+    else
+        {
+        MainMenu.open();
+        }
     });
 G.PRELOAD.load();
 }
