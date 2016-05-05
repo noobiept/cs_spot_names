@@ -144,14 +144,14 @@ if ( partName === CURRENT_PART_NAME )
 
     if ( Game.nextSpot() )
         {
-        GameMenu.showMessage( 'Correct!' );
+        GameMenu.showCorrectMessage();
         }
     }
 
 else
     {
     INCORRECT_COUNT++;
-    GameMenu.showMessage( 'Incorrect :(' );
+    GameMenu.showIncorrectMessage();
     }
 
 GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT );

@@ -104,11 +104,32 @@ HELP.style.visibility = 'hidden';
 };
 
 
-GameMenu.showMessage = function( text )
+GameMenu.showCorrectMessage = function()
 {
+GameMenu.showMessage( 'Correct!', 'correct' );
+};
+
+
+GameMenu.showIncorrectMessage = function()
+{
+GameMenu.showMessage( 'Incorrect :(', 'incorrect' );
+};
+
+
+GameMenu.showMessage = function( text, className )
+{
+if ( typeof className !== 'undefined' )
+    {
+    MESSAGE.className = className;
+    }
+
+else
+    {
+    MESSAGE.className = '';
+    }
+
 MESSAGE.innerHTML = text;
 MESSAGE.style.visibility = 'visible';
-
 MESSAGE_TIMEOUT.start( function()
     {
     MESSAGE.style.visibility = 'hidden';

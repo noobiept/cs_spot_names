@@ -109,3 +109,13 @@ ul
     fill: white;
     font-size: 36px;
     }
+
+.correct
+    {
+    color: greenyellow;
+    }
+
+.incorrect
+    {
+    color: crimson;
+    }
