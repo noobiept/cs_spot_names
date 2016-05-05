@@ -16,7 +16,7 @@ var HELP = null;
 
 var TIMER;
 var MESSAGE_TIMEOUT;
-var SHOW_HELP = false;  // whether to show or not the help (the map needs to be in practice mode)
+var SHOW_HELP = true;  // whether to show or not the help (the map needs to be in practice mode)
 
 
 GameMenu.init = function()
@@ -37,16 +37,11 @@ HELP.onclick = function()
     {
     SHOW_HELP = !SHOW_HELP;
 
-    if ( SHOW_HELP === true )
-        {
-        helpValue.innerHTML = 'On';
-        }
-
-    else
-        {
-        helpValue.innerHTML = 'Off';
-        }
+    helpValue.innerHTML = toOnOff( SHOW_HELP );
     };
+
+    // update the html element text as well
+helpValue.innerHTML = toOnOff( SHOW_HELP );
 
 var skip = document.getElementById( 'Skip' );
 skip.onclick = Game.skipPart;
@@ -145,6 +140,17 @@ GameMenu.clear = function()
 {
 TIMER.reset();
 };
+
+
+function toOnOff( on )
+{
+if ( on )
+    {
+    return 'On';
+    }
+
+return 'Off';
+}
 
 
 })(GameMenu || (GameMenu = {}));

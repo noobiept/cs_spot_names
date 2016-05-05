@@ -26,11 +26,13 @@ pathElement.onclick = function()
     Game.validatePart( pathElement.getAttribute( 'displayName' ) );
     };
 
-var pathBox = pathElement.getBBox();
-
 textElement.innerHTML = pathElement.getAttribute( 'displayName' );
-textElement.setAttribute( 'x', pathBox.x );
-textElement.setAttribute( 'y', pathBox.y );
+
+var pathBox = pathElement.getBBox();
+var textBox = textElement.getBBox();
+
+textElement.setAttribute( 'x', pathBox.x + pathBox.width / 2 - textBox.width / 2 );
+textElement.setAttribute( 'y', pathBox.y + pathBox.height / 2 - textBox.height / 2 );
 
     // hide element and text
 pathElement.style.fillOpacity = 0;  // use opacity so it can be clicked
