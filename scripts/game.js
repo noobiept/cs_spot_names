@@ -1,7 +1,8 @@
 /*global Utilities, GameMenu, HighScore, Message, MainMenu, Map*/
+'use strict';
 
 var Game;
-(function (Game) {
+(function(Game) {
 
 
 var CURRENT_PART_NAME;          // will have the current part name string

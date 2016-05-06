@@ -1,7 +1,8 @@
 /*global MainMenu, Game, Utilities, AppStorage*/
+'use strict';
 
 var GameMenu;
-(function (GameMenu) {
+(function(GameMenu) {
 
 
     // references to html elements

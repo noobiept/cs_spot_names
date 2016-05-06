@@ -1,7 +1,8 @@
 /*global AppStorage*/
+'use strict';
 
 var HighScore;
-(function (HighScore) {
+(function(HighScore) {
 
 
 var HIGH_SCORE = [];    // list of top scores (higher first)

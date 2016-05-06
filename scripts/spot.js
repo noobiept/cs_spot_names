@@ -1,4 +1,5 @@
 /*global Game, GameMenu*/
+'use strict';
 
 function Spot( pathElement, textElement )
 {

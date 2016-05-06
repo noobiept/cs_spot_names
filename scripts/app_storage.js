@@ -1,3 +1,5 @@
+'use strict';
+
 var AppStorage;
 (function(AppStorage) {
 

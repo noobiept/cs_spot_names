@@ -1,4 +1,5 @@
 /*global Utilities*/
+'use strict';
 
 /**
     @param {String} text
@@ -19,7 +20,7 @@ this.timeout = new Utilities.Timeout();
 
 if ( typeof timeout !== 'undefined' && timeout > 0 )
     {
-    this.timeout.start( function ()
+    this.timeout.start( function()
         {
         container.removeChild( element );
 

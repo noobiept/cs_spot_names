@@ -1,5 +1,5 @@
 /*global G, Spot*/
-
+'use strict';
 
 function Map( mapName )
 {

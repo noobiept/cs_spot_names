@@ -1,4 +1,5 @@
 /*global createjs, GameMenu, HighScore, Message, MainMenu, AppStorage*/
+'use strict';
 
 var G = {
     PRELOAD: null

@@ -4,8 +4,29 @@
     },
     "extends": "eslint:recommended",
     "rules": {
-        "no-unused-vars"  : [ "error", { "args": "none" } ],
-        "linebreak-style" : [ "error", "windows" ],
-        "semi"            : [ "error", "always" ]
+        "no-unused-vars"    : [ "error", { "args": "none" } ],
+        "linebreak-style"   : [ "error", "windows" ],
+        "semi"              : [ "error", "always" ],
+        "eqeqeq"            : [ "error" ],
+        "consistent-return" : [ "error" ],
+        "curly"             : [ "error" ],
+        "no-alert"          : [ "error" ],
+        "strict"            : [ "error", "global" ],
+        "no-implied-eval"   : [ "error" ],
+        "no-multi-spaces"   : [ "error" ],
+        "block-spacing"     : [ "error" ],
+        "camelcase"         : [ "error", { "properties": "never" } ],
+        "comma-spacing"     : [ "error" ],
+        "comma-style"       : [ "error", "last" ],
+        "key-spacing"       : [ "error", { "afterColon": true } ],
+        "no-implicit-coercion"          : [ "error" ],
+        "array-bracket-spacing"         : [ "error", "always" ],
+        "object-curly-spacing"          : [ "error", "always" ],
+        "space-before-blocks"           : [ "error", "always" ],
+        "computed-property-spacing"     : [ "error", "always" ],
+        "no-multiple-empty-lines"       : [ "error", { "max": 2 } ],
+        "no-trailing-spaces"            : [ "error" ],
+        "no-whitespace-before-property" : [ "error" ],
+        "space-before-function-paren"   : [ "error", "never" ]
     }
 }

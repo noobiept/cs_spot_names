@@ -1,7 +1,8 @@
 /*global Game, G, HighScore*/
+'use strict';
 
 var MainMenu;
-(function (MainMenu) {
+(function(MainMenu) {
 
 
 var MENU_ELEMENT = null;
