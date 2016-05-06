@@ -1,3 +1,6 @@
+/*global module*/
+'use strict';
+
 module.exports = function( grunt )
 {
 var root = '../';
@@ -42,24 +45,28 @@ grunt.initConfig({
 
         uglify: {
             release: {
-                files: [{
+                files: [
+                    {
                     src: [
                             // the order might matter, depending on whether a function is used while loading the file
                         root + 'scripts/*.js'
                     ],
                     dest: dest + 'min.js'
-                }]
+                    }
+                ]
             }
         },
 
         cssmin: {
             release: {
-                files: [{
+                files: [
+                    {
                     expand: true,
                     cwd: root + 'css',
                     src: '*.css',
                     dest: dest + 'css'
-                }]
+                    }
+                ]
             },
             options: {
                 advanced: false
@@ -68,12 +75,14 @@ grunt.initConfig({
 
         processhtml: {
             release: {
-                files: [{
+                files: [
+                    {
                     expand: true,
                     cwd: root,
                     src: 'index.html',
                     dest: dest
-                }]
+                    }
+                ]
             }
         }
     });
