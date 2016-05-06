@@ -37,6 +37,9 @@ this.display_name = displayName;
 }
 
 
+/**
+ * Clear the spot object.
+ */
 Spot.prototype.clear = function()
 {
 this.path_element.onmouseover = null;
@@ -46,6 +49,10 @@ this.path_element = null;
 };
 
 
+/**
+ * Highlight the spot (increase the opacity of the path element).
+ * In practice mode, it shows the text element with the part name as well.
+ */
 Spot.prototype.highlight = function()
 {
 var practiceMode = Game.inPracticeMode();
@@ -60,6 +67,9 @@ if ( practiceMode && helpSet )
 };
 
 
+/**
+ * Remove the highlight (also hides the text element).
+ */
 Spot.prototype.removeHighlight = function()
 {
 this.path_element.style.fillOpacity = 0;
@@ -67,6 +77,9 @@ this.text_element.style.visibility = 'hidden';
 };
 
 
+/**
+ * Get the spot name.
+ */
 Spot.prototype.getName = function()
 {
 return this.display_name;

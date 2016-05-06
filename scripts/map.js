@@ -7,8 +7,8 @@ var svg = G.PRELOAD.getResult( mapName );
 var spots = svg.querySelectorAll( '.Spot' );
 var all = [];
 
-var canvasContainer = document.getElementById( 'CanvasContainer' );
-canvasContainer.insertBefore( svg, canvasContainer.firstChild );
+var mainContainer = document.getElementById( 'MainContainer' );
+mainContainer.insertBefore( svg, mainContainer.firstChild );
 
 for (var a = 0 ; a < spots.length ; a++)
     {
@@ -30,6 +30,9 @@ this.map_name = mapName;
 }
 
 
+/**
+ * Return a list with all the spot names.
+ */
 Map.prototype.getSpotsNames = function()
 {
 var names = [];
@@ -48,6 +51,9 @@ return names;
 };
 
 
+/**
+ * Remove the map.
+ */
 Map.prototype.clear = function()
 {
 var length = this.spots.length;
@@ -64,6 +70,9 @@ this.svg = null;
 };
 
 
+/**
+ * Get a spot object.
+ */
 Map.prototype.getSpot = function( name )
 {
 for (var a = 0 ; a < this.spots.length ; a++)

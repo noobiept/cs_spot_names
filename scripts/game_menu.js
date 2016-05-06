@@ -21,6 +21,9 @@ var MESSAGE_TIMEOUT;
 var SHOW_HELP = true;  // whether to show or not the help (the map needs to be in practice mode)
 
 
+/**
+ * Initialize the game menu.
+ */
 GameMenu.init = function( showHelp )
 {
 if ( !Utilities.isBoolean( showHelp ) )
@@ -68,12 +71,14 @@ quit.onclick = function()
     MainMenu.open();
     };
 
-
 TIMER = new Utilities.Timer( TIMER_ELEMENT );
 MESSAGE_TIMEOUT = new Utilities.Timeout();
 };
 
 
+/**
+ * Update the game menu info elements with the current game state.
+ */
 GameMenu.updateInfo = function( correctCount, incorrectCount, skippedCount )
 {
 CORRECT.innerHTML = correctCount;
@@ -82,12 +87,18 @@ SKIPPED.innerHTML = skippedCount;
 };
 
 
+/**
+ * Show the current part name in the menu.
+ */
 GameMenu.updatePartName = function( name )
 {
 PART_NAME.innerHTML = name;
 };
 
 
+/**
+ * Show the current map name in the menu.
+ */
 GameMenu.updateMapName = function( name )
 {
     // capitalize the first letter
@@ -97,18 +108,27 @@ MAP_NAME.innerHTML = name;
 };
 
 
+/**
+ * Get the timer object.
+ */
 GameMenu.getTimer = function()
 {
 return TIMER;
 };
 
 
+/**
+ * Show the game menu.
+ */
 GameMenu.show = function()
 {
 CONTAINER.style.display = 'flex';
 };
 
 
+/**
+ * Hide the game menu.
+ */
 GameMenu.hide = function()
 {
 CONTAINER.style.display = 'none';
@@ -116,24 +136,35 @@ HELP.style.visibility = 'hidden';
 };
 
 
+/**
+ * Show the correct guess message.
+ */
 GameMenu.showCorrectMessage = function()
 {
 GameMenu.showMessage( 'Correct!', 'correct' );
 };
 
 
+/**
+ * Show the incorrect guess message.
+ */
 GameMenu.showIncorrectMessage = function()
 {
 GameMenu.showMessage( 'Incorrect :(', 'incorrect' );
 };
 
 
+/**
+ * Show the skipped spot message.
+ */
 GameMenu.showSkippedMessage = function()
 {
 GameMenu.showMessage( 'Skipped.', 'skipped' );
 };
 
-
+/**
+ * Show a message in the menu (with an optional css class set for some styling).
+ */
 GameMenu.showMessage = function( text, className )
 {
 if ( typeof className !== 'undefined' )
@@ -155,6 +186,9 @@ MESSAGE_TIMEOUT.start( function()
 };
 
 
+/**
+ * Show the help element or not (depending on whether we're on practice mode).
+ */
 GameMenu.setMode = function( practice )
 {
 if ( practice === true )
@@ -169,18 +203,27 @@ else
 };
 
 
+/**
+ * Check if the help text is on.
+ */
 GameMenu.isHelpSet = function()
 {
 return SHOW_HELP;
 };
 
 
+/**
+ * Clear the game menu module.
+ */
 GameMenu.clear = function()
 {
 TIMER.reset();
 };
 
 
+/**
+ * Convert a boolean value to a string (On/Off).
+ */
 function toOnOff( on )
 {
 if ( on )

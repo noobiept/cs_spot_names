@@ -10,6 +10,9 @@ var HIGH_SCORE_ELEMENT = null;
 var HELP_ELEMENT = null;
 
 
+/**
+ * Initialize the main menu module.
+ */
 MainMenu.init = function()
 {
 MENU_ELEMENT = document.getElementById( 'MainMenu' );
@@ -61,6 +64,9 @@ for (a = 0 ; a < length ; a++)
 };
 
 
+/**
+ * Open the main menu.
+ */
 MainMenu.open = function()
 {
     // close the sub-menus (that may be opened)

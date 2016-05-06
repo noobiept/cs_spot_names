@@ -19,70 +19,7 @@ ul
     padding: 0;
     }
 
-#MainMenu, #HighScore, #GameMenu, #HelpSection
-    {
-    display: none;
-    }
-
-#CanvasContainer
-    {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(39, 48, 57);
-    width: 1024px;
-    height: 1024px;
-    margin: 0 auto;
-    }
-
-#MainMenu
-    {
-    font-size: 30px;
-    }
-
-#PracticeMaps
-    {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    }
-
-#PracticeMaps > *
-    {
-    margin: 5px;
-    }
-
-#GameMenu
-    {
-    /*display: flex;*/
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 10px;
-    background-color: rgb(39, 48, 57);
-    width: 200px;
-    position: absolute;
-    top: 0;
-    right: -200px;
-    height: 100%;
-    }
-
-#MenuMessage
-    {
-    visibility: hidden;
-    }
-
-#PartName
-    {
-    color: rgb(206, 132, 4);
-    }
-
-#HighScore table td
-    {
-    min-width: 50px;
-    }
+    /* :::: Generic classes :::: */
 
 .button
     {
@@ -93,12 +30,6 @@ ul
 .button:hover
     {
     color: #617f99;
-    }
-
-#DonateButton
-    {
-    text-decoration: none;
-    display: block;
     }
 
 .Text
@@ -123,7 +54,84 @@ ul
     color: #9975b9;
     }
 
+    /* :::: Main Container :::: */
+
+#MainContainer
+    {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(39, 48, 57);
+    width: 1024px;
+    height: 1024px;
+    margin: 0 auto;
+    }
+
+    /* :::: Main Menu :::: */
+
+#MainMenu, #HighScore, #GameMenu, #HelpSection
+    {
+    display: none;
+    }
+
+#MainMenu
+    {
+    font-size: 30px;
+    }
+
+#PracticeMaps
+    {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    }
+
+#PracticeMaps > *
+    {
+    margin: 5px;
+    }
+
+#DonateButton
+    {
+    text-decoration: none;
+    display: block;
+    }
+
+#HighScore table td
+    {
+    min-width: 50px;
+    }
+
 #HelpSection
     {
     margin: 10px;
+    }
+
+    /* :::: Game Menu :::: */
+
+#GameMenu
+    {
+    /*display: flex;*/
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: rgb(39, 48, 57);
+    width: 200px;
+    position: absolute;
+    top: 0;
+    right: -200px;
+    height: 100%;
+    }
+
+#MenuMessage
+    {
+    visibility: hidden;
+    }
+
+#PartName
+    {
+    color: rgb(206, 132, 4);
     }

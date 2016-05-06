@@ -26,17 +26,17 @@ var MAPS_LEFT = [];
 
 
 /**
-    @param {Boolean=false} practice - whether to play the map in practice mode or not
-    @param {String=} mapName - only used for practice mode, to select the map. In the normal mode, its a random map
-
-    Practice mode:
-        - play the same map constantly
-        - there's no score
-        - have access to the help
-
-    Normal mode:
-        - gets a random map
-        - once you go through all the spots, a new map is loaded, etc
+ * @param {Boolean=false} practice - whether to play the map in practice mode or not
+ * @param {String=} mapName - only used for practice mode, to select the map. In the normal mode, its a random map
+ *
+ * Practice mode:
+ *     - play the same map constantly
+ *     - there's no score
+ *     - have access to the help
+ *
+ * Normal mode:
+ *     - gets a random map
+ *     - once you go through all the spots, a new map is loaded, etc
  */
 Game.start = function( practice, mapName )
 {
@@ -60,13 +60,12 @@ Game.loadMap( mapName );
 GameMenu.getTimer().start();
 GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT, SKIPPED_COUNT );
 GameMenu.setMode( practice );
-
-Game.show();
+GameMenu.show();
 };
 
 
-/*
-    Returns true if there's another spot left, or if a new map was loaded, false if its the end of the game (no more spots or maps)
+/**
+ * Returns true if there's another spot left, or if a new map was loaded, false if its the end of the game (no more spots or maps).
  */
 Game.nextSpot = function()
 {
@@ -122,6 +121,9 @@ return true;
 };
 
 
+/**
+ * Load a new map.
+ */
 Game.loadMap = function( mapName )
 {
 if ( MAP !== null )
@@ -138,6 +140,9 @@ Game.nextSpot();
 };
 
 
+/**
+ * Check if the player's guess is correct.
+ */
 Game.validatePart = function( partName )
 {
 if ( partName === CURRENT_PART_NAME )
@@ -180,6 +185,9 @@ MAP = null;
 }
 
 
+/**
+ * Clear the map and reset the game state.
+ */
 Game.clear = function()
 {
 clearMap();
@@ -193,18 +201,18 @@ SKIPPED_COUNT = 0;
 };
 
 
-Game.show = function()
-{
-GameMenu.show();
-};
-
-
+/**
+ * Hide the game elements.
+ */
 Game.hide = function()
 {
 GameMenu.hide();
 };
 
 
+/**
+ * Restart the current map.
+ */
 Game.restart = function()
 {
 var mapName = MAP.map_name;
@@ -226,6 +234,9 @@ GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT, SKIPPED_COUNT );
 };
 
 
+/**
+ * Check if the game is in practice mode.
+ */
 Game.inPracticeMode = function()
 {
 return PRACTICE_MODE;

@@ -10,9 +10,15 @@ var LIMIT = 5;          // limit of the list above
 var TABLE_DATA_ELEMENTS = [];   // list of td html elements
 
 
+/**
+ * Initialize the high-score module.
+ */
 HighScore.init = function( highScore )
 {
-load( highScore );
+if ( highScore )
+    {
+    HIGH_SCORE = highScore;
+    }
 
 var table = document.querySelector( '#HighScore table' );
 
@@ -34,6 +40,9 @@ for (var a = 0 ; a < LIMIT ; a++)
 };
 
 
+/**
+ * Add a score if its higher than the top existing scores.
+ */
 HighScore.add = function( correct, incorrect, skipped, time )
 {
 var score = HighScore.calculateScore( correct, incorrect, skipped, time );
@@ -64,21 +73,18 @@ return score;
 };
 
 
+/**
+ * Save the high-scores to the storage.
+ */
 function save()
 {
 AppStorage.setData({ 'cs_spot_names_high_score': HIGH_SCORE });
 }
 
 
-function load( scores )
-{
-if ( scores )
-    {
-    HIGH_SCORE = scores;
-    }
-}
-
-
+/**
+ * Clear the high-scores.
+ */
 HighScore.clear = function()
 {
 HIGH_SCORE.length = 0;
@@ -87,12 +93,18 @@ save();
 };
 
 
+/**
+ * Calculate a score value based on the number of correct/incorrect/etc values.
+ */
 HighScore.calculateScore = function( correct, incorrect, skipped, time )
 {
 return correct * 50 - incorrect * 75 - skipped * 200 - time * 5;
 };
 
 
+/**
+ * Update the high-score table (in the main-menu) with the current high-score values.
+ */
 HighScore.updateTable = function()
 {
 for (var a = 0 ; a < LIMIT ; a++)
