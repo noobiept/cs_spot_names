@@ -32,17 +32,23 @@ if ( !data[ 'cs_spot_names_has_run' ] )
 var manifest = {
     path: 'maps/',
     manifest: [
+        { id: 'cache', src: 'cache/cache.svg' },
         { id: 'cache_menu', src: 'cache/de_cache_200.jpg' },
-        { id: 'dust2_menu', src: 'dust2/de_dust2_200.jpg' },
-        { id: 'inferno_menu', src: 'inferno/de_inferno_200.jpg' },
-        { id: 'mirage_menu', src: 'mirage/de_mirage_200.jpg' },
-        { id: 'overpass_menu', src: 'overpass/de_overpass_200.jpg' },
 
         { id: 'dust2', src: 'dust2/dust2.svg' },
-        { id: 'cache', src: 'cache/cache.svg' },
+        { id: 'dust2_menu', src: 'dust2/de_dust2_200.jpg' },
+
         { id: 'inferno', src: 'inferno/inferno.svg' },
+        { id: 'inferno_menu', src: 'inferno/de_inferno_200.jpg' },
+
         { id: 'mirage', src: 'mirage/mirage.svg' },
-        { id: 'overpass', src: 'overpass/overpass.svg' }
+        { id: 'mirage_menu', src: 'mirage/de_mirage_200.jpg' },
+
+        { id: 'overpass', src: 'overpass/overpass.svg' },
+        { id: 'overpass_menu', src: 'overpass/de_overpass_200.jpg' },
+
+        { id: 'train', src: 'train/train.svg'},
+        { id: 'train_menu', src: 'train/de_train_200.jpg' }
     ]
 };
 
