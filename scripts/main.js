@@ -47,7 +47,7 @@ var manifest = {
         { id: 'overpass', src: 'overpass/overpass.svg' },
         { id: 'overpass_menu', src: 'overpass/de_overpass_200.jpg' },
 
-        { id: 'train', src: 'train/train.svg'},
+        { id: 'train', src: 'train/train.svg' },
         { id: 'train_menu', src: 'train/de_train_200.jpg' }
     ]
 };
