@@ -58,8 +58,6 @@ for (a = 0 ; a < length ; a++)
         };
 
     var mapName = map.getAttribute( 'data-map_name' );
-
-    map.appendChild( G.PRELOAD.getResult( mapName + '_menu' ) );
     }
 };
 
