@@ -53,6 +53,4 @@ The images are taken from the cs:go game.
 Libraries
 =========
 
-- [createjs](http://createjs.com/)
-    - preloadjs : 0.6
 - [utilities](https://bitbucket.org/drk4/javascript_utilities) : 1.8

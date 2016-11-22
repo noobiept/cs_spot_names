@@ -1,10 +1,6 @@
 /*global createjs, GameMenu, HighScore, Message, MainMenu, AppStorage*/
 'use strict';
 
-var G = {
-    PRELOAD: null
-};
-
 
 window.onload = function()
 {
@@ -29,40 +25,58 @@ if ( !data[ 'cs_spot_names_has_run' ] )
     AppStorage.setData({ 'cs_spot_names_has_run': true });
     }
 
-var manifest = {
-    path: 'maps/',
-    manifest: [
-        { id: 'cache', src: 'cache/cache.svg' },
-        { id: 'dust2', src: 'dust2/dust2.svg' },
-        { id: 'inferno', src: 'inferno/inferno.svg' },
-        { id: 'mirage', src: 'mirage/mirage.svg' },
-        { id: 'overpass', src: 'overpass/overpass.svg' },
-        { id: 'train', src: 'train/train.svg' }
-    ]
-};
+    // pre-load the maps (SVG files)
+var maps = [
+        { id: 'cache', src: 'maps/cache/cache.svg' },
+        { id: 'dust2', src: 'maps/dust2/dust2.svg' },
+        { id: 'inferno', src: 'maps/inferno/inferno.svg' },
+        { id: 'mirage', src: 'maps/mirage/mirage.svg' },
+        { id: 'overpass', src: 'maps/overpass/overpass.svg' },
+        { id: 'train', src: 'maps/train/train.svg' }
+    ];
 
-var loadingMessage = new Message( '' );
-
-G.PRELOAD = new createjs.LoadQueue();
-G.PRELOAD.loadManifest( manifest, false );
-G.PRELOAD.on( 'progress', function( event )
+var loadingMessage = new Message( 'Loading..' );
+var total = maps.length;
+var loading = 0;        // count the number of elements still loading (so we know when its done, to start the game)
+var loaded = function( response, position )
     {
-    loadingMessage.setText( 'Loading.. ' + (event.progress * 100 | 0) + '%' );
-    });
-G.PRELOAD.on( 'complete', function( event )
+    maps[ position ].svg = response;
+    loading--;
+    loadingMessage.setText( 'Loading.. ' + loading + '/' + total );
+
+        // all elements have finished loading
+    if ( loading <= 0 )
+        {
+        loadingMessage.clear();
+        MainMenu.init();
+        Game.init( maps );
+
+        if ( firstRun )
+            {
+            MainMenu.openHelp();
+            }
+
+        else
+            {
+            MainMenu.open();
+            }
+        }
+    };
+
+
+for (let a = 0 ; a < total ; a++)
     {
-    loadingMessage.clear();
-    MainMenu.init();
+    loading++;
 
-    if ( firstRun )
-        {
-        MainMenu.openHelp();
-        }
+    var request = new XMLHttpRequest();
+    let position = a;
 
-    else
+    request.open( 'get', maps[ a ].src, true );
+    request.responseType ='document';
+    request.addEventListener( 'load', function()
         {
-        MainMenu.open();
-        }
-    });
-G.PRELOAD.load();
+        loaded( this.response.documentElement, position );
+        });
+    request.send();
+    }
 }

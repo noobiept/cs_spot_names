@@ -1,15 +1,10 @@
 /*global G, Spot*/
 'use strict';
 
-function Map( mapName )
+function Map( mapName, svg )
 {
-var svg = G.PRELOAD.getResult( mapName );
 var spots = svg.querySelectorAll( '.Spot' );
 var all = [];
-
-    //HERE
-svg.style.width = '100%';
-svg.style.height = '100%';
 
 var mainContainer = document.getElementById( 'MainContainer' );
 mainContainer.insertBefore( svg, mainContainer.firstChild );
@@ -22,7 +17,7 @@ for (var a = 0 ; a < spots.length ; a++)
     var textElement = document.createElementNS( 'http://www.w3.org/2000/svg', 'text' );
     textElement.setAttribute( 'class', 'Text' );
 
-    svg.firstChild.appendChild( textElement );  // there's 2 svgs
+    svg.appendChild( textElement );
 
     var spot = new Spot( path, textElement );
     all.push( spot );

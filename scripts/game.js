@@ -23,6 +23,20 @@ var MAP_NAMES = [ 'cache', 'dust2', 'inferno', 'mirage', 'overpass', 'train' ];
 
     // has the name of the maps still left to be played
 var MAPS_LEFT = [];
+var MAPS_INFO = {};
+
+
+/**
+ * Initialize the maps.
+ */
+Game.init = function( mapsInfo )
+{
+for (let a = 0 ; a < mapsInfo.length ; a++)
+    {
+    let info = mapsInfo[ a ];
+    MAPS_INFO[ info.id ] = info.svg;
+    }
+}
 
 
 /**
@@ -131,7 +145,7 @@ if ( MAP !== null )
     clearMap();
     }
 
-MAP = new Map( mapName );
+MAP = new Map( mapName, MAPS_INFO[ mapName ] );
 
 ALL_PART_NAMES = MAP.getSpotsNames();
 
