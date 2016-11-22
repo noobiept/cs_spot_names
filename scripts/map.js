@@ -7,6 +7,10 @@ var svg = G.PRELOAD.getResult( mapName );
 var spots = svg.querySelectorAll( '.Spot' );
 var all = [];
 
+    //HERE
+svg.style.width = '100%';
+svg.style.height = '100%';
+
 var mainContainer = document.getElementById( 'MainContainer' );
 mainContainer.insertBefore( svg, mainContainer.firstChild );
 
