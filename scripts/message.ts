@@ -1,56 +1,58 @@
-/*global Utilities*/
-'use strict';
+class Message
+{
+private timeout: Utilities.Timeout;
+private container: HTMLElement;
+private html_element: HTMLElement;
 
 /**
- * @param {String} text
- * @param {Number=} timeout - pass a positive number to set a timeout, otherwise the message isn't removed (and callback not called)
- * @param {Function=} callback
+ * Pass a positive number to set a timeout, otherwise the message isn't removed (and callback not called).
  */
-function Message( text, timeout, callback )
-{
-var container = document.querySelector( '#GameMessages' );
-
-var element = document.createElement( 'div' );
-element.className = 'gameMessage';
-element.innerHTML = text;
-
-container.appendChild( element );
-
-this.timeout = new Utilities.Timeout();
-
-if ( typeof timeout !== 'undefined' && timeout > 0 )
+constructor( text: string, timeout: number, callback: () => any )
     {
-    this.timeout.start( function()
+    var container = <HTMLElement> document.querySelector( '#GameMessages' );
+
+    var element = document.createElement( 'div' );
+    element.className = 'gameMessage';
+    element.innerHTML = text;
+
+    container.appendChild( element );
+
+    this.timeout = new Utilities.Timeout();
+
+    if ( typeof timeout !== 'undefined' && timeout > 0 )
         {
-        container.removeChild( element );
-
-        if ( typeof callback !== 'undefined' )
+        this.timeout.start( function()
             {
-            callback();
-            }
+            container.removeChild( element );
 
-        }, timeout );
+            if ( typeof callback !== 'undefined' )
+                {
+                callback();
+                }
+
+            }, timeout );
+        }
+
+    this.html_element = element;
+    this.container = container;
     }
-
-this.html_element = element;
-this.container = container;
-}
 
 
 /**
  * Remove the message.
  */
-Message.prototype.clear = function()
-{
-this.container.removeChild( this.html_element );
-this.timeout.clear();
-};
+clear()
+    {
+    this.container.removeChild( this.html_element );
+    this.timeout.clear();
+    }
 
 
 /**
  * Change the message text.
  */
-Message.prototype.setText = function( text )
-{
-this.html_element.innerHTML = text;
-};
+setText( text: string )
+    {
+    this.html_element.innerHTML = text;
+    }
+}

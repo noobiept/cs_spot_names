@@ -1,4 +1,4 @@
-/*global createjs, GameMenu, HighScore, Message, MainMenu, AppStorage*/
+/// <reference path="../libraries/utilities.1.9.0.d.ts" />
 'use strict';
 
 

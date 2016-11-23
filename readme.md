@@ -44,7 +44,6 @@ You can try it out here:
 # Build #
 
 - `tsc -w` : Compile the typescript files.
-- `eslint scripts/*.ts` : Run the linter.
 - `grunt` : Run the build script.
 
 
