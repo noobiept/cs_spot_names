@@ -1,5 +1,4 @@
 /// <reference path="../libraries/utilities.1.9.0.d.ts" />
-'use strict';
 
 
 window.onload = function()
@@ -11,7 +10,7 @@ AppStorage.getData( [ 'cs_spot_names_high_score', 'cs_spot_names_has_run', 'cs_s
 /**
  * Initialize the application (after the data has been loaded from the storage).
  */
-function initApp( data )
+function initApp( data: AppStorage.Data )
 {
 GameMenu.init( data[ 'cs_spot_names_show_help' ] );
 HighScore.init( data[ 'cs_spot_names_high_score' ] );

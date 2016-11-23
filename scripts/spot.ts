@@ -1,11 +1,11 @@
 class Spot
 {
 private path_element: SVGPathElement;
-private text_element: SVGPathElement;
+private text_element: SVGTextElement;
 private display_name: string;
 
 
-constructor( pathElement: SVGPathElement, textElement: SVGPathElement )
+constructor( pathElement: SVGPathElement, textElement: SVGTextElement )
     {
     var _this = this;
     var displayName = pathElement.getAttribute( 'displayName' )!;
