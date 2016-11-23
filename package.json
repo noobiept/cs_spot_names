@@ -1,0 +1,16 @@
+{
+    "name": "cs_spot_names",
+    "version": "1.5.0",
+    "devDependencies": {
+        "grunt": "~1.0.1",
+        "grunt-contrib-copy": "~1.0.0",
+        "grunt-contrib-uglify": "~2.0.0",
+        "grunt-contrib-cssmin": "~1.0.2",
+        "grunt-contrib-clean": "~1.0.0",
+        "grunt-processhtml": "~0.4.1",
+        "grunt-eslint": "~19.0.0",
+        "eslint": "~3.10.2",
+        "typescript-eslint-parser": "~1.0.0",
+        "typescript": "~2.0.10"
+    }
+}
