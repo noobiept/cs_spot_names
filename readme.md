@@ -53,4 +53,4 @@ The images are taken from the cs:go game.
 Libraries
 =========
 
-- [utilities](https://bitbucket.org/drk4/javascript_utilities) : 1.8
+- [utilities](https://bitbucket.org/drk4/javascript_utilities) : 1.9
