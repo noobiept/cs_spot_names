@@ -1,5 +1,4 @@
-Info
-====
+# Info #
 
 A counter-strike mini-game, where you need to choose the correct spot of the map.
 The spot names used are the official names that the game recognizes.
@@ -19,8 +18,7 @@ You can try it out here:
 ![Promotion Image](images/promotion/promotion3.png)
 
 
-Maps available
-==============
+# Maps available #
 
 - cache
 - dust2
@@ -29,8 +27,7 @@ Maps available
 - overpass
 - train
 
-Add New Maps
-============
+# Add New Maps #
 
 - The minimap images are located at `/Steam/steamapps/common/Counter-Strike Global Offensive/csgo/resource/overviews` (need to convert the `.dds` file to `.png`).
 - The main menu images are located at `/Steam/steamapps/common/Counter-Strike Global Offensive/csgo/maps` (resize it to 200x113 pixels).
@@ -44,13 +41,18 @@ Add New Maps
 - Save as optimized SVG when done (to remove comments/editor properties/etc).
 
 
-Images
-======
+# Build #
+
+- `tsc -w` : Compile the typescript files.
+- `eslint scripts/*.ts` : Run the linter.
+- `grunt` : Run the build script.
+
+
+# Images #
 
 The images are taken from the cs:go game.
 
 
-Libraries
-=========
+# Libraries #
 
 - [utilities](https://bitbucket.org/drk4/javascript_utilities) : 1.9
