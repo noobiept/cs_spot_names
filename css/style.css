@@ -115,10 +115,7 @@ ul
     justify-content: space-around;
     padding: 0 5px;
     background-color: rgb(39, 48, 57);
-    width: 200px;
-    position: absolute;
-    top: 0;
-    right: 0;
+    width: 20%;
     height: 100%;
     }
 
