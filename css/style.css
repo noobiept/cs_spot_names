@@ -96,12 +96,6 @@ ul
     max-height: 15vh;
     }
 
-#DonateButton
-    {
-    text-decoration: none;
-    display: block;
-    }
-
 #HighScore table td
     {
     min-width: 50px;
@@ -119,7 +113,7 @@ ul
     /*display: flex;*/
     flex-direction: column;
     justify-content: space-around;
-    padding: 10px;
+    padding: 0 5px;
     background-color: rgb(39, 48, 57);
     width: 200px;
     position: absolute;

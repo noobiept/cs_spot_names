@@ -259,7 +259,7 @@ export function inPracticeMode()
  */
 export function skipSpot()
     {
-    window.clearTimeout( SKIP_TIMEOUT_ID );
+    window.clearTimeout( SKIP_TIMEOUT_ID! );
 
     if ( SKIP_CALLBACK )
         {
@@ -267,7 +267,7 @@ export function skipSpot()
         }
 
         // highlight the skipped spot
-    var spot = MAP.getSpot( CURRENT_PART_NAME );
+    var spot = MAP!.getSpot( CURRENT_PART_NAME )!;
     spot.highlight();
 
         // save the function in case we need to clear the timeout early
