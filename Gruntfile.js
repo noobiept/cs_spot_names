@@ -1,29 +1,38 @@
-/*global module*/
-'use strict';
-
 module.exports = function( grunt )
 {
-var root = '../';
-var dest = '../release/<%= pkg.name %> <%= pkg.version %>/';
+var root = './';
+var dest = './release/<%= pkg.name %> <%= pkg.version %>/';
+var temp = './temp/';
 
 grunt.initConfig({
         pkg: grunt.file.readJSON( 'package.json' ),
 
-        eslint: {
-            options: {
-                configFile: root + '.eslintrc.json'
-            },
-            target: [ root + 'scripts' ]
+        clean: {
+                // delete the destination folder
+            previousBuild: [
+                dest,
+            ],
+                // remove temporary files
+            afterBuild: [
+                    temp,
+                    '.tscache',
+                ]
         },
 
-            // delete the destination folder
-        clean: {
-            options: {
-                force: true
-            },
-            release: [
-                dest
-            ]
+            // compile to javascript
+        ts: {
+            release: {
+                src: [ root + 'scripts/*.ts' ],
+                dest: temp + 'code.js',
+                options: {
+                    "noImplicitAny": true,
+                    "noImplicitReturns": true,
+                    "noImplicitThis": true,
+                    "noUnusedLocals": true,
+                    "strictNullChecks": true,
+                    "target": "es5"
+                }
+            }
         },
 
             // copy the images and libraries files
@@ -35,9 +44,7 @@ grunt.initConfig({
                     'images/*.png',
                     'libraries/**',
                     'maps/**',
-                    '!maps/*/other/**',
-                    'background.js',
-                    'manifest.json'
+                    '!maps/*/other/**'
                 ],
                 dest: dest
             }
@@ -45,15 +52,10 @@ grunt.initConfig({
 
         uglify: {
             release: {
-                files: [
-                    {
-                    src: [
-                            // the order might matter, depending on whether a function is used while loading the file
-                        root + 'scripts/*.js'
-                    ],
+                files: [{
+                    src: temp + 'code.js',
                     dest: dest + 'min.js'
-                    }
-                ]
+                }]
             }
         },
 
@@ -88,13 +90,13 @@ grunt.initConfig({
     });
 
     // load the plugins
-grunt.loadNpmTasks( 'grunt-eslint' );
 grunt.loadNpmTasks( 'grunt-contrib-copy' );
 grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
 grunt.loadNpmTasks( 'grunt-contrib-clean' );
 grunt.loadNpmTasks( 'grunt-processhtml' );
+grunt.loadNpmTasks( 'grunt-ts' );
 
     // tasks
-grunt.registerTask( 'default', [ 'eslint', 'clean', 'copy', 'uglify', 'cssmin', 'processhtml' ] );
+grunt.registerTask( 'default', [ 'clean:previousBuild', 'ts', 'copy', 'uglify', 'cssmin', 'processhtml', 'clean:afterBuild' ] );
 };

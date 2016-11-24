@@ -8,9 +8,7 @@
         "grunt-contrib-cssmin": "~1.0.2",
         "grunt-contrib-clean": "~1.0.0",
         "grunt-processhtml": "~0.4.1",
-        "grunt-eslint": "~19.0.0",
-        "eslint": "~3.10.2",
-        "typescript-eslint-parser": "~1.0.0",
+        "grunt-ts": "~5.5.1",
         "typescript": "~2.0.10"
     }
 }

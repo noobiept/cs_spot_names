@@ -43,7 +43,8 @@ You can try it out here:
 
 # Build #
 
-- `tsc -w` : Compile the typescript files.
+- `tsc -w` : Compile the typescript files (for development).
+- `npm install` : Install the build dependencies.
 - `grunt` : Run the build script.
 
 
