@@ -1,5 +1,10 @@
 module Game
 {
+export interface MapsInfo {
+    [ mapName: string ]: SVGSVGElement;
+}
+
+
 var CURRENT_PART_NAME: string;          // will have the current part name string
 var MAP: Map | null = null;
 var ALL_PART_NAMES: string[] = [];        // array of strings with all the names of the map
@@ -17,20 +22,16 @@ var SKIP_CALLBACK: Function | null = null;
 var MAP_NAMES = [ 'cache', 'dust2', 'inferno', 'mirage', 'overpass', 'train' ];
 
     // has the name of the maps still left to be played
-var MAPS_LEFT = [];
-var MAPS_INFO = {};
+var MAPS_LEFT: string[] = [];
+var MAPS_INFO: MapsInfo;
 
 
 /**
  * Initialize the maps.
  */
-export function init( mapsInfo )
+export function init( mapsInfo: MapsInfo )
     {
-    for (let a = 0 ; a < mapsInfo.length ; a++)
-        {
-        let info = mapsInfo[ a ];
-        MAPS_INFO[ info.id ] = info.svg;
-        }
+    MAPS_INFO = mapsInfo;
     }
 
 
@@ -47,7 +48,7 @@ export function init( mapsInfo )
  *     - gets a random map
  *     - once you go through all the spots, a new map is loaded, etc
  */
-export function start( practice: boolean, mapName: string )
+export function start( practice?: boolean, mapName?: string )
     {
     if ( typeof practice === 'undefined' )
         {
@@ -65,7 +66,7 @@ export function start( practice: boolean, mapName: string )
         mapName = MAPS_LEFT.splice( position, 1 )[ 0 ];
         }
 
-    Game.loadMap( mapName );
+    Game.loadMap( mapName! );
     GameMenu.getTimer().start();
     GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT, SKIPPED_COUNT );
     GameMenu.setMode( practice );
@@ -78,14 +79,14 @@ export function start( practice: boolean, mapName: string )
  */
 export function nextSpot()
     {
-    var position;
+    var position: number;
 
     if ( ALL_PART_NAMES.length === 0 )
         {
             // restart the map
         if ( PRACTICE_MODE )
             {
-            ALL_PART_NAMES = MAP.getSpotsNames();
+            ALL_PART_NAMES = MAP!.getSpotsNames();
             }
 
             // load the next map
@@ -133,7 +134,7 @@ export function nextSpot()
 /**
  * Load a new map.
  */
-export function loadMap = function( mapName: string )
+export function loadMap( mapName: string )
     {
     if ( MAP !== null )
         {
@@ -179,7 +180,7 @@ export function validatePart( partName: string )
  */
 function clearMap()
     {
-    window.clearTimeout( SKIP_TIMEOUT_ID );
+    window.clearTimeout( SKIP_TIMEOUT_ID! );
 
     if ( SKIP_CALLBACK )
         {
@@ -189,7 +190,7 @@ function clearMap()
     SKIP_TIMEOUT_ID = null;
     SKIP_CALLBACK = null;
 
-    MAP.clear();
+    MAP!.clear();
     MAP = null;
     }
 
@@ -224,7 +225,7 @@ export function hide()
  */
 export function restart()
     {
-    var mapName = MAP.map_name;
+    var mapName = MAP!.getMapName();
 
     Game.clear();
 

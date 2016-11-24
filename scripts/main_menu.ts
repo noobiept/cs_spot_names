@@ -49,7 +49,7 @@ export function init()
         map.onclick = function()
             {
             closeMenu();
-            Game.start( true, this.getAttribute( 'data-map_name' ) );
+            Game.start( true, this.getAttribute( 'data-map_name' )! );
             };
         }
     }

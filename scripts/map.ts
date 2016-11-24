@@ -79,4 +79,13 @@ getSpot( name: string )
 
     return null;
     }
+
+
+/**
+ * Return the map's name.
+ */
+getMapName()
+    {
+    return this.map_name;
+    }
 }

@@ -33,13 +33,14 @@ var maps = [
         { id: 'overpass', src: 'maps/overpass/overpass.svg' },
         { id: 'train', src: 'maps/train/train.svg' }
     ];
+var mapsInfo: Game.MapsInfo = {};
 
 var loadingMessage = new Message( 'Loading..' );
 var total = maps.length;
 var loading = 0;        // count the number of elements still loading (so we know when its done, to start the game)
-var loaded = function( response: SVGSVGElement, position: number )
+var loaded = function( response: SVGSVGElement, mapName: string )
     {
-    maps[ position ].svg = response;
+    mapsInfo[ mapName ] = response;
     loading--;
     loadingMessage.setText( 'Loading.. ' + loading + '/' + total );
 
@@ -48,7 +49,7 @@ var loaded = function( response: SVGSVGElement, position: number )
         {
         loadingMessage.clear();
         MainMenu.init();
-        Game.init( maps );
+        Game.init( mapsInfo );
 
         if ( firstRun )
             {
@@ -68,13 +69,13 @@ for (let a = 0 ; a < total ; a++)
     loading++;
 
     var request = new XMLHttpRequest();
-    let position = a;
+    let info = maps[ a ];
 
-    request.open( 'get', maps[ a ].src, true );
+    request.open( 'get', info.src, true );
     request.responseType ='document';
     request.addEventListener( 'load', function()
         {
-        loaded( this.response.documentElement, position );
+        loaded( this.response.documentElement, info.id );
         });
     request.send();
     }
