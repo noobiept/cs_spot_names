@@ -7,7 +7,7 @@ private html_element: HTMLElement;
 /**
  * Pass a positive number to set a timeout, otherwise the message isn't removed (and callback not called).
  */
-constructor( text: string, timeout: number, callback: () => any )
+constructor( text: string, timeout?: number, callback?: () => any )
     {
     var container = <HTMLElement> document.querySelector( '#GameMessages' );
 

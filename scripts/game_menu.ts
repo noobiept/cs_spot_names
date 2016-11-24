@@ -1,238 +1,232 @@
-/*global MainMenu, Game, Utilities, AppStorage*/
-'use strict';
-
-var GameMenu;
-(function(GameMenu) {
-
-
+module GameMenu
+{
     // references to html elements
-var CONTAINER = null;
-var MAP_NAME = null;
-var PART_NAME = null;
-var MESSAGE = null;
-var CORRECT = null;
-var INCORRECT = null;
-var SKIPPED = null;
-var TIMER_ELEMENT = null;
-var HELP = null;
+var CONTAINER: HTMLElement;
+var MAP_NAME: HTMLElement;
+var PART_NAME: HTMLElement;
+var MESSAGE: HTMLElement;
+var CORRECT: HTMLElement;
+var INCORRECT: HTMLElement;
+var SKIPPED: HTMLElement;
+var TIMER_ELEMENT: HTMLElement;
+var HELP: HTMLElement;
 
-var TIMER;
-var MESSAGE_TIMEOUT;
+var TIMER: Utilities.Timer;
+var MESSAGE_TIMEOUT: Utilities.Timeout;
 var SHOW_HELP = true;  // whether to show or not the help (the map needs to be in practice mode)
 
 
 /**
  * Initialize the game menu.
  */
-GameMenu.init = function( showHelp )
-{
-if ( !Utilities.isBoolean( showHelp ) )
+export function init( showHelp: boolean )
     {
-    showHelp = true;
-    }
+    if ( !Utilities.isBoolean( showHelp ) )
+        {
+        showHelp = true;
+        }
 
-SHOW_HELP = showHelp;
+    SHOW_HELP = showHelp;
 
-CONTAINER = document.querySelector( '#GameMenu' );
+    CONTAINER = document.getElementById( 'GameMenu' )!;
 
-MAP_NAME = CONTAINER.querySelector( '#MapName' );
-PART_NAME = CONTAINER.querySelector( '#PartName' );
-MESSAGE = CONTAINER.querySelector( '#MenuMessage' );
-CORRECT = CONTAINER.querySelector( '#CorrectValue' );
-INCORRECT = CONTAINER.querySelector( '#IncorrectValue' );
-SKIPPED = CONTAINER.querySelector( '#SkippedValue' );
-TIMER_ELEMENT = CONTAINER.querySelector( '#TimeValue' );
-HELP = CONTAINER.querySelector( '#Help' );
+    MAP_NAME = document.getElementById( 'MapName' )!;
+    PART_NAME = document.getElementById( 'PartName' )!;
+    MESSAGE = document.getElementById( 'MenuMessage' )!;
+    CORRECT = document.getElementById( 'CorrectValue' )!;
+    INCORRECT = document.getElementById( 'IncorrectValue' )!;
+    SKIPPED = document.getElementById( 'SkippedValue' )!;
+    TIMER_ELEMENT = document.getElementById( 'TimeValue' )!;
+    HELP = document.getElementById( 'Help' )!;
 
-var helpValue = HELP.querySelector( 'span' );
+    var helpValue = HELP.querySelector( 'span' );
 
-HELP.onclick = function()
-    {
-    SHOW_HELP = !SHOW_HELP;
-    AppStorage.setData({ 'cs_spot_names_show_help': SHOW_HELP });
+    HELP.onclick = function()
+        {
+        SHOW_HELP = !SHOW_HELP;
+        AppStorage.setData({ 'cs_spot_names_show_help': SHOW_HELP });
 
+        helpValue.innerHTML = toOnOff( SHOW_HELP );
+        };
+
+        // update the html element text as well
     helpValue.innerHTML = toOnOff( SHOW_HELP );
-    };
 
-    // update the html element text as well
-helpValue.innerHTML = toOnOff( SHOW_HELP );
+    var skip = document.getElementById( 'Skip' )!;
+    skip.onclick = Game.skipSpot;
 
-var skip = document.getElementById( 'Skip' );
-skip.onclick = Game.skipSpot;
+    var restart = document.getElementById( 'Restart' )!;
+    restart.onclick = Game.restart;
 
-var restart = document.getElementById( 'Restart' );
-restart.onclick = Game.restart;
+    var quit = document.getElementById( 'Quit' )!;
+    quit.onclick = function()
+        {
+        Game.clear();
+        Game.hide();
+        MainMenu.open();
+        };
 
-var quit = document.getElementById( 'Quit' );
-quit.onclick = function()
-    {
-    Game.clear();
-    Game.hide();
-    MainMenu.open();
-    };
-
-TIMER = new Utilities.Timer( TIMER_ELEMENT );
-MESSAGE_TIMEOUT = new Utilities.Timeout();
-};
+    TIMER = new Utilities.Timer( TIMER_ELEMENT );
+    MESSAGE_TIMEOUT = new Utilities.Timeout();
+    }
 
 
 /**
  * Update the game menu info elements with the current game state.
  */
-GameMenu.updateInfo = function( correctCount, incorrectCount, skippedCount )
-{
-CORRECT.innerHTML = correctCount;
-INCORRECT.innerHTML = incorrectCount;
-SKIPPED.innerHTML = skippedCount;
-};
+export function updateInfo( correctCount: number, incorrectCount: number, skippedCount: number )
+    {
+    CORRECT.innerHTML = correctCount.toString();
+    INCORRECT.innerHTML = incorrectCount.toString();
+    SKIPPED.innerHTML = skippedCount.toString();
+    }
 
 
 /**
  * Show the current part name in the menu.
  */
-GameMenu.updatePartName = function( name )
-{
-PART_NAME.innerHTML = name;
-};
+export function updatePartName( name: string )
+    {
+    PART_NAME.innerHTML = name;
+    }
 
 
 /**
  * Show the current map name in the menu.
  */
-GameMenu.updateMapName = function( name )
-{
-    // capitalize the first letter
-name = name.charAt( 0 ).toUpperCase() + name.slice( 1 );
+export function updateMapName( name: string )
+    {
+        // capitalize the first letter
+    name = name.charAt( 0 ).toUpperCase() + name.slice( 1 );
 
-MAP_NAME.innerHTML = name;
-};
+    MAP_NAME.innerHTML = name;
+    }
 
 
 /**
  * Get the timer object.
  */
-GameMenu.getTimer = function()
-{
-return TIMER;
-};
+export function getTimer()
+    {
+    return TIMER;
+    }
 
 
 /**
  * Show the game menu.
  */
-GameMenu.show = function()
-{
-CONTAINER.style.display = 'flex';
-};
+export function show()
+    {
+    CONTAINER.style.display = 'flex';
+    }
 
 
 /**
  * Hide the game menu.
  */
-GameMenu.hide = function()
-{
-CONTAINER.style.display = 'none';
-HELP.style.visibility = 'hidden';
-};
+export function hide()
+    {
+    CONTAINER.style.display = 'none';
+    HELP.style.visibility = 'hidden';
+    }
 
 
 /**
  * Show the correct guess message.
  */
-GameMenu.showCorrectMessage = function()
-{
-GameMenu.showMessage( 'Correct!', 'correct' );
-};
+export function showCorrectMessage()
+    {
+    GameMenu.showMessage( 'Correct!', 'correct' );
+    }
 
 
 /**
  * Show the incorrect guess message.
  */
-GameMenu.showIncorrectMessage = function()
-{
-GameMenu.showMessage( 'Incorrect :(', 'incorrect' );
-};
+export function showIncorrectMessage()
+    {
+    GameMenu.showMessage( 'Incorrect :(', 'incorrect' );
+    }
 
 
 /**
  * Show the skipped spot message.
  */
-GameMenu.showSkippedMessage = function()
-{
-GameMenu.showMessage( 'Skipped.', 'skipped' );
-};
+export function showSkippedMessage()
+    {
+    GameMenu.showMessage( 'Skipped.', 'skipped' );
+    }
+
 
 /**
  * Show a message in the menu (with an optional css class set for some styling).
  */
-GameMenu.showMessage = function( text, className )
-{
-if ( typeof className !== 'undefined' )
+export function showMessage( text: string, className: string )
     {
-    MESSAGE.className = className;
-    }
+    if ( typeof className !== 'undefined' )
+        {
+        MESSAGE.className = className;
+        }
 
-else
-    {
-    MESSAGE.className = '';
-    }
+    else
+        {
+        MESSAGE.className = '';
+        }
 
-MESSAGE.innerHTML = text;
-MESSAGE.style.visibility = 'visible';
-MESSAGE_TIMEOUT.start( function()
-    {
-    MESSAGE.style.visibility = 'hidden';
-    }, 1000 );
-};
+    MESSAGE.innerHTML = text;
+    MESSAGE.style.visibility = 'visible';
+    MESSAGE_TIMEOUT.start( function()
+        {
+        MESSAGE.style.visibility = 'hidden';
+        }, 1000 );
+    }
 
 
 /**
  * Show the help element or not (depending on whether we're on practice mode).
  */
-GameMenu.setMode = function( practice )
-{
-if ( practice === true )
+export function setMode( practice: boolean )
     {
-    HELP.style.visibility = 'visible';
-    }
+    if ( practice === true )
+        {
+        HELP.style.visibility = 'visible';
+        }
 
-else
-    {
-    HELP.style.visibility = 'hidden';
+    else
+        {
+        HELP.style.visibility = 'hidden';
+        }
     }
-};
 
 
 /**
  * Check if the help text is on.
  */
-GameMenu.isHelpSet = function()
-{
-return SHOW_HELP;
-};
+export function isHelpSet()
+    {
+    return SHOW_HELP;
+    }
 
 
 /**
  * Clear the game menu module.
  */
-GameMenu.clear = function()
-{
-TIMER.reset();
-};
+export function clear()
+    {
+    TIMER.reset();
+    }
 
 
 /**
  * Convert a boolean value to a string (On/Off).
  */
-function toOnOff( on )
-{
-if ( on )
+function toOnOff( on: boolean )
     {
-    return 'On';
+    if ( on )
+        {
+        return 'On';
+        }
+
+    return 'Off';
     }
-
-return 'Off';
 }
-
-
-})(GameMenu || (GameMenu = {}));

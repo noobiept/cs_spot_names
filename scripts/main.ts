@@ -37,7 +37,7 @@ var maps = [
 var loadingMessage = new Message( 'Loading..' );
 var total = maps.length;
 var loading = 0;        // count the number of elements still loading (so we know when its done, to start the game)
-var loaded = function( response, position )
+var loaded = function( response: SVGSVGElement, position: number )
     {
     maps[ position ].svg = response;
     loading--;
