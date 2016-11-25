@@ -15,7 +15,9 @@ You can try it out here:
 - [http://nbpt.eu/games/cs_spot_names/](http://nbpt.eu/games/cs_spot_names/)
 - [https://chrome.google.com/webstore/detail/cs-spot-names/bbpbcljfigkeocfjnhdfhibfijoedaon](https://chrome.google.com/webstore/detail/cs-spot-names/bbpbcljfigkeocfjnhdfhibfijoedaon)
 
-![Promotion Image](images/promotion/promotion3.png)
+![Promotion Image 1](images/promotion/promotion1.png)
+![Promotion Image 2](images/promotion/promotion2.png)
+![Promotion Image 3](images/promotion/promotion3.png)
 
 
 # Maps available #

@@ -43,7 +43,7 @@ var loaded = function( response: SVGSVGElement, mapName: string )
     {
     mapsInfo[ mapName ] = response;
     loading--;
-    loadingMessage.setText( 'Loading.. ' + loading + '/' + total );
+    loadingMessage.setText( 'Loading.. ' + (total - loading) + '/' + total );
 
         // all elements have finished loading
     if ( loading <= 0 )
