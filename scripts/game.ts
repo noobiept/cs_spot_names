@@ -19,7 +19,7 @@ var SKIP_TIMEOUT_ID: number | null = null;
 var SKIP_CALLBACK: Function | null = null;
 
     // all the map names in the game (don't change this)
-var MAP_NAMES = [ 'cache', 'dust2', 'inferno', 'mirage', 'overpass', 'train' ];
+var MAP_NAMES = [ 'cache', 'cobblestone', 'dust2', 'inferno', 'mirage', 'overpass', 'train' ];
 
     // has the name of the maps still left to be played
 var MAPS_LEFT: string[] = [];

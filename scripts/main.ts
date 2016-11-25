@@ -27,6 +27,7 @@ if ( !data[ 'cs_spot_names_has_run' ] )
     // pre-load the maps (SVG files)
 var maps = [
         { id: 'cache', src: 'maps/cache/cache.svg' },
+        { id: 'cobblestone', src: 'maps/cobblestone/cobblestone.svg' },
         { id: 'dust2', src: 'maps/dust2/dust2.svg' },
         { id: 'inferno', src: 'maps/inferno/inferno.svg' },
         { id: 'mirage', src: 'maps/mirage/mirage.svg' },

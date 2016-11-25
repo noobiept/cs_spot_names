@@ -21,6 +21,7 @@ You can try it out here:
 # Maps available #
 
 - cache
+- cobblestone
 - dust2
 - inferno
 - mirage
