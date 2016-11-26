@@ -153,11 +153,14 @@ export function loadMap( mapName: string )
 /**
  * Check if the player's guess is correct.
  */
-export function validatePart( partName: string )
+export function validatePart( partName: string ): boolean
     {
+    var correctGuess = false;
+
     if ( partName === CURRENT_PART_NAME )
         {
         CORRECT_COUNT++;
+        correctGuess = true;
 
         if ( Game.nextSpot() )
             {
@@ -172,6 +175,8 @@ export function validatePart( partName: string )
         }
 
     GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT, SKIPPED_COUNT );
+
+    return correctGuess;
     }
 
 

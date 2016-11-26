@@ -32,13 +32,6 @@ ul
     color: #617f99;
     }
 
-.Text
-    {
-    pointer-events: none;
-    fill: white;
-    font-size: 36px;
-    }
-
 .correct
     {
     color: greenyellow;
@@ -52,6 +45,31 @@ ul
 .skipped
     {
     color: #9975b9;
+    }
+
+    /* :::: SVG Map :::: */
+
+.Text
+    {
+    pointer-events: none;
+    fill: white;
+    font-size: 36px;
+    }
+
+.TextHidden
+    {
+    visibility: hidden;
+    }
+
+.SpotNotAvailable
+    {
+    fill-opacity: 0.4;
+    fill: black;
+    }
+
+.SpotHidden
+    {
+    fill-opacity: 0;    /* use opacity so it can be clicked */
     }
 
     /* :::: Main Container :::: */

@@ -3,6 +3,7 @@ class Spot
 private path_element: SVGPathElement;
 private text_element: SVGTextElement;
 private display_name: string;
+private already_guessed = false;
 
 
 constructor( pathElement: SVGPathElement, textElement: SVGTextElement )
@@ -12,15 +13,29 @@ constructor( pathElement: SVGPathElement, textElement: SVGTextElement )
 
     pathElement.onmouseover = function()
         {
-        _this.highlight();
+        if ( !_this.already_guessed )
+            {
+            _this.highlight();
+            }
         };
     pathElement.onmouseout = function()
         {
-        _this.removeHighlight();
+        if ( !_this.already_guessed )
+            {
+            _this.removeHighlight();
+            }
         };
     pathElement.onclick = function()
         {
-        Game.validatePart( displayName );
+        if ( !_this.already_guessed )
+            {
+            var correct = Game.validatePart( displayName );
+
+            if ( correct )
+                {
+                _this.guessedCorrectly();
+                }
+            }
         };
 
     textElement.innerHTML = pathElement.getAttribute( 'displayName' )!;
@@ -31,9 +46,12 @@ constructor( pathElement: SVGPathElement, textElement: SVGTextElement )
     textElement.setAttribute( 'x', (pathBox.x + pathBox.width / 2 - textBox.width / 2).toString() );
     textElement.setAttribute( 'y', (pathBox.y + pathBox.height / 2 - textBox.height / 2).toString() );
 
-        // hide element and text
-    pathElement.style.fillOpacity = '0';  // use opacity so it can be clicked
-    textElement.style.visibility = 'hidden';
+        // reset the css classes that may be on the elements
+    pathElement.classList.remove( 'SpotNotAvailable' );
+
+        // hide the spot element and text
+    pathElement.classList.add( 'SpotHidden' );
+    textElement.classList.add( 'TextHidden' );
 
     this.path_element = pathElement;
     this.text_element = textElement;
@@ -50,11 +68,11 @@ highlight()
     var practiceMode = Game.inPracticeMode();
     var helpSet = GameMenu.isHelpSet();
 
-    this.path_element.style.fillOpacity = '0.3';
+    this.path_element.classList.remove( 'SpotHidden' );
 
     if ( practiceMode && helpSet )
         {
-        this.text_element.style.visibility = 'visible';
+        this.text_element.classList.remove( 'TextHidden' );
         }
     }
 
@@ -64,8 +82,20 @@ highlight()
  */
 removeHighlight()
     {
-    this.path_element.style.fillOpacity = '0';
-    this.text_element.style.visibility = 'hidden';
+    this.path_element.classList.add( 'SpotHidden' );
+    this.text_element.classList.add( 'TextHidden' );
+    }
+
+
+/**
+ * Disable the spot, so the player knows the spot isn't a valid option anymore.
+ */
+guessedCorrectly()
+    {
+    this.already_guessed = true;
+    this.path_element.classList.remove( 'SpotHidden' );
+    this.path_element.classList.add( 'SpotNotAvailable' );
+    this.text_element.classList.add( 'TextHidden' );
     }
 
 
