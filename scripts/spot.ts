@@ -106,4 +106,13 @@ getName()
     {
     return this.display_name;
     }
+
+
+/**
+ * Mark the spot as already guessed or not.
+ */
+setAlreadyGuessed( value: boolean )
+    {
+    this.already_guessed = value;
+    }
 }

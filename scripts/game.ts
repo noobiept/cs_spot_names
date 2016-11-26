@@ -273,12 +273,13 @@ export function skipSpot()
 
         // highlight the skipped spot
     var spot = MAP!.getSpot( CURRENT_PART_NAME )!;
+    spot.setAlreadyGuessed( true );
     spot.highlight();
 
         // save the function in case we need to clear the timeout early
     SKIP_CALLBACK = function()
         {
-        spot.removeHighlight();
+        spot.guessedCorrectly();
         SKIP_TIMEOUT_ID = null;
         SKIP_CALLBACK = null;
         };
