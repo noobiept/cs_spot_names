@@ -10,9 +10,6 @@ constructor( mapName: string, svg: SVGSVGElement )
     var spots = svg.querySelectorAll( '.Spot' );
     var all: Spot[] = [];
 
-    var mainContainer = document.getElementById( 'MainContainer' )!;
-    mainContainer.insertBefore( svg, mainContainer.firstChild );
-
     for (var a = 0 ; a < spots.length ; a++)
         {
         var path = <SVGPathElement> spots[ a ];
@@ -30,6 +27,24 @@ constructor( mapName: string, svg: SVGSVGElement )
     this.svg = svg;
     this.spots = all;
     this.map_name = mapName;
+    }
+
+
+/**
+ * Add the SVG element to the start of the container.
+ */
+attachTo( container: HTMLElement )
+    {
+    container.insertBefore( this.svg, container.firstChild );
+    }
+
+
+/**
+ * Remove the SVG element from its container.
+ */
+detach()
+    {
+    this.svg.parentElement.removeChild( this.svg );
     }
 
 
@@ -53,12 +68,14 @@ getSpotsNames()
 
 
 /**
- * Remove the map.
+ * Reset the map state to the initial values.
  */
-clear()
+reset()
     {
-    this.spots.length = 0;
-    this.svg.parentElement.removeChild( this.svg );
+    for (let a = 0 ; a < this.spots.length ; a++)
+        {
+        this.spots[ a ].reset();
+        }
     }
 
 

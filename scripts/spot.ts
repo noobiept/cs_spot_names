@@ -117,4 +117,20 @@ setAlreadyGuessed( value: boolean )
     {
     this.already_guessed = value;
     }
+
+
+/**
+ * Reset the spot state.
+ */
+reset()
+    {
+        // reset the css classes that may be on the elements
+    this.path_element.classList.remove( 'SpotNotAvailable' );
+
+        // hide the spot element and text
+    this.path_element.classList.add( 'SpotHidden' );
+    this.text_element.classList.add( 'TextHidden' );
+
+    this.already_guessed = false;
+    }
 }

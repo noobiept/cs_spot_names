@@ -1,9 +1,5 @@
 module Game
 {
-export interface MapsInfo {
-    [ mapName: string ]: SVGSVGElement;
-}
-
     // what can happen after the player made a move
 export enum Play {
     correct, incorrect, gameEnd
@@ -23,12 +19,9 @@ var PRACTICE_MODE = false;
 var SKIP_TIMEOUT_ID: number | null = null;
 var SKIP_CALLBACK: Function | null = null;
 
-    // all the map names in the game (don't change this)
-var MAP_NAMES = [ 'cache', 'cobblestone', 'dust2', 'inferno', 'mirage', 'overpass', 'train' ];
-
-    // has the name of the maps still left to be played
-var MAPS_LEFT: string[] = [];
-var MAPS_INFO: MapsInfo;
+var MAP_NAMES: string[];        // all the map names in the game
+var MAPS_LEFT: string[] = [];   // has the name of the maps still left to be played
+var MAPS: { [mapName: string]: Map } = {};
 
 
 /**
@@ -36,7 +29,15 @@ var MAPS_INFO: MapsInfo;
  */
 export function init( mapsInfo: MapsInfo )
     {
-    MAPS_INFO = mapsInfo;
+    MAP_NAMES = Object.keys( mapsInfo );
+
+        // initialize the maps once, at the start of the game
+    for (let a = 0 ; a < MAP_NAMES.length ; a++)
+        {
+        let name = MAP_NAMES[ a ];
+
+        MAPS[ name ] = new Map( name, mapsInfo[ name ] );
+        }
     }
 
 
@@ -146,7 +147,8 @@ export function loadMap( mapName: string )
         clearMap();
         }
 
-    MAP = new Map( mapName, MAPS_INFO[ mapName ] );
+    MAP = MAPS[ mapName ];
+    MAP.attachTo( document.getElementById( 'MainContainer' )! );
 
     ALL_PART_NAMES = MAP.getSpotsNames();
 
@@ -207,7 +209,12 @@ function clearMap()
     SKIP_TIMEOUT_ID = null;
     SKIP_CALLBACK = null;
 
-    MAP!.clear();
+    if ( MAP )
+        {
+        MAP.reset();
+        MAP.detach();
+        }
+
     MAP = null;
     }
 

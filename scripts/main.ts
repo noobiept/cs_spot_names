@@ -1,6 +1,11 @@
 /// <reference path="../libraries/utilities.1.9.0.d.ts" />
 
 
+interface MapsInfo {
+    [ mapName: string ]: SVGSVGElement;
+}
+
+
 window.onload = function()
 {
 AppStorage.getData( [ 'cs_spot_names_high_score', 'cs_spot_names_has_run', 'cs_spot_names_show_help' ], initApp );
@@ -34,7 +39,7 @@ var maps = [
         { id: 'overpass', src: 'maps/overpass/overpass.svg' },
         { id: 'train', src: 'maps/train/train.svg' }
     ];
-var mapsInfo: Game.MapsInfo = {};
+var mapsInfo: MapsInfo = {};
 
 var loadingMessage = new Message( 'Loading..' );
 var total = maps.length;
