@@ -4,6 +4,11 @@ export interface MapsInfo {
     [ mapName: string ]: SVGSVGElement;
 }
 
+    // what can happen after the player made a move
+export enum Play {
+    correct, incorrect, gameEnd
+}
+
 
 var CURRENT_PART_NAME: string;          // will have the current part name string
 var MAP: Map | null = null;
@@ -77,7 +82,7 @@ export function start( practice?: boolean, mapName?: string )
 /**
  * Returns true if there's another spot left, or if a new map was loaded, false if its the end of the game (no more spots or maps).
  */
-export function nextSpot()
+export function nextSpot(): boolean
     {
     var position: number;
 
@@ -87,6 +92,7 @@ export function nextSpot()
         if ( PRACTICE_MODE )
             {
             Game.loadMap( MAP!.getMapName() );
+            return false;
             }
 
             // load the next map
@@ -114,9 +120,8 @@ export function nextSpot()
                 var mapName = MAPS_LEFT.splice( position, 1 )[ 0 ];
 
                 Game.loadMap( mapName );
+                return true;
                 }
-
-            return true;
             }
         }
 
@@ -153,16 +158,23 @@ export function loadMap( mapName: string )
 /**
  * Check if the player's guess is correct.
  */
-export function validatePart( partName: string ): boolean
+export function validatePart( partName: string ): Play
     {
-    var correctGuess = false;
+    var result = Play.incorrect;
 
     if ( partName === CURRENT_PART_NAME )
         {
         CORRECT_COUNT++;
-        correctGuess = true;
+        result = Play.correct;
+        var nextSpot = Game.nextSpot();
 
-        if ( Game.nextSpot() )
+            // don't need to do more work
+        if ( !nextSpot )
+            {
+            return Play.gameEnd;
+            }
+
+        else
             {
             GameMenu.showCorrectMessage();
             }
@@ -176,7 +188,7 @@ export function validatePart( partName: string ): boolean
 
     GameMenu.updateInfo( CORRECT_COUNT, INCORRECT_COUNT, SKIPPED_COUNT );
 
-    return correctGuess;
+    return result;
     }
 
 

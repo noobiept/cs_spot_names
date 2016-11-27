@@ -31,7 +31,7 @@ constructor( pathElement: SVGPathElement, textElement: SVGTextElement )
             {
             var correct = Game.validatePart( displayName );
 
-            if ( correct )
+            if ( correct === Game.Play.correct )
                 {
                 _this.guessedCorrectly();
                 }
