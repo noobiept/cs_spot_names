@@ -86,7 +86,7 @@ export function nextSpot()
             // restart the map
         if ( PRACTICE_MODE )
             {
-            ALL_PART_NAMES = MAP!.getSpotsNames();
+            Game.loadMap( MAP!.getMapName() );
             }
 
             // load the next map

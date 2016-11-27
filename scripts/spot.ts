@@ -68,6 +68,7 @@ highlight()
     var practiceMode = Game.inPracticeMode();
     var helpSet = GameMenu.isHelpSet();
 
+    this.path_element.classList.remove( 'SpotNotAvailable' );
     this.path_element.classList.remove( 'SpotHidden' );
 
     if ( practiceMode && helpSet )
@@ -82,6 +83,7 @@ highlight()
  */
 removeHighlight()
     {
+    this.path_element.classList.remove( 'SpotNotAvailable' );
     this.path_element.classList.add( 'SpotHidden' );
     this.text_element.classList.add( 'TextHidden' );
     }
