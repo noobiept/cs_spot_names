@@ -148,7 +148,7 @@ export function loadMap( mapName: string )
         }
 
     MAP = MAPS[ mapName ];
-    MAP.attachTo( document.getElementById( 'MainContainer' )! );
+    MAP.show();
 
     ALL_PART_NAMES = MAP.getSpotsNames();
 
@@ -212,7 +212,7 @@ function clearMap()
     if ( MAP )
         {
         MAP.reset();
-        MAP.detach();
+        MAP.hide();
         }
 
     MAP = null;

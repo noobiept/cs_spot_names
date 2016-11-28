@@ -49,6 +49,11 @@ ul
 
     /* :::: SVG Map :::: */
 
+.hidden
+    {
+    display: none;
+    }
+
 .Text
     {
     pointer-events: none;
