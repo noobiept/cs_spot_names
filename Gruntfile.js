@@ -44,7 +44,9 @@ grunt.initConfig({
                     'images/*.png',
                     'libraries/**',
                     'maps/**',
-                    '!maps/*/other/**'
+                    '!maps/*/other/**',
+                    'package.json',
+                    'license.txt'
                 ],
                 dest: dest
             }
